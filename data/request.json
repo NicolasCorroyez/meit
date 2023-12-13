@@ -1,0 +1,18 @@
+[
+  {
+    "theme": "theme1",
+    "date": "2024-01-01",
+    "time": "14:30:00",
+    "place": "ici1",
+    "nb_people": "2",
+    "user_id": "1"
+  },
+  {
+    "theme": "theme2",
+    "date": "2024-03-02",
+    "time": "09:00:00",
+    "place": "ici2",
+    "nb_people": "4",
+    "user_id": "2"
+  }
+]

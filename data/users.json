@@ -1,0 +1,42 @@
+[
+  {
+    "nickname": "test1",
+    "firstname": "FirstnameTest1",
+    "lastname": "lastnameTest1",
+    "device": "TESTDEVICE1",
+    "picture": "nothing1",
+    "role": "member"
+  },
+  {
+    "nickname": "test2",
+    "firstname": "FirstnameTest2",
+    "lastname": "lastnameTest2",
+    "device": "TESTDEVICE2",
+    "picture": "nothing2",
+    "role": "member"
+  },
+  {
+    "nickname": "test3",
+    "firstname": "FirstnameTest3",
+    "lastname": "lastnameTest3",
+    "device": "TESTDEVICE3",
+    "picture": "nothing3",
+    "role": "member"
+  },
+  {
+    "nickname": "test4",
+    "firstname": "FirstnameTest4",
+    "lastname": "lastnameTest4",
+    "device": "TESTDEVICE4",
+    "picture": "nothing4",
+    "role": "member"
+  },
+  {
+    "nickname": "test5",
+    "firstname": "FirstnameTest5",
+    "lastname": "lastnameTest5",
+    "device": "TESTDEVICE5",
+    "picture": "nothing5",
+    "role": "member"
+  }
+]
