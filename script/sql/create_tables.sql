@@ -41,7 +41,7 @@ CREATE TABLE web.request (
     time TIME,
     place text,
     nb_people smallint CHECK(nb_people > 0),
-    user_id int NOT NULL REFERENCES main.user(id)
+    owner int NOT NULL REFERENCES main.user(id)
 );
 
 -- table d'association entre user et request
