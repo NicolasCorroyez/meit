@@ -1,0 +1,37 @@
+[
+  {
+    "user_id": 1,
+    "request_id": 1,
+    "userstate": true
+  },
+  {
+    "user_id": 2,
+    "request_id": 1,
+    "userstate": false
+  },
+  {
+    "user_id": 3,
+    "request_id": 1,
+    "userstate": false
+  },
+  {
+    "user_id": 4,
+    "request_id": 1,
+    "userstate": false
+  },
+  {
+    "user_id": 5,
+    "request_id": 1,
+    "userstate": false
+  },
+  {
+    "user_id": 2,
+    "request_id": 2,
+    "userstate": false
+  },
+  {
+    "user_id": 4,
+    "request_id": 2,
+    "userstate": false
+  }
+]

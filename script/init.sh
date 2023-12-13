@@ -3,20 +3,20 @@
 export PGUSER=postgres
 
 ## suppression de l'existant
-dropdb spacevoyager
-dropuser admin_space
-dropuser member_space
+dropdb meit
+dropuser admin_meit
+dropuser member_meit
 
 ## ajout du role et de la bdd
 psql -f ./sql/init_db.sql
 
 ## suppression du schéma public
-psql -d spacevoyager -f ./sql/delete_public.sql
+psql -d meit -f ./sql/delete_public.sql
 
 ## ajout des tables
-export PGUSER=admin_space
-export PGPASSWORD=space
-export PGDATABASE=spacevoyager
+export PGUSER=admin_meit
+export PGPASSWORD=meit
+export PGDATABASE=meit
 
 psql -f ./sql/create_tables.sql
 

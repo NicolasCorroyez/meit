@@ -2,16 +2,16 @@
   {
     "name": "crew1",
     "picture": "nothing1",
-    "user_id": "1"
+    "user_id": 1
   },
   {
     "name": "crew2",
     "picture": "nothing2",
-    "user_id": "1"
+    "user_id": 1
   },
   {
     "name": "crew3",
     "picture": "nothing2",
-    "user_id": "2"
+    "user_id": 2
   }
 ]

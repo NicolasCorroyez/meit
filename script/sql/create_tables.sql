@@ -14,14 +14,6 @@ GRANT USAGE ON SCHEMA web TO group_web;
 ALTER DEFAULT PRIVILEGES FOR ROLE admin_meit IN SCHEMA web
 GRANT EXECUTE ON FUNCTIONS TO group_web; 
 
--- table qui contient les crew
-CREATE TABLE web.crew (
-    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name text NOT NULL UNIQUE,
-    picture text,
-    user_id int NOT NULL REFERENCES web.user(id)
-);
-
 -- table pour gérer les utilisateurs de mon application web
 CREATE TABLE main.user (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -31,6 +23,14 @@ CREATE TABLE main.user (
     device text NOT NULL,
     picture text,
     role text NOT NULL DEFAULT 'member'
+);
+
+-- table qui contient les crew
+CREATE TABLE web.crew (
+    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name text NOT NULL UNIQUE,
+    picture text,
+    user_id int NOT NULL REFERENCES main.user(id)
 );
 
 -- table qui contient les requests
@@ -47,17 +47,16 @@ CREATE TABLE web.request (
 -- table d'association entre user et request
 CREATE TABLE web.r_user_request (
     id int GENERATED ALWAYS AS IDENTITY,
-    user_id int PRIMARY KEY REFERENCES main.users(id),
-    crew_id int PRIMARY KEY REFERENCES web.crew(id),
-    request_id int PRIMARY KEY REFERENCES web.request(id),
-    userstate BOOLEAN,
+    user_id int REFERENCES main.user(id),
+    request_id int REFERENCES web.request(id),
+    userstate BOOLEAN
 );
 
 -- table d'association entre user et crew
 CREATE TABLE web.r_user_crew (
     id int GENERATED ALWAYS AS IDENTITY,
-    user_id int PRIMARY KEY REFERENCES main.user(id),
-    crew_id int PRIMARY KEY REFERENCES web.crew(id),
+    user_id int REFERENCES main.user(id),
+    crew_id int REFERENCES web.crew(id)
 );
 
 COMMIT;
