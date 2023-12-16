@@ -1,9 +1,7 @@
 <p align="center" width="100%">
-  <img src="https://i.ibb.co/nQQcP00/39.png" />
+  <img src="https://i.ibb.co/wc4yVfC/fz.png" />
 </p>
 <br>
-
-# MEIT
 
 ## Goals
 
