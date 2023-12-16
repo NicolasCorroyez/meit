@@ -1,20 +1,20 @@
 // Imports
-const crew = require("../../data/crew.json");
-const user = require("../../data/user.json");
-const request = require("../../data/request.json");
-const r_user_crew = require("../../data/r_user_crew.json");
-const r_user_request = require("../../data/r_user_request.json");
+const crews = require("../../data/crews.json");
+const users = require("../../data/users.json");
+const events = require("../../data/events.json");
+const r_users_crews = require("../../data/r_users_crews.json");
+const r_users_events = require("../../data/r_users_events.json");
 
 const client = require("../../app/service/dbPool.js");
 
-//! USER IMPORT
-async function importUser() {
+//! users IMPORT
+async function importUsers() {
   const values = [];
   const parameters = [];
   let counter = 1;
 
-  //2. I go through the Users
-  for (const element of user) {
+  //2. I go through the userss
+  for (const element of users) {
     parameters.push(
       `(
       $${counter},
@@ -35,27 +35,27 @@ async function importUser() {
     values.push(element.role);
   }
 
-  // I insert my Users
+  // I insert my userss
   const sqlQuery = `
-    INSERT INTO main.user
+    INSERT INTO main.users
     (nickname, firstname, lastname, device, picture, role)
     VALUES
     ${parameters.join()}
     RETURNING *;`;
   await client.query(sqlQuery, values);
 
-  console.log("USER importés avec succès !");
+  console.log("users importés avec succès !");
 }
-//! END USER IMPORT
+//! END users IMPORT
 
-//! CREW IMPORT
-async function importCrew() {
+//! crews IMPORT
+async function importCrews() {
   const values = [];
   const parameters = [];
   let counter = 1;
 
-  //2. I go through the Users
-  for (const element of crew) {
+  //2. I go through the userss
+  for (const element of crews) {
     parameters.push(
       `(
       $${counter},
@@ -66,30 +66,30 @@ async function importCrew() {
     counter += 3;
     values.push(element.name);
     values.push(element.picture);
-    values.push(element.user_id);
+    values.push(element.users_id);
   }
 
-  // I insert my Crews
+  // I insert my crewss
   const sqlQuery = `
-    INSERT INTO web.crew
-    (name, picture, user_id)
+    INSERT INTO web.crews
+    (name, picture, users_id)
     VALUES
     ${parameters.join()}
     RETURNING *;`;
 
   await client.query(sqlQuery, values);
-  console.log("CREW importés avec succès !");
+  console.log("crews importés avec succès !");
 }
-//! END CREW IMPORT
+//! END crews IMPORT
 
-//! REQUEST IMPORT
-async function importRequest() {
+//! events IMPORT
+async function importEvents() {
   const values = [];
   const parameters = [];
   let counter = 1;
 
-  //2. I go through the Users
-  for (const element of request) {
+  //2. I go through the userss
+  for (const element of events) {
     parameters.push(
       `(
       $${counter},
@@ -110,9 +110,9 @@ async function importRequest() {
     values.push(element.owner);
   }
 
-  // I insert my Requests
+  // I insert my eventss
   const sqlQuery = `
-    INSERT INTO web.request
+    INSERT INTO web.events
     (theme, date, time, place, nb_people, owner)
     VALUES
     ${parameters.join()}
@@ -120,18 +120,18 @@ async function importRequest() {
 
   await client.query(sqlQuery, values);
 
-  console.log("REQUEST importés avec succès !");
+  console.log("events importés avec succès !");
 }
-//! END REQUEST IMPORT
+//! END events IMPORT
 
-//! REQUEST R_USER_CREW
-async function importRUserCrew() {
+//! events R_users_crews
+async function importRUsersCrews() {
   const values = [];
   const parameters = [];
   let counter = 1;
 
-  //2. I go through the R_USER_CREW
-  for (const element of r_user_crew) {
+  //2. I go through the R_users_crews
+  for (const element of r_users_crews) {
     parameters.push(
       `(
       $${counter},
@@ -140,32 +140,32 @@ async function importRUserCrew() {
     );
     counter += 2;
 
-    values.push(element.user_id);
-    values.push(element.crew_id);
+    values.push(element.users_id);
+    values.push(element.crews_id);
   }
 
-  // I insert my R_USER_CREW
+  // I insert my R_users_crews
   const sqlQuery = `
-    INSERT INTO web.r_user_crew
-    (user_id, crew_id)
+    INSERT INTO web.r_users_crews
+    (users_id, crews_id)
     VALUES
     ${parameters.join()}
-    RETURNING id, crew_id;`;
+    RETURNING id, crews_id;`;
 
   await client.query(sqlQuery, values);
 
-  console.log("R_USER_CREW importés avec succès !");
+  console.log("R_users_crews importés avec succès !");
 }
-//! END REQUEST R_USER_CREW
+//! END events R_users_crews
 
-//! R_USER_REQUEST IMPORT
-async function importRUserRequest() {
+//! R_users_events IMPORT
+async function importRUsersevents() {
   const values = [];
   const parameters = [];
   let counter = 1;
 
-  //2. I go through the R_USER_REQUEST
-  for (const element of r_user_request) {
+  //2. I go through the R_users_events
+  for (const element of r_users_events) {
     parameters.push(
       `(
       $${counter},
@@ -176,44 +176,44 @@ async function importRUserRequest() {
     );
     counter += 4;
 
-    values.push(element.user_id);
-    values.push(element.crew_id);
-    values.push(element.request_id);
+    values.push(element.users_id);
+    values.push(element.crews_id);
+    values.push(element.events_id);
     values.push(element.userstate);
   }
 
-  // I insert my R_USER_REQUEST
+  // I insert my R_users_events
   const sqlQuery = `
-    INSERT INTO web.r_user_request
-    (user_id, crew_id, request_id, userstate)
+    INSERT INTO web.r_users_events
+    (users_id, crews_id, events_id, userstate)
     VALUES
     ${parameters.join()}
-    RETURNING id, request_id;`;
+    RETURNING id, events_id;`;
 
   await client.query(sqlQuery, values);
 
-  console.log("R_USER_REQUEST importés avec succès !");
+  console.log("R_users_events importés avec succès !");
 }
-//! END R_USER_REQUEST IMPORT
+//! END R_users_events IMPORT
 
 //! "IMPORT IT ALL" FUNCTION
 async function importData() {
   // I delete existing data
   console.log("START TRUNCATE");
-  await client.query("TRUNCATE main.user CASCADE");
-  await client.query("TRUNCATE web.crew CASCADE");
-  await client.query("TRUNCATE web.request CASCADE");
-  await client.query("TRUNCATE web.r_user_request CASCADE");
-  await client.query("TRUNCATE web.r_user_crew CASCADE");
+  await client.query("TRUNCATE main.users CASCADE");
+  await client.query("TRUNCATE web.crews CASCADE");
+  await client.query("TRUNCATE web.events CASCADE");
+  await client.query("TRUNCATE web.r_users_events CASCADE");
+  await client.query("TRUNCATE web.r_users_crews CASCADE");
   console.log("FINISH TRUNCATE");
   console.time("Import");
 
   // I launch all import functions
-  await importUser();
-  await importCrew();
-  await importRequest();
-  await importRUserCrew();
-  await importRUserRequest();
+  await importUsers();
+  await importCrews();
+  await importEvents();
+  await importRUsersCrews();
+  await importRUsersevents();
 
   console.timeEnd("Import");
 }

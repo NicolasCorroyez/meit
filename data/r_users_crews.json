@@ -1,0 +1,22 @@
+[
+  {
+    "users_id": "1",
+    "crews_id": "1"
+  },
+  {
+    "users_id": "2",
+    "crews_id": "1"
+  },
+  {
+    "users_id": "3",
+    "crews_id": "1"
+  },
+  {
+    "users_id": "2",
+    "crews_id": "2"
+  },
+  {
+    "users_id": "3",
+    "crews_id": "3"
+  }
+]

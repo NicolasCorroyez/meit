@@ -1,0 +1,50 @@
+[
+  {
+    "users_id": 1,
+    "crews_id": null,
+    "events_id": 1,
+    "userstate": true
+  },
+  {
+    "users_id": 2,
+    "crews_id": null,
+    "events_id": 1,
+    "userstate": false
+  },
+  {
+    "users_id": 3,
+    "crews_id": null,
+    "events_id": 1,
+    "userstate": false
+  },
+  {
+    "users_id": 4,
+    "crews_id": null,
+    "events_id": 1,
+    "userstate": false
+  },
+  {
+    "users_id": 5,
+    "crews_id": null,
+    "events_id": 1,
+    "userstate": false
+  },
+  {
+    "users_id": 2,
+    "crews_id": null,
+    "events_id": 2,
+    "userstate": false
+  },
+  {
+    "users_id": 4,
+    "crews_id": null,
+    "events_id": 2,
+    "userstate": false
+  },
+  {
+    "users_id": null,
+    "crews_id": 1,
+    "events_id": 1,
+    "userstate": false
+  }
+]
