@@ -39,9 +39,7 @@ Create an app for connecting people easily
 
 ## Team
 
-This project is leaded by :
-
-- Nicolas.C
+This project is owned and leaded by : Nicolas Corroyez
 
 # Initiate
 
