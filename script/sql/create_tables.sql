@@ -48,6 +48,7 @@ CREATE TABLE web.request (
 CREATE TABLE web.r_user_request (
     id int GENERATED ALWAYS AS IDENTITY,
     user_id int REFERENCES main.user(id),
+    crew_id int REFERENCES web.crew(id), -- This is weird but only way i can see to include crew names
     request_id int REFERENCES web.request(id),
     userstate BOOLEAN
 );

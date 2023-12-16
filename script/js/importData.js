@@ -120,7 +120,7 @@ async function importRequest() {
 
   await client.query(sqlQuery, values);
 
-  console.log("requests importés avec succès !");
+  console.log("REQUEST importés avec succès !");
 }
 //! END REQUEST IMPORT
 
@@ -170,12 +170,14 @@ async function importRUserRequest() {
       `(
       $${counter},
       $${counter + 1},
-      $${counter + 2})
+      $${counter + 2},
+      $${counter + 3})
       `
     );
-    counter += 3;
+    counter += 4;
 
     values.push(element.user_id);
+    values.push(element.crew_id);
     values.push(element.request_id);
     values.push(element.userstate);
   }
@@ -183,7 +185,7 @@ async function importRUserRequest() {
   // I insert my R_USER_REQUEST
   const sqlQuery = `
     INSERT INTO web.r_user_request
-    (user_id, request_id, userstate)
+    (user_id, crew_id, request_id, userstate)
     VALUES
     ${parameters.join()}
     RETURNING id, request_id;`;
