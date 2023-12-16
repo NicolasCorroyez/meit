@@ -35,7 +35,6 @@ Create an app for connecting people easily
 
 - **Database** : Psql with Datamapper
 - **Backend** : Node.js and Express.js
-- **Authentification** : JWT (json web token) with passport.js
 - **Frontend** : +//+
 
 ## Team
