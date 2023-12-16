@@ -1,10 +1,10 @@
 //REQUIRE DATAMAPPERS
-const userDatamapper = require("./user");
-const crewDatamapper = require("./crew");
-const requestDatamapper = require("./request");
+const usersDatamapper = require("./users");
+const crewsDatamapper = require("./crews");
+const eventsDatamapper = require("./events");
 
 module.exports = {
-  userDatamapper,
-  crewDatamapper,
-  requestDatamapper,
+  usersDatamapper,
+  crewsDatamapper,
+  eventsDatamapper,
 };

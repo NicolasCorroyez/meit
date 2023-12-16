@@ -33,8 +33,8 @@ CREATE TABLE web.crew (
     user_id int NOT NULL REFERENCES main.user(id)
 );
 
--- table qui contient les requests
-CREATE TABLE web.request (
+-- table qui contient les events
+CREATE TABLE web.event (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     theme text NOT NULL,
     date DATE,
@@ -44,12 +44,12 @@ CREATE TABLE web.request (
     owner int NOT NULL REFERENCES main.user(id)
 );
 
--- table d'association entre user et request
-CREATE TABLE web.r_user_request (
+-- table d'association entre user et event
+CREATE TABLE web.r_user_event (
     id int GENERATED ALWAYS AS IDENTITY,
     user_id int REFERENCES main.user(id),
     crew_id int REFERENCES web.crew(id), -- This is weird but only way i can see to include crew names
-    request_id int REFERENCES web.request(id),
+    event_id int REFERENCES web.event(id),
     userstate BOOLEAN
 );
 

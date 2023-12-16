@@ -21,4 +21,4 @@ export PGDATABASE=meit
 psql -f ./sql/create_tables.sql
 
 ## import des données
-node ./js/importData.js 
+node ./js/importData.js
