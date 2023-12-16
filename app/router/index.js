@@ -5,21 +5,21 @@ const express = require("express");
 const errorHandler = require("../service/errorHandler");
 
 // REQUIRE ROUTERS
-const usersRouter = require("./users");
-const crewsRouter = require("./booking");
-const eventsRouter = require("./hostel");
+const userRouter = require("./user");
+const crewRouter = require("./crew");
+const eventRouter = require("./event");
 
 // DEFINE ROUTER WITH EXPRESS
 const mainRouter = express.Router();
 
 // Routing for routes prefixed by /events
-mainRouter.use("/events", eventsRouter);
+mainRouter.use("/events", eventRouter);
 
 // Routing for routes prefixed by /crews
-mainRouter.use("/crews", crewsRouter);
+mainRouter.use("/crews", crewRouter);
 
 // Routing for routes prefixed by /users
-mainRouter.use("/users", usersRouter);
+mainRouter.use("/users", userRouter);
 
 // Middleware to manage error
 mainRouter.use(errorHandler.manage);

@@ -15,7 +15,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE admin_meit IN SCHEMA web
 GRANT EXECUTE ON FUNCTIONS TO group_web; 
 
 -- table pour gérer les utilisateurs de mon application web
-CREATE TABLE main.users (
+CREATE TABLE main.user (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nickname text NOT NULL UNIQUE,
     firstname text NOT NULL,
@@ -25,39 +25,39 @@ CREATE TABLE main.users (
     role text NOT NULL DEFAULT 'member'
 );
 
--- table qui contient les crews
-CREATE TABLE web.crews (
+-- table qui contient les crew
+CREATE TABLE web.crew (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name text NOT NULL UNIQUE,
     picture text,
-    users_id int NOT NULL REFERENCES main.users(id)
+    user_id int NOT NULL REFERENCES main.user(id)
 );
 
--- table qui contient les eventss
-CREATE TABLE web.events (
+-- table qui contient les events
+CREATE TABLE web.event (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     theme text NOT NULL,
     date DATE,
     time TIME,
     place text,
     nb_people smallint CHECK(nb_people > 0),
-    owner int NOT NULL REFERENCES main.users(id)
+    owner int NOT NULL REFERENCES main.user(id)
 );
 
--- table d'association entre users et events
-CREATE TABLE web.r_users_events (
+-- table d'association entre user et event
+CREATE TABLE web.r_user_event (
     id int GENERATED ALWAYS AS IDENTITY,
-    users_id int REFERENCES main.users(id),
-    crews_id int REFERENCES web.crews(id), -- This is weird but only way i can see to include crews names
-    events_id int REFERENCES web.events(id),
+    user_id int REFERENCES main.user(id),
+    crew_id int REFERENCES web.crew(id), -- This is weird but only way i can see to include crew names
+    event_id int REFERENCES web.event(id),
     userstate BOOLEAN
 );
 
--- table d'association entre users et crews
-CREATE TABLE web.r_users_crews (
+-- table d'association entre user et crew
+CREATE TABLE web.r_user_crew (
     id int GENERATED ALWAYS AS IDENTITY,
-    users_id int REFERENCES main.users(id),
-    crews_id int REFERENCES web.crews(id)
+    user_id int REFERENCES main.user(id),
+    crew_id int REFERENCES web.crew(id)
 );
 
 COMMIT;
