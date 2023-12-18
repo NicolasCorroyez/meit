@@ -33,6 +33,13 @@ CREATE TABLE web.crew (
     user_id int NOT NULL REFERENCES main.user(id)
 );
 
+-- table qui contient les liens entre utilisateurs
+CREATE TABLE web.contact (
+    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id int NOT NULL REFERENCES main.user(id),
+    friend_id int NOT NULL REFERENCES main.user(id)
+);
+
 -- table qui contient les events
 CREATE TABLE web.event (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
