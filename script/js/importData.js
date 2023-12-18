@@ -1,5 +1,6 @@
 // Imports
 const crew = require("../../data/crew.json");
+const contact = require("../../data/contact.json");
 const user = require("../../data/user.json");
 const event = require("../../data/event.json");
 const r_user_crew = require("../../data/r_user_crew.json");
@@ -81,6 +82,38 @@ async function importCrew() {
   console.log("crew importés avec succès !");
 }
 //! END crew IMPORT
+
+//! contact IMPORT
+async function importContact() {
+  const values = [];
+  const parameters = [];
+  let counter = 1;
+
+  //2. I go through the users
+  for (const element of contact) {
+    parameters.push(
+      `(
+      $${counter},
+      $${counter + 1})
+      `
+    );
+    counter += 2;
+    values.push(element.user_id);
+    values.push(element.friend_id);
+  }
+
+  // I insert my contact
+  const sqlQuery = `
+    INSERT INTO web.contact
+    (user_id, friend_id)
+    VALUES
+    ${parameters.join()}
+    RETURNING *;`;
+
+  await client.query(sqlQuery, values);
+  console.log("contact importés avec succès !");
+}
+//! END contact IMPORT
 
 //! event IMPORT
 async function importEvent() {
@@ -202,6 +235,7 @@ async function importData() {
   console.log("START TRUNCATE");
   await client.query("TRUNCATE main.user CASCADE");
   await client.query("TRUNCATE web.crew CASCADE");
+  await client.query("TRUNCATE web.contact CASCADE");
   await client.query("TRUNCATE web.event CASCADE");
   await client.query("TRUNCATE web.r_user_event CASCADE");
   await client.query("TRUNCATE web.r_user_crew CASCADE");
@@ -211,6 +245,7 @@ async function importData() {
   // I launch all import functions
   await importUser();
   await importCrew();
+  await importContact();
   await importEvent();
   await importRUserCrew();
   await importRUserEvent();
