@@ -1,10 +1,10 @@
 //REQUIRE CONTROLLERS
-const usersController = require("./users");
-const crewsController = require("./crews");
-const eventsController = require("./events");
+const userController = require("./user");
+const crewController = require("./crew");
+const eventController = require("./event");
 
 module.exports = {
-  usersController,
-  crewsController,
-  eventsController,
+  userController,
+  crewController,
+  eventController,
 };
