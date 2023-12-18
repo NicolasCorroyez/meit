@@ -114,7 +114,7 @@ router.get(
  */
 router.get(
   "/:userId/friends(\\d+)",
-  /* validationService.isConnected, */ userController.getOneFriends
+  /* validationService.isConnected, */ userController.getOneFriend
 );
 
 /**
