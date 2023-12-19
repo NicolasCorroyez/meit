@@ -2,7 +2,7 @@
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/2
+GET http://localhost:3000/user/6
 
 ### Post user
 POST http://localhost:3000/user
@@ -18,14 +18,18 @@ content-type: application/json
 }
 
 ### Patch one user
-PATCH http://localhost:3000/user/
+PATCH http://localhost:3000/user/6
 content-type: application/json
 
 {
-    "id": 8,
-    "nickname":"httpcreateduser4_nickname_edited",
+    "id": 6,
+    "nickname":"httpcreateduser4_nickname_edited"
 }
 
 ### Delete one user
-DELETE http://localhost:3000/user/10
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZmlyc3RuYW1lIjoidGVzdDIiLCJsYXN0bmFtZSI6InRlc3QyIiwibWFpbCI6InRlc3QyQHRlc3QuY29tIiwicm9sZSI6Im1lbWJlciJ9LCJpYXQiOjE2OTI5NjcwNjF9.rSRcEV8ckQG7TaSS_-omTR2E3JUT4DrtzsA5BpPpbSc
+DELETE http://localhost:3000/user/8
+content-type: application/json
+
+{
+    "id": 8
+}

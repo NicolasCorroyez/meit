@@ -30,7 +30,7 @@ router.get("/", /* validationService.isConnected, */ userController.getAll);
  * @return {ApiError} 500 - Internal server error
  */
 router.get(
-  "/:userId",
+  "/:userId(\\d+)",
   /* validationService.isConnected, */ userController.getOne
 );
 
@@ -57,7 +57,7 @@ router.post(
  * @return {ApiError} 500 - Internal server error
  */
 router.patch(
-  "/",
+  "/:userId(\\d+)",
   /* validationService.isConnected,
   validationService.isUser("update"), */
   userController.modifyOne
@@ -73,7 +73,7 @@ router.patch(
  * @return {ApiError} 500 - Internal server error
  */
 router.delete(
-  "/:userId(\\d+)",
+  "/:userId",
   /* validationService.isConnected, */
   userController.deleteOne
 );

@@ -70,7 +70,7 @@ const userController = {
    */
   async modifyOne(req, res, next) {
     const user = req.body;
-    if (req.user.id == req.params.id) {
+    if (req.body.id == req.params.userId) {
       const { error, result } = await userDatamapper.modifyOne(user);
       if (error) {
         next(error);
@@ -91,8 +91,10 @@ const userController = {
    * @param {*} next
    */
   async deleteOne(req, res, next) {
-    if (req.user.id == req.params.id) {
-      const { error, result } = await userDatamapper.deleteOne(req.params.id);
+    if (req.body.id == req.params.userId) {
+      const { error, result } = await userDatamapper.deleteOne(
+        req.params.userId
+      );
       if (error) {
         next(error);
       } else {

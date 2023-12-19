@@ -30,19 +30,22 @@ CREATE OR REPLACE FUNCTION web.insert_user(u json) RETURNS main.user AS $$
 
 $$ LANGUAGE sql SECURITY DEFINER;
 
--- fonction qui vérifie les données passées pour se connecter
-CREATE OR REPLACE FUNCTION web.update_user(u json) RETURNS main.user AS $$
-	SELECT *
-	FROM main.user
-	WHERE nickname=u->>'nickname';
-
-$$ LANGUAGE sql SECURITY DEFINER;
-
 -- fonction qui supprime une catégorie
-CREATE OR REPLACE FUNCTION web.delete_user(user_id int) RETURNS main.user AS $$ -- void signifie qu'on ne retourne rien
-    DELETE FROM main.user
-	WHERE id=user_id RETURNING *;
-$$ LANGUAGE sql SECURITY DEFINER;
+CREATE OR REPLACE FUNCTION web.delete_user(user_id int) RETURNS boolean AS $$
+	DECLARE id_selected int;
+	BEGIN
+		SELECT id INTO id_selected
+		FROM main.user
+		WHERE id = user_id;
+	IF FOUND THEN
+		DELETE FROM main.user
+		WHERE id = user_id;
+		RETURN true;
+	ELSE
+		RETURN false;
+	END IF;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE OR REPLACE FUNCTION web.update_user(u json) RETURNS main.user AS $$
 DECLARE
@@ -62,6 +65,7 @@ BEGIN
     THEN 
     user_db.nickname = u->>'nickname';
     END IF;
+
     IF u->>'firstname' IS NOT NULL
     THEN 
     user_db.firstname = u->>'firstname';

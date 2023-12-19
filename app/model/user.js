@@ -120,6 +120,7 @@ const userDatamapper = {
    * @async
    */
   async modifyOne(userInfo) {
+    console.log(userInfo);
     const sqlQuery = `SELECT * FROM web.update_user($1)`;
     const values = [userInfo];
     let result;
