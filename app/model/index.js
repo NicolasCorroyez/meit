@@ -6,5 +6,5 @@ const eventDatamapper = require("./event");
 module.exports = {
   userDatamapper,
   crewDatamapper,
-  evensDatamapper,
+  eventDatamapper,
 };

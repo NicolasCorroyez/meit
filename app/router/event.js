@@ -78,30 +78,4 @@ router.delete(
   eventController.deleteOne
 );
 
-/**
- * ! POST INVITE FRIEND /event/:eventId/invite/:userId
- * @summary Invite friend to event
- * @tags Invite
- * @return {Invite}
- * @param {InputRegisterCrew} request.body.required - Invite info for register - 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.post(
-  "/event/:eventId(\\d+)/invite/:userId(\\d+)",
-  /* validationService.isUser("insert"), */ eventController.inviteUser
-);
-
-/**
- * ! POST INVITE CREW /event/:eventId/invite/:userId
- * @summary Invite crew to event
- * @tags Invite
- * @return {Invite}
- * @param {InputRegisterCrew} request.body.required - Invite info for register - 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.post(
-  "/event/:eventId(\\d+)/invite/crew/:crewId(\\d+)",
-  /* validationService.isUser("insert"), */ eventController.inviteCrew
-);
-
 module.exports = router;

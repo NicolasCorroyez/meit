@@ -46,6 +46,7 @@ const userDatamapper = {
    */
   async getAll() {
     const sqlQuery = `SELECT * FROM web.get_all_users();`;
+    /* const sqlQuery = `SELECT * FROM main.user;`; */
     let result;
     let error;
     try {
@@ -73,6 +74,7 @@ const userDatamapper = {
   async getOne(userId) {
     const sqlQuery = `SELECT * FROM web.get_one_user($1)`;
     const values = [userId];
+    console.log("this is values", userId);
     let result;
     let error;
     try {
@@ -81,7 +83,8 @@ const userDatamapper = {
     } catch (err) {
       error = new APIError("Internal error server", 500);
     }
-    if (result.length === 0 || result.id === null) {
+    if (result.length === 0 /* || result.id === null */) {
+      console.log("model error");
       error = new APIError("User not found", 404);
     }
     return { error, result };

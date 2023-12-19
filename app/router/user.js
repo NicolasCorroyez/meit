@@ -30,7 +30,7 @@ router.get("/", /* validationService.isConnected, */ userController.getAll);
  * @return {ApiError} 500 - Internal server error
  */
 router.get(
-  "/:userId(\\d+)",
+  "/:userId",
   /* validationService.isConnected, */ userController.getOne
 );
 

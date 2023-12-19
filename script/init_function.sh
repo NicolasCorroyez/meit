@@ -7,3 +7,4 @@ export PGDATABASE=meit
 psql -f ./sql/fonction/delete_fonction.sql
 
 # I ADD FUNCTIONS
+psql -f ./sql/fonction/user.sql
