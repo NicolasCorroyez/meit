@@ -1,0 +1,28 @@
+### Get one user
+GET http://localhost:3000/user/1
+
+
+### Patch one user
+PATCH http://localhost:3000/user
+content-type: application/json
+
+{
+    "firstname":"test",
+    "lastname":"test",
+    "email":"test@test.com" 
+}
+
+### Delete one user
+DELETE http://localhost:3000/user/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZmlyc3RuYW1lIjoidGVzdDIiLCJsYXN0bmFtZSI6InRlc3QyIiwibWFpbCI6InRlc3QyQHRlc3QuY29tIiwicm9sZSI6Im1lbWJlciJ9LCJpYXQiOjE2OTI5NjcwNjF9.rSRcEV8ckQG7TaSS_-omTR2E3JUT4DrtzsA5BpPpbSc
+
+### Post user info to login
+POST http://localhost:3000/user
+content-type: application/json
+
+{
+    "firstname":"test2",
+    "lastname":"test2",
+    "password":"test2",
+    "mail":"test2@test.com"
+}
