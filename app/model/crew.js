@@ -29,18 +29,20 @@ const APIError = require("../service/APIError");
 const crewDatamapper = {
   /**
    * ! GET ALL CREWS
-   * Method to get all crews
+   * Method to get all crews of a user
+   * @param {int} userId - id of a user
    * @returns {[Crew]} Array of crews objects
    * @returns {404} if no crews found
    * @returns {500} if an error occured
    * @async
    */
-  async getAll() {
-    const sqlQuery = `SELECT * FROM web.get_all_crews();`;
+  async getAll(userId) {
+    const sqlQuery = `SELECT * FROM web.get_all_crews($1);`;
+    const values = [userId];
     let result;
     let error;
     try {
-      const response = await client.query(sqlQuery);
+      const response = await client.query(sqlQuery, values);
       if (response.rows.length == 0) {
         error = new APIError("No crew found", 404);
       } else {

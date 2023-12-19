@@ -13,13 +13,13 @@ const eventRouter = require("./event");
 const mainRouter = express.Router();
 
 // Routing for routes prefixed by /events
-mainRouter.use("/events", eventRouter);
+mainRouter.use("/event", eventRouter);
 
 // Routing for routes prefixed by /crews
-mainRouter.use("/crews", crewRouter);
+mainRouter.use("/crew", crewRouter);
 
 // Routing for routes prefixed by /users
-mainRouter.use("/users", userRouter);
+mainRouter.use("/user", userRouter);
 
 // Middleware to manage error
 mainRouter.use(errorHandler.manage);

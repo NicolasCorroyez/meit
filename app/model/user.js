@@ -46,6 +46,7 @@ const userDatamapper = {
    */
   async getAll() {
     const sqlQuery = `SELECT * FROM web.get_all_users();`;
+    /* const sqlQuery = `SELECT * FROM main.user;`; */
     let result;
     let error;
     try {
@@ -81,7 +82,8 @@ const userDatamapper = {
     } catch (err) {
       error = new APIError("Internal error server", 500);
     }
-    if (result.length === 0 || result.id === null) {
+    if (result.length === 0 /* || result.id === null */) {
+      console.log("model error");
       error = new APIError("User not found", 404);
     }
     return { error, result };
@@ -118,6 +120,7 @@ const userDatamapper = {
    * @async
    */
   async modifyOne(userInfo) {
+    console.log(userInfo);
     const sqlQuery = `SELECT * FROM web.update_user($1)`;
     const values = [userInfo];
     let result;
@@ -179,6 +182,7 @@ const userDatamapper = {
    * @async
    */
   async getAllFriends(userId) {
+    console.log(userId);
     const sqlQuery = `SELECT * FROM web.get_all_friends($1);`;
     const values = [userId];
     let result;
@@ -186,7 +190,7 @@ const userDatamapper = {
     try {
       const response = await client.query(sqlQuery, values);
       if (response.rows.length == 0) {
-        error = new APIError("No user found", 404);
+        error = new APIError("No friends found", 404);
       } else {
         result = response.rows;
       }
@@ -233,7 +237,7 @@ const userDatamapper = {
    * @async
    */
   async addOneFriend(userId, friendId) {
-    const sqlQuery = `SELECT * FROM web.add_one_friend($1,$2)`;
+    const sqlQuery = `SELECT * FROM web.add_friend_to_user($1,$2)`;
     const values = [userId, friendId];
     let result;
     let error;
@@ -256,7 +260,7 @@ const userDatamapper = {
    * @async
    */
   async deleteOneFriend(userId, friendId) {
-    const sqlQuery = `SELECT * FROM web.delete_one_friend($1,$2)`;
+    const sqlQuery = `SELECT * FROM web.delete_friend_from_user($1,$2)`;
     const values = [userId, friendId];
     let result;
     let error;
