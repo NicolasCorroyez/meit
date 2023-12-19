@@ -125,7 +125,9 @@ const userController = {
    * @param {*} next
    */
   async getAllFriends(req, res, next) {
-    const { error, result } = await userDatamapper.getAllFriends();
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await userDatamapper.getAllFriends(user);
     if (error) {
       next(error);
     } else {
@@ -141,7 +143,13 @@ const userController = {
    * @param {*} next
    */
   async getOneFriend(req, res, next) {
-    const { error, result } = await userDatamapper.getOneFriend();
+    console.log(req.params);
+    const userId = req.params.userId;
+    const friendId = req.params.friendId;
+    const { error, result } = await userDatamapper.getOneFriend(
+      userId,
+      friendId
+    );
     if (error) {
       next(error);
     } else {
@@ -157,7 +165,12 @@ const userController = {
    * @param {*} next
    */
   async addOneFriend(req, res, next) {
-    const { error, result } = await userDatamapper.addOneFriend();
+    const userId = req.params.userId;
+    const friendId = req.body.friendId;
+    const { error, result } = await userDatamapper.addOneFriend(
+      userId,
+      friendId
+    );
     if (error) {
       next(error);
     } else {
@@ -173,7 +186,12 @@ const userController = {
    * @param {*} next
    */
   async deleteOneFriend(req, res, next) {
-    const { error, result } = await userDatamapper.deleteOneFriend();
+    const userId = req.params.userId;
+    const friendId = req.body.friendId;
+    const { error, result } = await userDatamapper.deleteOneFriend(
+      userId,
+      friendId
+    );
     if (error) {
       next(error);
     } else {

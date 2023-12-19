@@ -73,13 +73,13 @@ router.patch(
  * @return {ApiError} 500 - Internal server error
  */
 router.delete(
-  "/:userId",
+  "/:userId(\\d+)",
   /* validationService.isConnected, */
   userController.deleteOne
 );
 
 /**
- * ! POST /login
+ * ! POST /login TO DO
  * @summary Post user infos
  * @tags User
  * @return {User} 200 - success response - application/json
@@ -99,13 +99,13 @@ router.post("/login", userController.login);
  * @return {ApiError} 500 - Internal server error
  */
 router.get(
-  "/:userId/friends(\\d+)",
+  "/:userId/friends",
   /* validationService.isConnected, */ userController.getAllFriends
 );
 
 /**
  * ! GET /user/:userId/friends/:friendId
- * @summary Get all user's friends
+ * @summary Get one user's friends
  * @tags User
  * @param {number} id.path.required - user identifier
  * @return {User} 200 - success response - application/json
@@ -113,12 +113,12 @@ router.get(
  * @return {ApiError} 500 - Internal server error
  */
 router.get(
-  "/:userId/friends(\\d+)",
+  "/:userId/friends/:friendId",
   /* validationService.isConnected, */ userController.getOneFriend
 );
 
 /**
- * ! POST /user/:userId/friends/:friendId
+ * ! POST /user/:userId/friends/
  * @summary Add a friend
  * @tags User
  * @return {User}
@@ -126,7 +126,7 @@ router.get(
  * @return {ApiError} 500 - Internal server error
  */
 router.post(
-  "/user/:userId(\\d+)/friend/:friendId(\\d+)",
+  "/:userId(\\d+)/friends/",
   /* validationService.isUser("insert"), */ userController.addOneFriend
 );
 
@@ -140,7 +140,7 @@ router.post(
  * @return {ApiError} 500 - Internal server error
  */
 router.delete(
-  "/user/:userId(\\d+)/friend/:friendId(\\d+)",
+  "/:userId(\\d+)/friends/",
   /* validationService.isConnected, */
   userController.deleteOneFriend
 );

@@ -2,14 +2,14 @@
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/6
+GET http://localhost:3000/user/1
 
 ### Post user
 POST http://localhost:3000/user
 content-type: application/json
 
 {
-    "nickname":"httpcreateduser3_nickname",
+    "nickname":"httpcreateduser8_nickname",
     "firstname":"httpcreateduser1_firstname",
     "lastname":"httpcreateduser1_lasttname",
     "device":"httpcreateduser1_device",
@@ -18,18 +18,40 @@ content-type: application/json
 }
 
 ### Patch one user
-PATCH http://localhost:3000/user/6
+PATCH http://localhost:3000/user/10
 content-type: application/json
 
 {
-    "id": 6,
-    "nickname":"httpcreateduser4_nickname_edited"
+    "id": 10,
+    "nickname":"nicolasbribra"
 }
 
 ### Delete one user
-DELETE http://localhost:3000/user/8
+DELETE http://localhost:3000/user/10
 content-type: application/json
 
 {
-    "id": 8
+    "id": 10
+}
+
+### Get all user's friends
+GET http://localhost:3000/user/1/friends
+
+### Get one user's friends
+GET http://localhost:3000/user/1/friends/2
+
+### Post user friendship
+POST http://localhost:3000/user/1/friends
+content-type: application/json
+
+{
+    "friendId":4
+}
+
+### Delete user friendship
+DELETE http://localhost:3000/user/1/friends
+content-type: application/json
+
+{
+    "friendId":4
 }
