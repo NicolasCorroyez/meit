@@ -43,3 +43,44 @@ CREATE OR REPLACE FUNCTION web.delete_user(user_id int) RETURNS main.user AS $$ 
     DELETE FROM main.user
 	WHERE id=user_id RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION web.update_user(u json) RETURNS main.user AS $$
+DECLARE
+    user_db main.user;
+BEGIN
+    
+    SELECT id, nickname, firstname, lastname, picture
+    INTO user_db
+    FROM main.user WHERE id=(u->>'id')::int;
+	
+	IF NOT FOUND THEN
+        -- Handle the case where the user record does not exist
+        RAISE EXCEPTION 'User with ID % not found', (u->>'id')::int;
+    END IF;
+
+    IF u->>'nickname' IS NOT NULL
+    THEN 
+    user_db.nickname = u->>'nickname';
+    END IF;
+    IF u->>'firstname' IS NOT NULL
+    THEN 
+    user_db.firstname = u->>'firstname';
+    END IF;
+
+    IF u->>'lastname' IS NOT NULL
+    THEN 
+    user_db.lastname = u->>'lastname';
+    END IF;
+
+    IF u->>'picture' IS NOT NULL
+    THEN 
+    user_db.picture = u->>'picture';
+    END IF;
+
+    UPDATE main.user
+    SET nickname = user_db.nickname, firstname = user_db.firstname, lastname = user_db.lastname, picture = user_db.picture
+    WHERE id = (u->> 'id')::int;
+
+    RETURN user_db;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;

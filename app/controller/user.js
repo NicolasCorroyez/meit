@@ -32,9 +32,7 @@ const userController = {
    * @param {*} next
    */
   async getOne(req, res, next) {
-    console.log(req.params);
     const { userId } = req.params;
-    console.log("this is id", userId);
     const { error, result } = await userDatamapper.getOne(userId);
     if (error) {
       next(error);

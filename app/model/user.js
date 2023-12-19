@@ -74,7 +74,6 @@ const userDatamapper = {
   async getOne(userId) {
     const sqlQuery = `SELECT * FROM web.get_one_user($1)`;
     const values = [userId];
-    console.log("this is values", userId);
     let result;
     let error;
     try {
