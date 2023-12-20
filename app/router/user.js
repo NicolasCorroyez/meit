@@ -21,7 +21,7 @@ const { userController } = require("../controller");
 router.get("/", /* validationService.isConnected, */ userController.getAll);
 
 /**
- * ! GET /user/:userId
+ * GET /user/:userId
  * @summary Get one user
  * @tags User
  * @param {number} id.path.required - user identifier
@@ -35,7 +35,7 @@ router.get(
 );
 
 /**
- * ! POST /user
+ * POST /user
  * @summary Post one user
  * @tags User
  * @return {User}
@@ -48,7 +48,7 @@ router.post(
 );
 
 /**
- * ! PATCH /user/:userId
+ * PATCH /user/:userId
  * @summary Patch one user
  * @tags User
  * @param {Number} id.path.required - user identifier
@@ -64,7 +64,7 @@ router.patch(
 );
 
 /**
- * ! DELETE /user/:userId
+ * DELETE /user/:userId
  * @summary Delete one user
  * @tags User
  * @param {Number} id.path.required - user identifier
@@ -79,7 +79,7 @@ router.delete(
 );
 
 /**
- * ! POST /login TO DO
+ * POST /login TO DO
  * @summary Post user infos
  * @tags User
  * @return {User} 200 - success response - application/json
@@ -89,12 +89,16 @@ router.delete(
  */
 router.post("/login", userController.login);
 
+// ! **************************
+// ! ** FRIENDS RELATIONSHIP **
+// ! **************************
+
 /**
- * ! GET /user/:userId/friends
+ * GET /user/:userId/friends
  * @summary Get all user's friends
- * @tags User
+ * @tags Friend
  * @param {number} id.path.required - user identifier
- * @return {User} 200 - success response - application/json
+ * @return {Friend} 200 - success response - application/json
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
  */
@@ -104,11 +108,11 @@ router.get(
 );
 
 /**
- * ! GET /user/:userId/friends/:friendId
+ * GET /user/:userId/friends/:friendId
  * @summary Get one user's friends
- * @tags User
+ * @tags Friend
  * @param {number} id.path.required - user identifier
- * @return {User} 200 - success response - application/json
+ * @return {Friend} 200 - success response - application/json
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
  */
@@ -118,10 +122,10 @@ router.get(
 );
 
 /**
- * ! POST /user/:userId/friends/
+ * POST /user/:userId/friends/
  * @summary Add a friend
- * @tags User
- * @return {User}
+ * @tags Friend
+ * @return {Friend}
  * @param {InputRegisterUser} request.body.required - user info for register - 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
@@ -131,7 +135,7 @@ router.post(
 );
 
 /**
- * ! DELETE /user/:userId/friend/:friendId
+ * DELETE /user/:userId/friend/:friendId
  * @summary Delete one friend
  * @tags User
  * @param {Number} id.path.required - user identifier
@@ -143,6 +147,66 @@ router.delete(
   "/:userId(\\d+)/friends/",
   /* validationService.isConnected, */
   userController.deleteOneFriend
+);
+
+// ! ********************
+// ! *****  CREWS  ******
+// ! ********************
+
+/**
+ * GET /user/:userId/crews
+ * @summary Get all user's crews
+ * @tags Crew
+ * @param {number} id.path.required - user identifier
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/:userId/crews",
+  /* validationService.isConnected, */ userController.getAllCrews
+);
+
+/**
+ * GET /user/:userId/crews/:crewId
+ * @summary Get one user's crew
+ * @tags Crew
+ * @param {number} id.path.required - user identifier
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/:userId/crews/:crewId",
+  /* validationService.isConnected, */ userController.getOneCrew
+);
+
+/**
+ * POST /user/:userId/crews/
+ * @summary Add a crew
+ * @tags Crew
+ * @return {Crew}
+ * @param {InputRegisterUser} request.body.required - user info for register - 200 - success response - application/json
+ * @return {ApiError} 500 - Internal server error
+ */
+router.post(
+  "/:userId(\\d+)/crews/",
+  /* validationService.isUser("insert"), */ userController.addOneCrew
+);
+
+/**
+ * DELETE /user/:userId/crews/:crewId
+ * @summary Delete one user's crew
+ * @tags Crew
+ * @param {Number} id.path.required - user identifier
+ * @return {boolean} 200 - success response - true
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.delete(
+  "/:userId(\\d+)/crews/",
+  /* validationService.isConnected, */
+  userController.deleteOneCrew
 );
 
 module.exports = router;

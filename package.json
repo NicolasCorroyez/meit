@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "wipe": "script/wipe.sh",
     "dev": "DEBUG=controller,model,errorHandler nodemon index.js",
     "test": "mocha"
   },

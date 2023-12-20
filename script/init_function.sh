@@ -4,7 +4,7 @@ export PGPASSWORD=meit
 export PGDATABASE=meit
 
 # I DELETE FUNCTIONS
-psql -f ./sql/fonction/delete_fonction.sql
+psql -f script/sql/fonction/delete_fonction.sql
 
 # I ADD FUNCTIONS
-psql -f ./sql/fonction/user.sql
+psql -f script/sql/fonction/user.sql

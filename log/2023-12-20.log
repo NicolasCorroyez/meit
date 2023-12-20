@@ -1,0 +1,56 @@
+09:56:06.773;function web.get_all_crews(unknown) does not exist;Error: Internal server error
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:323:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:214:31)
+10:26:00.687;relation "web.crew_membership" does not exist;Error: Internal server error
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:323:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:214:31)
+10:39:31.482;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:318:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:214:31)
+10:43:12.948;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+11:01:14.994;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:253:31)
+11:02:44.756;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+11:03:24.388;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+11:03:43.007;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+11:10:10.693;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:414:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:285:31)
+11:10:48.782;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:414:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:285:31)
+11:11:22.102;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:414:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:285:31)
+11:12:14.277;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:415:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:286:31)
+11:12:25.780;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:415:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:286:31)
+11:17:38.446;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:415:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:292:31)

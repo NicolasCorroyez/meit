@@ -198,6 +198,104 @@ const userController = {
       res.json(result);
     }
   },
+
+  // ! CREWS
+
+  /**
+   * ! GET ALL CREWS
+   * Method to get all crews
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getAllCrews(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await userDatamapper.getAllCrews(user);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! GET ONE CREW
+   * Method to get one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getOneCrew(req, res, next) {
+    console.log(req.params);
+    const userId = req.params.userId;
+    const crewId = req.params.crewId;
+    const { error, result } = await userDatamapper.getOneCrew(userId, crewId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! ADD ONE CREW
+   * Method to add one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async addOneCrew(req, res, next) {
+    const userId = req.params.userId;
+    const crewName = req.body.crew_name;
+    const crewPicture = req.body.crew_picture;
+    const crewMembers = req.body.added_friends;
+
+    console.log(
+      "controllers params :",
+      userId,
+      crewName,
+      crewPicture,
+      crewMembers
+    );
+
+    const { error, result } = await userDatamapper.addOneCrew(
+      userId,
+      crewName,
+      crewPicture,
+      crewMembers
+    );
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! DELETE ONE CREW
+   * Method to delete one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async deleteOneCrew(req, res, next) {
+    const userId = parseInt(req.params.userId);
+    const userOwner = req.body.userId;
+    const crewId = req.body.crewId;
+    console.log(userId, userOwner, crewId);
+    if (userId !== userOwner) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized access. userId must match userOwner." });
+    }
+    const { error, result } = await userDatamapper.deleteOneCrew(crewId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
 };
 
 module.exports = userController;
