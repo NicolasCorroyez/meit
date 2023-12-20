@@ -18,6 +18,28 @@ const APIError = require("../service/APIError");
  */
 
 /**
+ * @typedef {object} Friend
+ * @property {number} id - id of user
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
+ * @property {string} role - role of the user
+ */
+
+/**
+ * @typedef {object} Crew
+ * @property {number} id - id of user
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
+ * @property {string} role - role of the user
+ */
+
+/**
  * @typedef {object} InputRegisterUser
  * @property {string} nickname - nickname of user
  * @property {string} firstname - firstname of user
@@ -262,6 +284,127 @@ const userDatamapper = {
   async deleteOneFriend(userId, friendId) {
     const sqlQuery = `SELECT * FROM web.delete_friend_from_user($1,$2)`;
     const values = [userId, friendId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500);
+    }
+    return { error, result };
+  },
+
+  // ! CREWS
+
+  /**
+   * ! GET ALL USER'S CREWS
+   * Method to get all user's crews
+   * @returns {[User]} Array of Users objects
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getAllCrews(userId) {
+    console.log(userId);
+    const sqlQuery = `SELECT * FROM web.get_user_crews($1);`;
+    const values = [userId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No crews found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! GET ONE USER'S CREW
+   * Method to get all users
+   * @returns {User} User object
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getOneCrew(userId, crewId) {
+    const sqlQuery = `SELECT * FROM web.get_one_crew($1,$2);`;
+    const values = [userId, crewId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No user found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! ADD ONE CREW
+   * Method to create a user
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async addOneCrew(userId, crew_name, crew_picture, added_friends) {
+    console.log(
+      "parameters : ",
+      userId,
+      crew_name,
+      crew_picture,
+      added_friends
+    );
+    const userIDs = [added_friends];
+
+    const placeholders = Array.from(
+      { length: userIDs.length },
+      (_, i) => `$${i + 4}`
+    ).join(", ");
+
+    const sqlQuery = `
+    SELECT * 
+    FROM web.create_crew_for_users($1, $2, $3, ${placeholders});
+`;
+    const values = [userId, crew_name, crew_picture, ...userIDs];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! DELETE ONE CREW
+   * Method to create a user
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async deleteOneCrew(crewId) {
+    console.log(crewId);
+    const sqlQuery = `SELECT * FROM web.delete_crew_and_links($1)`;
+    const values = [crewId];
     let result;
     let error;
     try {

@@ -1,3 +1,4 @@
+### ! USERS
 ### Get all users
 GET http://localhost:3000/user
 
@@ -34,6 +35,8 @@ content-type: application/json
     "id": 10
 }
 
+### ! FRIENDS
+
 ### Get all user's friends
 GET http://localhost:3000/user/1/friends
 
@@ -54,4 +57,31 @@ content-type: application/json
 
 {
     "friendId":4
+}
+
+### ! CREWS
+
+### Get all user's crews
+GET http://localhost:3000/user/1/crews
+
+### Get one user's crew
+GET http://localhost:3000/user/2/crews/2
+
+### Post user crew
+POST http://localhost:3000/user/1/crews/
+content-type: application/json
+
+{
+    "crew_name":"testcrew",
+    "crew_picture":"",
+    "added_friends":[1,2,3,4]
+}
+
+### Delete user crew
+DELETE http://localhost:3000/user/1/crews
+content-type: application/json
+
+{
+    "userId":1,
+    "crewId":8
 }

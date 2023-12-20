@@ -182,3 +182,115 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.get_user_crews(param_user_id int)
+RETURNS TABLE (
+    crew_id int,
+    crew_name text,
+    crew_picture text
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        uc.crew_id,
+        c.name AS crew_name,
+        c.picture AS crew_picture
+    FROM
+        web.r_user_crew uc
+    INNER JOIN
+        web.crew c ON uc.crew_id = c.id
+    WHERE
+        uc.user_id = param_user_id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.get_one_crew(param_user_id int, param_crew_id int)
+RETURNS TABLE (
+    crew_id int,
+    crew_name text,
+    crew_picture text
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        uc.crew_id,
+        c.name AS crew_name,
+        c.picture AS crew_picture
+    FROM
+        web.r_user_crew uc
+    INNER JOIN
+        web.crew c ON uc.crew_id = c.id
+    WHERE
+        uc.user_id = param_user_id
+        AND uc.crew_id = param_crew_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION web.create_crew_for_users(
+    param_user_id int,
+    param_crew_name text,
+    param_crew_picture text,
+    param_user_ids int[]
+)
+RETURNS TABLE (
+    crew_id int,
+    crew_name text,
+    crew_picture text
+)
+AS $$
+DECLARE
+    new_crew_id int;
+BEGIN
+    -- Insert new crew
+    INSERT INTO web.crew (name, picture, user_id)
+    VALUES (param_crew_name, param_crew_picture, param_user_id)
+    RETURNING id INTO new_crew_id;
+
+    -- Create temporary table to store user IDs
+    CREATE TEMPORARY TABLE temp_user_ids (user_id int);
+    
+    -- Insert user IDs into temporary table
+    INSERT INTO temp_user_ids (user_id)
+    SELECT unnest(param_user_ids);
+
+    -- Link users to the new crew
+    INSERT INTO web.r_user_crew (user_id, crew_id)
+    SELECT user_id, new_crew_id FROM temp_user_ids;
+
+    -- Return details of the created crew
+    RETURN QUERY
+    SELECT
+        new_crew_id,
+        param_crew_name,
+        param_crew_picture;
+
+    -- Drop the temporary table
+    DROP TABLE temp_user_ids;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.delete_crew_and_links(crew_id_param int)
+RETURNS TEXT
+AS $$
+DECLARE
+    result_text TEXT;
+BEGIN
+    -- Attempt to delete links from r_user_crew
+    DELETE FROM web.r_user_crew WHERE crew_id = crew_id_param;
+    
+    -- Check if any rows were deleted
+    IF FOUND THEN
+        -- Delete the crew
+        DELETE FROM web.crew WHERE id = crew_id_param;
+        result_text := "Crew and links deleted successfully.";
+    ELSE
+        result_text := "Crew not found or no links to delete.";
+    END IF;
+
+    RETURN result_text;
+END;
+$$ LANGUAGE plpgsql;
+
