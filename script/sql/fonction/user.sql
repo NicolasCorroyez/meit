@@ -183,19 +183,38 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION web.get_user_crews(param_user_id int)
+CREATE OR REPLACE FUNCTION web.get_user_crews_with_users(param_user_id int)
 RETURNS TABLE (
     crew_id int,
     crew_name text,
-    crew_picture text
+    crew_picture text,
+    users_in_crew jsonb
 )
 AS $$
 BEGIN
     RETURN QUERY
     SELECT
-        uc.crew_id,
+        c.id AS crew_id,
         c.name AS crew_name,
-        c.picture AS crew_picture
+        c.picture AS crew_picture,
+        (
+            SELECT 
+                jsonb_agg(
+                    jsonb_build_object(
+                        'user_id', u.id,
+                        'user_nickname', u.nickname,
+                        'user_firstname', u.firstname,
+                        'user_lastname', u.lastname,
+                        'user_picture', u.picture
+                    )
+                )
+            FROM
+                web.r_user_crew uc_inner
+            INNER JOIN
+                main.user u ON uc_inner.user_id = u.id
+            WHERE
+                uc_inner.crew_id = c.id
+        ) AS users_in_crew
     FROM
         web.r_user_crew uc
     INNER JOIN
@@ -205,26 +224,39 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION web.get_one_crew(param_user_id int, param_crew_id int)
+CREATE OR REPLACE FUNCTION web.get_user_one_crew(param_user_id int, param_crew_id int)
 RETURNS TABLE (
     crew_id int,
     crew_name text,
-    crew_picture text
+    crew_picture text,
+    invited_users jsonb[]
 )
 AS $$
 BEGIN
     RETURN QUERY
     SELECT
-        uc.crew_id,
+        c.id AS crew_id,
         c.name AS crew_name,
-        c.picture AS crew_picture
+        c.picture AS crew_picture,
+        ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'nickname', u.nickname,
+                'firstname', u.firstname,
+                'lastname', u.lastname,
+                'picture', u.picture
+            )
+            FROM web.r_user_crew rc
+            JOIN main.user u ON rc.user_id = u.id
+            WHERE rc.crew_id = c.id
+        ) AS invited_users
     FROM
-        web.r_user_crew uc
-    INNER JOIN
-        web.crew c ON uc.crew_id = c.id
+        web.r_user_crew rc
+    JOIN
+        web.crew c ON rc.crew_id = c.id
     WHERE
-        uc.user_id = param_user_id
-        AND uc.crew_id = param_crew_id;
+        rc.user_id = param_user_id
+        AND c.id = param_crew_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -294,3 +326,254 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION web.get_user_events_with_invitations(user_id_param int)
+RETURNS TABLE (
+    event_id int,
+    theme text,
+    date date,
+    event_time time, -- Use the actual column name from your table
+    place text,
+    nb_people smallint,
+    invited_users jsonb[]
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.id AS event_id,
+        e.theme,
+        e.date,
+        e.time AS event_time, -- Use the actual column name from your table
+        e.place,
+        e.nb_people,
+        ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'nickname', u.nickname,
+                'firstname', u.firstname,
+                'lastname', u.lastname,
+                'picture', u.picture
+            )
+            FROM web.r_user_event re
+            JOIN main.user u ON re.user_id = u.id
+            WHERE re.event_id = e.id
+        ) AS invited_users
+    FROM
+        web.event e
+    WHERE
+        e.owner = user_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.get_user_event_with_invitations(user_id_param int, event_id_param int)
+RETURNS TABLE (
+    event_id int,
+    theme text,
+    date date,
+    event_time time, -- Use the actual column name from your table
+    place text,
+    nb_people smallint,
+    invited_users jsonb[]
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.id AS event_id,
+        e.theme,
+        e.date,
+        e.time AS event_time, -- Use the actual column name from your table
+        e.place,
+        e.nb_people,
+        ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'nickname', u.nickname,
+                'firstname', u.firstname,
+                'lastname', u.lastname,
+                'picture', u.picture
+            )
+            FROM web.r_user_event re
+            JOIN main.user u ON re.user_id = u.id
+            WHERE re.event_id = e.id
+        ) AS invited_users
+    FROM
+        web.event e
+    WHERE
+        e.id = event_id_param AND
+        e.owner = user_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.create_event_for_users(
+    param_user_id int,
+    param_theme text,
+    param_date date,
+    param_time time,
+    param_place text,
+    param_nb_people smallint,
+    param_invited_user_ids int[],
+    param_invited_crew_ids int[]
+)
+RETURNS TABLE (
+    event_id int,
+    theme text,
+    date date,
+    event_time time,
+    place text,
+    nb_people smallint,
+    invited_users jsonb[]
+)
+AS $$
+DECLARE
+    new_event_id int;
+    invited_user_id int;
+BEGIN
+    -- Insert new event
+    INSERT INTO web.event (theme, date, time, place, nb_people, owner)
+    VALUES (param_theme, param_date, param_time, param_place, param_nb_people, param_user_id)
+    RETURNING id INTO new_event_id;
+
+    -- Create temporary table to store user IDs
+    CREATE TEMPORARY TABLE temp_user_ids (user_id int);
+    
+    -- Insert user IDs into temporary table
+    INSERT INTO temp_user_ids (user_id)
+    SELECT unnest(param_invited_user_ids);
+
+    -- Link users to the new event, checking if they are already invited
+    INSERT INTO web.r_user_event (user_id, event_id, userstate)
+    SELECT
+        t.user_id,
+        new_event_id,
+        true
+    FROM
+        temp_user_ids t
+    WHERE
+        NOT EXISTS (
+            SELECT 1
+            FROM web.r_user_event re
+            WHERE re.user_id = t.user_id AND re.event_id = new_event_id
+        );
+
+    -- Invite users from specified crews, checking if they are already invited
+    INSERT INTO web.r_user_event (user_id, event_id, userstate)
+    SELECT
+        uc.user_id,
+        new_event_id,
+        true
+    FROM
+        web.r_user_crew uc
+    WHERE
+        uc.crew_id = ANY(param_invited_crew_ids)
+        AND NOT EXISTS (
+            SELECT 1
+            FROM web.r_user_event re
+            WHERE re.user_id = uc.user_id AND re.event_id = new_event_id
+        );
+
+    -- Return details of the created event
+    RETURN QUERY
+    SELECT
+        new_event_id,
+        param_theme,
+        param_date,
+        param_time,
+        param_place,
+        param_nb_people,
+        ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'nickname', u.nickname,
+                'firstname', u.firstname,
+                'lastname', u.lastname,
+                'picture', u.picture
+            )
+            FROM main.user u
+            WHERE u.id = ANY(param_invited_user_ids)
+        ) || ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'nickname', u.nickname,
+                'firstname', u.firstname,
+                'lastname', u.lastname,
+                'picture', u.picture
+            )
+            FROM main.user u
+            JOIN web.r_user_crew uc ON u.id = uc.user_id
+            WHERE uc.crew_id = ANY(param_invited_crew_ids)
+        ) AS invited_users;
+
+    -- Drop the temporary table
+    DROP TABLE temp_user_ids;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION web.edit_event(u json)
+RETURNS TABLE (
+    event_id int,
+    theme text,
+    date date,
+    event_time time,
+    place text,
+    nb_people smallint
+)
+AS $$
+DECLARE
+    param_event_id int;
+    param_theme text;
+    param_date date;
+    param_time time;
+    param_place text;
+    param_nb_people smallint;
+BEGIN
+    -- Extract values from JSON parameter
+    param_event_id := (u->>'event_id')::int;
+    param_theme := u->>'theme';
+    param_date := (u->>'date')::date;
+    param_time := (u->>'time')::time;
+    param_place := u->>'place';
+    param_nb_people := (u->>'nb_people')::smallint;
+
+    -- Update the event in the event table and return the updated values
+    UPDATE web.event
+    SET
+        theme = COALESCE(param_theme, theme),
+        date = COALESCE(param_date, date),
+        time = COALESCE(param_time, time),
+        place = COALESCE(param_place, place),
+        nb_people = COALESCE(param_nb_people, nb_people)
+    WHERE
+        id = param_event_id
+    RETURNING
+        id AS event_id,
+        theme,
+        date,
+        time AS event_time,
+        place,
+        nb_people
+    INTO
+        param_event_id,
+        param_theme,
+        param_date,
+        param_time,
+        param_place,
+        param_nb_people;
+
+    -- Update related entries in the r_user_event table if relevant parameters are provided
+    IF param_theme IS NOT NULL OR param_date IS NOT NULL OR param_time IS NOT NULL OR param_place IS NOT NULL OR param_nb_people IS NOT NULL THEN
+        UPDATE web.r_user_event
+        SET
+            theme = COALESCE(param_theme, theme),
+            date = COALESCE(param_date, date),
+            time = COALESCE(param_time, time),
+            place = COALESCE(param_place, place),
+            nb_people = COALESCE(param_nb_people, nb_people)
+        WHERE
+            event_id = param_event_id;
+    END IF;
+
+    -- Return the updated event
+    RETURN NEXT;
+END;
+$$ LANGUAGE plpgsql;

@@ -296,6 +296,140 @@ const userController = {
       res.json(result);
     }
   },
+
+  // ! EVENTS
+
+  /**
+   * ! GET ALL EVENTS
+   * Method to get all events
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getAllEvents(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await userDatamapper.getAllEvents(user);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! GET ONE EVENT
+   * Method to get one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getOneEvent(req, res, next) {
+    console.log(req.params);
+    const userId = req.params.userId;
+    const eventId = req.params.eventId;
+    const { error, result } = await userDatamapper.getOneEvent(userId, eventId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! ADD ONE EVENT
+   * Method to add one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async addOneEvent(req, res, next) {
+    const userId = req.params.userId;
+    const {
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids,
+    } = req.body;
+
+    console.log(
+      "controllers params :",
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids
+    );
+
+    const { error, result } = await userDatamapper.addOneEvent(
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids
+    );
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! MODIFY ONE
+   * Method to modify a event
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async modifyOneEvent(req, res, next) {
+    const eventInfo = req.body;
+    /* if (req.body.id == req.params.userId) { */
+    const { error, result } = await userDatamapper.modifyOneEvent(eventInfo);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+    /* } else {
+      const err = new APIError("Acces denied", 404);
+      next(err);
+    }*/
+  },
+
+  /**
+   * ! DELETE ONE EVENT
+   * Method to delete one event
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async deleteOneEvent(req, res, next) {
+    const userId = parseInt(req.params.userId);
+    const userOwner = req.body.userId;
+    const crewId = req.body.eventId;
+    console.log(userId, userOwner, crewId);
+    if (userId !== userOwner) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized access. userId must match userOwner." });
+    }
+    const { error, result } = await userDatamapper.deleteOneEvent(crewId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
 };
 
 module.exports = userController;

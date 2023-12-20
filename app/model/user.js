@@ -308,7 +308,7 @@ const userDatamapper = {
    */
   async getAllCrews(userId) {
     console.log(userId);
-    const sqlQuery = `SELECT * FROM web.get_user_crews($1);`;
+    const sqlQuery = `SELECT * FROM web.get_user_crews_with_users($1);`;
     const values = [userId];
     let result;
     let error;
@@ -336,7 +336,7 @@ const userDatamapper = {
    * @async
    */
   async getOneCrew(userId, crewId) {
-    const sqlQuery = `SELECT * FROM web.get_one_crew($1,$2);`;
+    const sqlQuery = `SELECT * FROM web.get_user_one_crew($1,$2);`;
     const values = [userId, crewId];
     let result;
     let error;
@@ -354,10 +354,10 @@ const userDatamapper = {
   },
 
   /**
-   * ! ADD ONE CREW
+   * ! ADD ONE EVENT
    * Method to create a user
    * @param {User} userId -  Id of a user
-   * @param {User} crewId - Id of another user
+   * @param {Event} eventId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
@@ -394,7 +394,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! DELETE ONE CREW
+   * ! DELETE ONE CREW oijdoidjdoidjodij
    * Method to create a user
    * @param {User} userId -  Id of a user
    * @param {User} crewId - Id of another user
@@ -405,6 +405,186 @@ const userDatamapper = {
     console.log(crewId);
     const sqlQuery = `SELECT * FROM web.delete_crew_and_links($1)`;
     const values = [crewId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500);
+    }
+    return { error, result };
+  },
+
+  // ! EVENTS
+
+  /**
+   * ! GET ALL USER'S EVENTS
+   * Method to get all user's events
+   * @returns {[User]} Array of Users objects
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getAllEvents(userId) {
+    console.log(userId);
+    const sqlQuery = `SELECT * FROM web.get_user_events_with_invitations($1);`;
+    const values = [userId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No events found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! GET ONE USER'S EVENT
+   * Method to get all user's events
+   * @returns {Event} Event object
+   * @param {User} userId -  Id of a user
+   * @param {Event} eventId - Id of an event
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getOneEvent(userId, eventId) {
+    console.log(userId, eventId);
+    const sqlQuery = `SELECT * FROM web.get_user_event_with_invitations($1,$2);`;
+    const values = [userId, eventId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No event found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! ADD ONE EVENT
+   * Method to create a user
+   * @param {number} userId - ID of the user creating the event
+   * @param {string} theme - Theme of the event
+   * @param {string} date - Date of the event
+   * @param {string} time - Time of the event
+   * @param {string} place - Place of the event
+   * @param {number} nb_people - Number of people for the event
+   * @param {number[]} invited_users_ids - Array of invited user IDs
+   * @param {number[]} invited_crews_ids - Array of invited crew IDs
+   * @returns {object} - Result of the operation
+   * @async
+   */
+  async addOneEvent(
+    userId,
+    theme,
+    date,
+    time,
+    place,
+    nb_people,
+    invited_users_ids,
+    invited_crews_ids
+  ) {
+    console.log(
+      "parameters : ",
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids
+    );
+    const userIDs = [invited_users_ids];
+    const crewIDs = [invited_crews_ids];
+
+    const userPlaceholders = Array.from(
+      { length: userIDs.length },
+      (_, i) => `$${i + 7}`
+    ).join(", ");
+
+    const crewPlaceholders = Array.from(
+      { length: crewIDs.length },
+      (_, i) => `$${userIDs.length + i + 7}`
+    ).join(", ");
+
+    const sqlQuery = `
+  SELECT * 
+  FROM web.create_event_for_users($1, $2, $3, $4, $5, $6, ${userPlaceholders}, ${crewPlaceholders});
+`;
+    const values = [
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      ...userIDs,
+      ...crewIDs,
+    ];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! MODIFY ONE EVENT
+   * Method to modify a event
+   * @param {InputPatchUser} eventInfo - informations of a event
+   * @returns {Event} - Event object with updated informations
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async modifyOneEvent(eventInfo) {
+    console.log(eventInfo);
+    const sqlQuery = `SELECT * FROM web.edit_event($1)`;
+    const values = [eventInfo];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      debug(err);
+      error = new APIError("Internal error server", 500);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! DELETE ONE EVENT
+   * Method to create a user's event
+   * @param {User} userId -  Id of a user
+   * @param {User} eventId - Id of another user
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async deleteOneEvent(eventId) {
+    console.log(eventId);
+    const sqlQuery = `SELECT * FROM web.delete_user_event($1)`;
+    const values = [eventId];
     let result;
     let error;
     try {
