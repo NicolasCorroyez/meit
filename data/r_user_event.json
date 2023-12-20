@@ -1,50 +1,50 @@
 [
   {
     "user_id": 1,
-    "crews_id": null,
-    "events_id": 1,
+    "crew_id": null,
+    "event_id": 1,
     "userstate": true
   },
   {
     "user_id": 2,
-    "crews_id": null,
-    "events_id": 1,
+    "crew_id": null,
+    "event_id": 1,
     "userstate": false
   },
   {
     "user_id": 3,
-    "crews_id": null,
-    "events_id": 1,
+    "crew_id": null,
+    "event_id": 1,
     "userstate": false
   },
   {
     "user_id": 4,
-    "crews_id": null,
-    "events_id": 1,
+    "crew_id": null,
+    "event_id": 1,
     "userstate": false
   },
   {
     "user_id": 5,
-    "crews_id": null,
-    "events_id": 1,
+    "crew_id": null,
+    "event_id": 1,
     "userstate": false
   },
   {
     "user_id": 2,
-    "crews_id": null,
-    "events_id": 2,
+    "crew_id": null,
+    "event_id": 2,
     "userstate": false
   },
   {
     "user_id": 4,
-    "crews_id": null,
-    "events_id": 2,
+    "crew_id": null,
+    "event_id": 2,
     "userstate": false
   },
   {
     "user_id": null,
-    "crews_id": 1,
-    "events_id": 1,
+    "crew_id": 1,
+    "event_id": 1,
     "userstate": false
   }
 ]

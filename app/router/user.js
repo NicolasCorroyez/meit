@@ -209,4 +209,80 @@ router.delete(
   userController.deleteOneCrew
 );
 
+// ! ********************
+// ! *****  EVENTS  *****
+// ! ********************
+
+/**
+ * GET /user/:userId/events
+ * @summary Get all user's events
+ * @tags Event
+ * @param {number} id.path.required - user identifier
+ * @return {Event} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/:userId/events",
+  /* validationService.isConnected, */ userController.getAllEvents
+);
+
+/**
+ * GET /user/:userId/events/:eventId
+ * @summary Get one user's event
+ * @tags Event
+ * @param {number} id.path.required - user identifier
+ * @return {Event} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/:userId/events/:eventId",
+  /* validationService.isConnected, */ userController.getOneEvent
+);
+
+/**
+ * POST /user/:userId/events/
+ * @summary Add a event
+ * @tags Event
+ * @return {Event}
+ * @param {InputRegisterUser} request.body.required - user info for register - 200 - success response - application/json
+ * @return {ApiError} 500 - Internal server error
+ */
+router.post(
+  "/:userId(\\d+)/events/",
+  /* validationService.isUser("insert"), */ userController.addOneEvent
+);
+
+/**
+ * PATCH /user/events/:eventId
+ * @summary Patch one event
+ * @tags Event
+ * @param {Number} id.path.required - event identifier
+ * @param {InputRegisterUser} request.body.required - event info for patch - application/json
+ * @return {Event} 200 - success response - application/json
+ * @return {ApiError} 500 - Internal server error
+ */
+router.patch(
+  "/events/:eventId(\\d+)", // ! route a reprendre
+  /* validationService.isConnected,
+  validationService.isUser("update"), */
+  userController.modifyOneEvent
+);
+
+/**
+ * DELETE /user/:userId/events/:eventId
+ * @summary Delete one user's event
+ * @tags Event
+ * @param {Number} id.path.required - user identifier
+ * @return {boolean} 200 - success response - true
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.delete(
+  "/:userId(\\d+)/events/",
+  /* validationService.isConnected, */
+  userController.deleteOneEvent
+);
+
 module.exports = router;
