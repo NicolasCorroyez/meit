@@ -255,7 +255,7 @@ router.post(
 );
 
 /**
- * PATCH /user/events/:eventId
+ * PATCH /user/:userId/events/:eventId
  * @summary Patch one event
  * @tags Event
  * @param {Number} id.path.required - event identifier
@@ -264,7 +264,7 @@ router.post(
  * @return {ApiError} 500 - Internal server error
  */
 router.put(
-  "/:userId(\\d+)/events/:eventId(\\d+)", // ! route a reprendre
+  "/:userId(\\d+)/events/:eventId(\\d+)",
   /* validationService.isConnected,
   validationService.isUser("update"), */
   userController.modifyOneEvent

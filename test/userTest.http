@@ -115,7 +115,8 @@ content-type: application/json
 {
     "userId": 1,
     "eventId": 14,
-    "theme": "Updated Theme2"
+    "theme": "Theme utilisateurs changés",
+    "userIds": [3,4]
 }
 
 ### Delete user event

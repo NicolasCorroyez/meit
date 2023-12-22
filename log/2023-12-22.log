@@ -300,3 +300,39 @@
     at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:571:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+17:32:04.838;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:571:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:00:05.758;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:571:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:02:17.322;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:578:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:03:04.270;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:578:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:03:31.247;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:579:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:09:21.749;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:579:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:09:30.226;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:579:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:17:13.109;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:579:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)
+18:20:34.790;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:579:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:399:33)

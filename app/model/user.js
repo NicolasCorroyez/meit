@@ -559,8 +559,16 @@ const userDatamapper = {
    */
   async modifyOneEvent(eventInfo) {
     console.log(eventInfo);
+    console.log(typeof eventInfo);
+    console.log(
+      typeof eventInfo.userId,
+      typeof eventInfo.eventId,
+      typeof eventInfo.invited_users_ids,
+      typeof eventInfo.invited_crews_ids
+    );
     const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
     const values = [eventInfo];
+    console.log(typeof values);
     let result;
     let error;
     try {
