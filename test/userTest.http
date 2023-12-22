@@ -92,7 +92,7 @@ content-type: application/json
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/11
+GET http://localhost:3000/user/1/events/14
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
@@ -109,12 +109,13 @@ content-type: application/json
 }
 
 ### Patch one event
-### ! REVOIR CE QUI EST ENVOYé dans model. ne fonctionne pas
-PATCH http://localhost:3000/user/events/11
+PUT http://localhost:3000/user/1/events/14
 content-type: application/json
 
 {
-    "theme": "NewThemeBLABLALBA"
+    "userId": 1,
+    "eventId": 14,
+    "theme": "Updated Theme2"
 }
 
 ### Delete user event

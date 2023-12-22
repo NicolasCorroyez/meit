@@ -263,8 +263,8 @@ router.post(
  * @return {Event} 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
-router.patch(
-  "/events/:eventId(\\d+)", // ! route a reprendre
+router.put(
+  "/:userId(\\d+)/events/:eventId(\\d+)", // ! route a reprendre
   /* validationService.isConnected,
   validationService.isUser("update"), */
   userController.modifyOneEvent

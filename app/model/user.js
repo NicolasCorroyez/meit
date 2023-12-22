@@ -559,13 +559,13 @@ const userDatamapper = {
    */
   async modifyOneEvent(eventInfo) {
     console.log(eventInfo);
-    const sqlQuery = `SELECT * FROM web.edit_event($1)`;
+    const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
     const values = [eventInfo];
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
-      result = response.rows[0];
+      result = response.rows;
     } catch (err) {
       debug(err);
       error = new APIError("Internal error server", 500);

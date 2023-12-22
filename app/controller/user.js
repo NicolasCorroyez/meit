@@ -392,18 +392,20 @@ const userController = {
    * @param {*} next
    */
   async modifyOneEvent(req, res, next) {
+    const userId = req.params.userId;
     const eventInfo = req.body;
-    /* if (req.body.id == req.params.userId) { */
-    const { error, result } = await userDatamapper.modifyOneEvent(eventInfo);
-    if (error) {
-      next(error);
+    console.log(userId, eventInfo);
+    if (req.body.userId == req.params.userId) {
+      const { error, result } = await userDatamapper.modifyOneEvent(eventInfo);
+      if (error) {
+        next(error);
+      } else {
+        res.json(result);
+      }
     } else {
-      res.json(result);
-    }
-    /* } else {
       const err = new APIError("Acces denied", 404);
       next(err);
-    }*/
+    }
   },
 
   /**
