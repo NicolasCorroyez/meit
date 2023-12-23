@@ -511,7 +511,7 @@ $$ LANGUAGE plpgsql;
 
 -- ! EDIT
 
-CREATE OR REPLACE FUNCTION web.edit_user_event_origin(u json)
+CREATE OR REPLACE FUNCTION web.edit_user_event(u json)
 RETURNS TABLE (
     event_id int,
     theme text,
@@ -618,131 +618,23 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- ! NEW ONE
-
-CREATE OR REPLACE FUNCTION web.edit_user_event(
-    u json
-)
-RETURNS TABLE (
-    event_id int,
-    theme text,
-    date date,
-    event_time time,
-    place text,
-    nb_people smallint,
-    invited_users jsonb[]
-)
+CREATE OR REPLACE FUNCTION web.delete_event_by_id(event_id_param int)
+RETURNS BOOLEAN
 AS $$
 DECLARE
-    param_event_id int;
-    param_theme text;
-    param_date date;
-    param_time time;
-    param_place text;
-    param_nb_people smallint;
-    param_user_ids int[];
+    event_deleted BOOLEAN := FALSE;
 BEGIN
-    -- Extract values from JSON parameter
-    param_event_id := (u->>'eventId')::int;
-    param_theme := u->>'theme';
-    param_date := (u->>'date')::date;
-    param_time := (u->>'time')::time;
-    param_place := u->>'place';
-    param_nb_people := (u->>'nb_people')::smallint;
-    param_user_ids := COALESCE((u->>'userIds')::jsonb->jsonb_array_elements_text(), '{}'::jsonb)::int[];
+    -- Delete entries in the r_user_event table associated with the event
+    DELETE FROM web.r_user_event
+    WHERE event_id = event_id_param;
 
-    -- Update the event in the event table and return the updated values
-    UPDATE web.event e
-    SET
-        theme = COALESCE(param_theme, e.theme),
-        date = COALESCE(param_date, e.date),
-        time = COALESCE(param_time, e.time),
-        place = COALESCE(param_place, e.place),
-        nb_people = COALESCE(param_nb_people, e.nb_people)
-    WHERE
-        e.id = param_event_id
-    RETURNING
-        e.id AS event_id,
-        e.theme,
-        e.date,
-        e.time AS event_time,
-        e.place,
-        e.nb_people
-    INTO
-        event_id,
-        theme,
-        date,
-        event_time,
-        place,
-        nb_people;
+    -- Delete the event from the main event table
+    DELETE FROM web.event
+    WHERE id = event_id_param;
 
-    -- Check if there was a matching row in the UPDATE
-    IF NOT FOUND THEN
-        -- If no matching row, return the old values
-        SELECT
-            e.id AS event_id,
-            e.theme,
-            e.date,
-            e.time AS event_time,
-            e.place,
-            e.nb_people
-        INTO
-            event_id,
-            theme,
-            date,
-            event_time,
-            place,
-            nb_people
-        FROM
-            web.event e
-        WHERE
-            e.id = param_event_id;
-    END IF;
+    -- Check if any rows were affected in the event table
+    GET DIAGNOSTICS event_deleted = ROW_COUNT;
 
-    -- Update related entries in the r_user_event table if relevant parameters are provided
-    IF param_theme IS NOT NULL OR param_date IS NOT NULL OR param_time IS NOT NULL OR param_place IS NOT NULL OR param_nb_people IS NOT NULL THEN
-        UPDATE web.r_user_event re
-        SET
-            userstate = COALESCE(userstate, re.userstate)
-        WHERE
-            re.event_id = param_event_id;
-    END IF;
-
-    -- Remove users not in the updated list
-    DELETE FROM web.r_user_event re
-    WHERE
-        re.event_id = param_event_id
-        AND re.user_id NOT IN (SELECT unnest(param_user_ids));
-
-    -- Add new users to the event
-    INSERT INTO web.r_user_event (user_id, event_id, userstate)
-    SELECT
-        user_id,
-        param_event_id,
-        TRUE
-    FROM
-        unnest(param_user_ids) user_id;
-
-    -- Return the invited users
-    invited_users := ARRAY(
-        SELECT
-            jsonb_build_object(
-                'user_id', u.id,
-                'nickname', u.nickname,
-                'firstname', u.firstname,
-                'lastname', u.lastname,
-                'picture', u.picture
-            )
-        FROM
-            web.r_user_event re
-        JOIN
-            main.user u ON re.user_id = u.id
-        WHERE
-            re.event_id = param_event_id
-    );
-
-    -- Return the updated event along with invited users
-    RETURN NEXT;
+    RETURN event_deleted;
 END;
 $$ LANGUAGE plpgsql;
-

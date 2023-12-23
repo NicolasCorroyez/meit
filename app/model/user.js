@@ -558,14 +558,14 @@ const userDatamapper = {
    * @async
    */
   async modifyOneEvent(eventInfo) {
-    console.log(eventInfo);
+    console.log("model : ", eventInfo);
     console.log(typeof eventInfo);
     console.log(
       typeof eventInfo.userId,
       typeof eventInfo.eventId,
-      typeof eventInfo.invited_users_ids,
-      typeof eventInfo.invited_crews_ids
+      typeof eventInfo.userIds
     );
+    console.log(eventInfo.userIds);
     const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
     const values = [eventInfo];
     console.log(typeof values);
@@ -573,7 +573,7 @@ const userDatamapper = {
     let error;
     try {
       const response = await client.query(sqlQuery, values);
-      result = response.rows;
+      result = response.rows[0];
     } catch (err) {
       debug(err);
       error = new APIError("Internal error server", 500);
@@ -591,7 +591,7 @@ const userDatamapper = {
    */
   async deleteOneEvent(eventId) {
     console.log(eventId);
-    const sqlQuery = `SELECT * FROM web.delete_user_event($1)`;
+    const sqlQuery = `SELECT * FROM web.delete_event_by_id($1)`;
     const values = [eventId];
     let result;
     let error;

@@ -271,7 +271,7 @@ router.put(
 );
 
 /**
- * DELETE /user/:userId/events/:eventId
+ * DELETE /user/:userId/events/
  * @summary Delete one user's event
  * @tags Event
  * @param {Number} id.path.required - user identifier
