@@ -77,6 +77,15 @@ content-type: application/json
     "added_friends":[1,2,3,4]
 }
 
+### !!!!! !!!!! Patch one crew WIP________________________
+PATCH http://localhost:3000/user/1/crews
+content-type: application/json
+
+{
+    "crewId": 1,
+    "crew_name":"NewTestCrew"
+}
+
 ### Delete user crew
 DELETE http://localhost:3000/user/1/crews
 content-type: application/json
@@ -92,7 +101,7 @@ content-type: application/json
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/12
+GET http://localhost:3000/user/1/events/25
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
@@ -108,15 +117,15 @@ content-type: application/json
     "invited_crews_ids": [2]
 }
 
-### Patch one event ###! Still not possible to change users invited
-PUT http://localhost:3000/user/1/events/12
+### Patch one event
+PATCH http://localhost:3000/user/1/events/25
 content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 12,
-    "theme": "Theme",
-    "userIds": [3,4]
+    "eventId": 25,
+    "theme": "New Theme",
+    "userIds": [1,2]
 }
 
 ### Delete user event
@@ -125,5 +134,5 @@ content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 13
+    "eventId": 10
 }

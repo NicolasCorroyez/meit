@@ -59,7 +59,7 @@ const APIError = require("../service/APIError");
 
 const userDatamapper = {
   /**
-   * ! GET ALL USERS
+   * ! ADMIN :: GET ALL USERS
    * Method to get all users
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -85,7 +85,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! GET ONE USER
+   * ! USER :: GET ONE USER
    * Method to get a user by his id
    * @param {int} userId - id of a user
    * @returns {User} - User object
@@ -112,7 +112,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! CREATE ONE USER
+   * ! USER :: CREATE ONE USER
    * Method to create a user
    * @param {InputRegisterUser} user - informations of a user
    * @returns {500} - if an error occured
@@ -134,7 +134,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! MODIFY ONE USER
+   * ! USER :: MODIFY ONE USER
    * Method to modify a user
    * @param {InputPatchUser} userInfo - informations of a user
    * @returns {User} - User object with updated informations
@@ -158,7 +158,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! DELETE ONE USER
+   * ! USER :: DELETE ONE USER
    * Method to delete a user
    * @param {int} userId - id of a user
    * @returns {boolean} - true if a user has been deleted
@@ -196,7 +196,7 @@ const userDatamapper = {
   async checkUser(user) {},
 
   /**
-   * ! GET ALL USER'S FRIENDS
+   * ! ADMIN :: GET ALL USER'S FRIENDS
    * Method to get all users
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -223,7 +223,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! GET ONE USER'S FRIEND
+   * ! USER :: GET ONE USER'S FRIEND
    * Method to get all users
    * @returns {User} User object
    * @param {User} userId -  Id of a user
@@ -251,7 +251,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! ADD ONE FRIEND
+   * ! USER :: ADD ONE FRIEND
    * Method to create a user
    * @param {User} userId -  Id of a user
    * @param {User} friendId - Id of another user
@@ -274,7 +274,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! DELETE ONE FRIEND
+   * ! USER :: DELETE ONE FRIEND
    * Method to create a user
    * @param {User} userId -  Id of a user
    * @param {User} friendId - Id of another user
@@ -299,7 +299,7 @@ const userDatamapper = {
   // ! CREWS
 
   /**
-   * ! GET ALL USER'S CREWS
+   * ! ADMIN :: GET ALL USER'S CREWS
    * Method to get all user's crews
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -326,7 +326,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! GET ONE USER'S CREW
+   * ! USER :: GET ONE USER'S CREW
    * Method to get all users
    * @returns {User} User object
    * @param {User} userId -  Id of a user
@@ -354,7 +354,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! ADD ONE EVENT
+   * ! USER :: ADD ONE CREW
    * Method to create a user
    * @param {User} userId -  Id of a user
    * @param {Event} eventId - Id of another user
@@ -394,7 +394,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! DELETE ONE CREW oijdoidjdoidjodij
+   * ! USER :: DELETE ONE CREW
    * Method to create a user
    * @param {User} userId -  Id of a user
    * @param {User} crewId - Id of another user
@@ -420,7 +420,7 @@ const userDatamapper = {
   // ! EVENTS
 
   /**
-   * ! GET ALL USER'S EVENTS
+   * ! ADMIN :: GET ALL USER'S EVENTS
    * Method to get all user's events
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -447,7 +447,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! GET ONE USER'S EVENT
+   * ! USER :: GET ONE USER'S EVENTS
    * Method to get all user's events
    * @returns {Event} Event object
    * @param {User} userId -  Id of a user
@@ -476,7 +476,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! ADD ONE EVENT
+   * ! USER :: ADD ONE EVENT
    * Method to create a user
    * @param {number} userId - ID of the user creating the event
    * @param {string} theme - Theme of the event
@@ -499,20 +499,8 @@ const userDatamapper = {
     invited_users_ids,
     invited_crews_ids
   ) {
-    console.log(
-      "parameters : ",
-      userId,
-      theme,
-      date,
-      time,
-      place,
-      nb_people,
-      invited_users_ids,
-      invited_crews_ids
-    );
     const userIDs = [invited_users_ids];
     const crewIDs = [invited_crews_ids];
-
     const userPlaceholders = Array.from(
       { length: userIDs.length },
       (_, i) => `$${i + 7}`
@@ -550,7 +538,7 @@ const userDatamapper = {
   },
 
   /**
-   * ! MODIFY ONE EVENT
+   * ! USER :: MODIFY ONE EVENT
    * Method to modify a event
    * @param {InputPatchUser} eventInfo - informations of a event
    * @returns {Event} - Event object with updated informations
@@ -559,16 +547,8 @@ const userDatamapper = {
    */
   async modifyOneEvent(eventInfo) {
     console.log("model : ", eventInfo);
-    console.log(typeof eventInfo);
-    console.log(
-      typeof eventInfo.userId,
-      typeof eventInfo.eventId,
-      typeof eventInfo.userIds
-    );
-    console.log(eventInfo.userIds);
     const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
     const values = [eventInfo];
-    console.log(typeof values);
     let result;
     let error;
     try {
@@ -576,13 +556,14 @@ const userDatamapper = {
       result = response.rows[0];
     } catch (err) {
       debug(err);
+      console.log(err);
       error = new APIError("Internal error server", 500);
     }
     return { error, result };
   },
 
   /**
-   * ! DELETE ONE EVENT
+   * ! USER :: DELETE ONE EVENT
    * Method to create a user's event
    * @param {User} userId -  Id of a user
    * @param {User} eventId - Id of another user

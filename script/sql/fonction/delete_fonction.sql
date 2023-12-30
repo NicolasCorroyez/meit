@@ -16,3 +16,4 @@ DROP FUNCTION IF EXISTS web.get_user_events_with_invitations;
 DROP FUNCTION IF EXISTS web.create_event_for_users;
 DROP FUNCTION IF EXISTS web.edit_user_event;
 DROP FUNCTION IF EXISTS web.delete_event_by_id;
+DROP FUNCTION IF EXISTS web.update_event_details;

@@ -10,7 +10,7 @@ const { eventController } = require("../controller");
 
 // ROUTES
 /**
- * ! GET /event
+ * ! GET /event ADMIN
  * @summary Get all events
  * @tags Event
  * @param {number} id.path.required - event identifier
@@ -21,7 +21,7 @@ const { eventController } = require("../controller");
 router.get("/", /* validationService.isConnected, */ eventController.getAll);
 
 /**
- * ! GET /event/:eventId
+ * ! GET /event/:eventId ADMIN
  * @summary Get one event by Id
  * @tags Event
  * @param {number} id.path.required - event identifier
@@ -32,35 +32,6 @@ router.get("/", /* validationService.isConnected, */ eventController.getAll);
 router.get(
   "/:eventId(\\d+)",
   /* validationService.isConnected, */ eventController.getOne
-);
-
-/**
- * ! POST /event
- * @summary Create one event
- * @tags Event
- * @return {Event}
- * @param {InputRegisterCrew} request.body.required - Event info for register - 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.post(
-  "/",
-  /* validationService.isUser("insert"), */ eventController.createOne
-);
-
-/**
- * ! PATCH /event/:eventId
- * @summary Patch one event
- * @tags Event
- * @param {Number} id.path.required - event identifier
- * @param {InputRegisterUser} request.body.required - event info for patch - application/json
- * @return {Event} 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.patch(
-  "/:eventId(\\d+)",
-  /* validationService.isConnected,
-  validationService.isUser("update"), */
-  eventController.modifyOne
 );
 
 /**

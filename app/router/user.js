@@ -10,7 +10,7 @@ const { userController } = require("../controller");
 
 // ROUTES
 /**
- * ! GET /user
+ * ! ADMIN :: GET /user
  * @summary Get all users
  * @tags User
  * @param {number} id.path.required - user identifier
@@ -263,7 +263,7 @@ router.post(
  * @return {Event} 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
-router.put(
+router.patch(
   "/:userId(\\d+)/events/:eventId(\\d+)",
   /* validationService.isConnected,
   validationService.isUser("update"), */

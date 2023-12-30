@@ -10,7 +10,7 @@ const { crewController } = require("../controller");
 
 // ROUTES
 /**
- * ! GET /crew
+ * ! GET /crew ADMIN
  * @summary Get all crews
  * @tags Crew
  * @param {number} id.path.required - crew identifier
@@ -21,7 +21,7 @@ const { crewController } = require("../controller");
 router.get("/", /* validationService.isConnected, */ crewController.getAll);
 
 /**
- * ! GET /crew/:crewId
+ * ! GET /crew/:crewId ADMIN
  * @summary Get one crew by Id
  * @tags Crew
  * @param {number} id.path.required - crew identifier
@@ -32,35 +32,6 @@ router.get("/", /* validationService.isConnected, */ crewController.getAll);
 router.get(
   "/:crewId(\\d+)",
   /* validationService.isConnected, */ crewController.getOne
-);
-
-/**
- * ! POST /crew
- * @summary Create one crew
- * @tags Crew
- * @return {Crew}
- * @param {InputRegisterCrew} request.body.required - Crew info for register - 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.post(
-  "/",
-  /* validationService.isUser("insert"), */ crewController.createOne
-);
-
-/**
- * ! PATCH /crew
- * @summary Patch one crew
- * @tags Crew
- * @param {Number} id.path.required - crew identifier
- * @param {InputRegisterUser} request.body.required - crew info for patch - application/json
- * @return {Crew} 200 - success response - application/json
- * @return {ApiError} 500 - Internal server error
- */
-router.patch(
-  "/:crewId(\\d+)",
-  /* validationService.isConnected,
-  validationService.isUser("update"), */
-  crewController.modifyOne
 );
 
 /**

@@ -510,7 +510,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- ! EDIT
-
 CREATE OR REPLACE FUNCTION web.edit_user_event(u json)
 RETURNS TABLE (
     event_id int,
@@ -529,6 +528,7 @@ DECLARE
     param_time time;
     param_place text;
     param_nb_people smallint;
+    param_user_ids int[];
 BEGIN
     -- Extract values from JSON parameter
     param_event_id := (u->>'eventId')::int;
@@ -537,6 +537,7 @@ BEGIN
     param_time := (u->>'time')::time;
     param_place := u->>'place';
     param_nb_people := (u->>'nb_people')::smallint;
+    param_user_ids := ARRAY(SELECT json_array_elements_text(u->'userIds')::int);
 
     -- Update the event in the event table and return the updated values
     UPDATE web.event e
@@ -587,37 +588,48 @@ BEGIN
     END IF;
 
     -- Update related entries in the r_user_event table if relevant parameters are provided
-    IF param_theme IS NOT NULL OR param_date IS NOT NULL OR param_time IS NOT NULL OR param_place IS NOT NULL OR param_nb_people IS NOT NULL THEN
-        UPDATE web.r_user_event re
-        SET
-            userstate = COALESCE(userstate, re.userstate)
-        WHERE
-            re.event_id = param_event_id;
-    END IF;
+    IF param_user_ids IS NOT NULL AND array_length(param_user_ids, 1) > 0 THEN
+    -- Delete existing entries for the given event only if new user IDs are provided
+    DELETE FROM web.r_user_event WHERE web.r_user_event.event_id = param_event_id;
 
-    -- Return the invited users
-    invited_users := ARRAY(
-        SELECT
-            jsonb_build_object(
-                'user_id', u.id,
-                'nickname', u.nickname,
-                'firstname', u.firstname,
-                'lastname', u.lastname,
-                'picture', u.picture
-            )
-        FROM
-            web.r_user_event re
-        JOIN
-            main.user u ON re.user_id = u.id
-        WHERE
-            re.event_id = param_event_id
-    );
+    -- Insert new entries for the given user IDs
+    INSERT INTO web.r_user_event (user_id, event_id, userstate)
+    SELECT user_id, param_event_id, true
+    FROM unnest(param_user_ids) AS user_id;
+END IF;
+
+    -- Return the invited users only if param_user_ids is provided
+    IF param_user_ids IS NOT NULL THEN
+        invited_users := ARRAY(
+            SELECT
+                jsonb_build_object(
+                    'user_id', u.id,
+                    'nickname', u.nickname,
+                    'firstname', u.firstname,
+                    'lastname', u.lastname,
+                    'picture', u.picture
+                )
+            FROM
+                web.r_user_event re
+            JOIN
+                main."user" u ON re.user_id = u.id
+            WHERE
+                re.event_id = param_event_id
+        );
+    END IF;
 
     -- Return the updated event along with invited users
     RETURN NEXT;
 END;
 $$ LANGUAGE plpgsql;
 
+
+
+
+
+
+
+-- ! DELETE
 CREATE OR REPLACE FUNCTION web.delete_event_by_id(event_id_param int)
 RETURNS BOOLEAN
 AS $$
