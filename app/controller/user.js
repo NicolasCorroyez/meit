@@ -392,18 +392,20 @@ const userController = {
    * @param {*} next
    */
   async modifyOneEvent(req, res, next) {
+    const userId = req.params.userId;
     const eventInfo = req.body;
-    /* if (req.body.id == req.params.userId) { */
-    const { error, result } = await userDatamapper.modifyOneEvent(eventInfo);
-    if (error) {
-      next(error);
+    console.log("controller : ", userId, eventInfo);
+    if (req.body.userId == req.params.userId) {
+      const { error, result } = await userDatamapper.modifyOneEvent(eventInfo);
+      if (error) {
+        next(error);
+      } else {
+        res.json(result);
+      }
     } else {
-      res.json(result);
-    }
-    /* } else {
       const err = new APIError("Acces denied", 404);
       next(err);
-    }*/
+    }
   },
 
   /**
@@ -416,14 +418,14 @@ const userController = {
   async deleteOneEvent(req, res, next) {
     const userId = parseInt(req.params.userId);
     const userOwner = req.body.userId;
-    const crewId = req.body.eventId;
-    console.log(userId, userOwner, crewId);
+    const eventId = req.body.eventId;
+    console.log(userId, userOwner, eventId);
     if (userId !== userOwner) {
       return res
         .status(403)
         .json({ error: "Unauthorized access. userId must match userOwner." });
     }
-    const { error, result } = await userDatamapper.deleteOneEvent(crewId);
+    const { error, result } = await userDatamapper.deleteOneEvent(eventId);
     if (error) {
       next(error);
     } else {

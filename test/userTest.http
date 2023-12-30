@@ -92,7 +92,7 @@ content-type: application/json
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/11
+GET http://localhost:3000/user/1/events/12
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
@@ -108,13 +108,15 @@ content-type: application/json
     "invited_crews_ids": [2]
 }
 
-### Patch one event
-### ! REVOIR CE QUI EST ENVOYé dans model. ne fonctionne pas
-PATCH http://localhost:3000/user/events/11
+### Patch one event ###! Still not possible to change users invited
+PUT http://localhost:3000/user/1/events/12
 content-type: application/json
 
 {
-    "theme": "NewThemeBLABLALBA"
+    "userId": 1,
+    "eventId": 12,
+    "theme": "Theme",
+    "userIds": [3,4]
 }
 
 ### Delete user event
@@ -123,5 +125,5 @@ content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 10
+    "eventId": 13
 }

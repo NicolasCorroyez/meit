@@ -558,9 +558,17 @@ const userDatamapper = {
    * @async
    */
   async modifyOneEvent(eventInfo) {
-    console.log(eventInfo);
-    const sqlQuery = `SELECT * FROM web.edit_event($1)`;
+    console.log("model : ", eventInfo);
+    console.log(typeof eventInfo);
+    console.log(
+      typeof eventInfo.userId,
+      typeof eventInfo.eventId,
+      typeof eventInfo.userIds
+    );
+    console.log(eventInfo.userIds);
+    const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
     const values = [eventInfo];
+    console.log(typeof values);
     let result;
     let error;
     try {
@@ -583,7 +591,7 @@ const userDatamapper = {
    */
   async deleteOneEvent(eventId) {
     console.log(eventId);
-    const sqlQuery = `SELECT * FROM web.delete_user_event($1)`;
+    const sqlQuery = `SELECT * FROM web.delete_event_by_id($1)`;
     const values = [eventId];
     let result;
     let error;

@@ -3,6 +3,10 @@
 </p>
 <br>
 
+## Version
+
+v0.2
+
 ## Goals
 
 Create an app for connecting people easily
