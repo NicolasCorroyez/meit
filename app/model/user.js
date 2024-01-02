@@ -105,7 +105,6 @@ const userDatamapper = {
       error = new APIError("Internal error server", 500);
     }
     if (result.length === 0 /* || result.id === null */) {
-      console.log("model error");
       error = new APIError("User not found", 404);
     }
     return { error, result };
@@ -142,7 +141,6 @@ const userDatamapper = {
    * @async
    */
   async modifyOne(userInfo) {
-    console.log(userInfo);
     const sqlQuery = `SELECT * FROM web.update_user($1)`;
     const values = [userInfo];
     let result;
@@ -196,7 +194,7 @@ const userDatamapper = {
   async checkUser(user) {},
 
   /**
-   * ! ADMIN :: GET ALL USER'S FRIENDS
+   * ! USER :: GET ALL USER'S FRIENDS
    * Method to get all users
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -204,8 +202,7 @@ const userDatamapper = {
    * @async
    */
   async getAllFriends(userId) {
-    console.log(userId);
-    const sqlQuery = `SELECT * FROM web.get_all_friends($1);`;
+    const sqlQuery = `SELECT * FROM web.get_user_all_friends($1);`;
     const values = [userId];
     let result;
     let error;
@@ -233,7 +230,7 @@ const userDatamapper = {
    * @async
    */
   async getOneFriend(userId, friendId) {
-    const sqlQuery = `SELECT * FROM web.get_one_friend($1,$2);`;
+    const sqlQuery = `SELECT * FROM web.get_user_one_friend($1,$2);`;
     const values = [userId, friendId];
     let result;
     let error;
@@ -259,7 +256,7 @@ const userDatamapper = {
    * @async
    */
   async addOneFriend(userId, friendId) {
-    const sqlQuery = `SELECT * FROM web.add_friend_to_user($1,$2)`;
+    const sqlQuery = `SELECT * FROM web.insert_user_friend($1,$2)`;
     const values = [userId, friendId];
     let result;
     let error;
@@ -282,7 +279,7 @@ const userDatamapper = {
    * @async
    */
   async deleteOneFriend(userId, friendId) {
-    const sqlQuery = `SELECT * FROM web.delete_friend_from_user($1,$2)`;
+    const sqlQuery = `SELECT * FROM web.delete_user_friend($1,$2)`;
     const values = [userId, friendId];
     let result;
     let error;
@@ -307,8 +304,7 @@ const userDatamapper = {
    * @async
    */
   async getAllCrews(userId) {
-    console.log(userId);
-    const sqlQuery = `SELECT * FROM web.get_user_crews_with_users($1);`;
+    const sqlQuery = `SELECT * FROM web.get_user_all_crews($1);`;
     const values = [userId];
     let result;
     let error;
@@ -362,15 +358,7 @@ const userDatamapper = {
    * @async
    */
   async addOneCrew(userId, crew_name, crew_picture, added_friends) {
-    console.log(
-      "parameters : ",
-      userId,
-      crew_name,
-      crew_picture,
-      added_friends
-    );
     const userIDs = [added_friends];
-
     const placeholders = Array.from(
       { length: userIDs.length },
       (_, i) => `$${i + 4}`
@@ -378,7 +366,7 @@ const userDatamapper = {
 
     const sqlQuery = `
     SELECT * 
-    FROM web.create_crew_for_users($1, $2, $3, ${placeholders});
+    FROM web.insert_user_crew($1, $2, $3, ${placeholders});
 `;
     const values = [userId, crew_name, crew_picture, ...userIDs];
     let result;
@@ -402,8 +390,7 @@ const userDatamapper = {
    * @async
    */
   async modifyOneCrew(crewInfo) {
-    console.log("modify crew model : ", crewInfo);
-    const sqlQuery = `SELECT * FROM web.update_crew($1);`;
+    const sqlQuery = `SELECT * FROM web.update_user_crew($1);`;
     const values = [crewInfo];
     let result;
     let error;
@@ -427,8 +414,7 @@ const userDatamapper = {
    * @async
    */
   async deleteOneCrew(userId, crewId) {
-    console.log("model: ", userId, crewId);
-    const sqlQuery = `SELECT * FROM web.delete_crew_and_links($1,$2)`;
+    const sqlQuery = `SELECT * FROM web.delete_user_crew($1,$2)`;
     const values = [userId, crewId];
     let result;
     let error;
@@ -445,7 +431,7 @@ const userDatamapper = {
   // ! EVENTS
 
   /**
-   * ! ADMIN :: GET ALL USER'S EVENTS
+   * ! USER :: GET ALL USER'S EVENTS
    * Method to get all user's events
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
@@ -453,8 +439,7 @@ const userDatamapper = {
    * @async
    */
   async getAllEvents(userId) {
-    console.log(userId);
-    const sqlQuery = `SELECT * FROM web.get_user_events_with_invitations($1);`;
+    const sqlQuery = `SELECT * FROM web.get_user_events($1);`;
     const values = [userId];
     let result;
     let error;
@@ -482,8 +467,7 @@ const userDatamapper = {
    * @async
    */
   async getOneEvent(userId, eventId) {
-    console.log(userId, eventId);
-    const sqlQuery = `SELECT * FROM web.get_user_event_with_invitations($1,$2);`;
+    const sqlQuery = `SELECT * FROM web.get_user_one_event($1,$2);`;
     const values = [userId, eventId];
     let result;
     let error;
@@ -538,7 +522,7 @@ const userDatamapper = {
 
     const sqlQuery = `
   SELECT * 
-  FROM web.create_event_for_users($1, $2, $3, $4, $5, $6, ${userPlaceholders}, ${crewPlaceholders});
+  FROM web.insert_user_event($1, $2, $3, $4, $5, $6, ${userPlaceholders}, ${crewPlaceholders});
 `;
     const values = [
       userId,
@@ -571,8 +555,7 @@ const userDatamapper = {
    * @async
    */
   async modifyOneEvent(eventInfo) {
-    console.log("model : ", eventInfo);
-    const sqlQuery = `SELECT * FROM web.edit_user_event($1);`;
+    const sqlQuery = `SELECT * FROM web.update_user_event($1);`;
     const values = [eventInfo];
     let result;
     let error;
@@ -596,8 +579,7 @@ const userDatamapper = {
    * @async
    */
   async deleteOneEvent(eventId) {
-    console.log(eventId);
-    const sqlQuery = `SELECT * FROM web.delete_event_by_id($1)`;
+    const sqlQuery = `SELECT * FROM web.delete_user_event($1)`;
     const values = [eventId];
     let result;
     let error;

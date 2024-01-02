@@ -9,14 +9,16 @@ const { crewDatamapper } = require("../model");
 
 const crewController = {
   /**
-   * ! GET ALL
+   * ! GET ALL CREWS
    * Method to get all crews
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async getAll(req, res, next) {
-    const { error, result } = await crewDatamapper.getAll();
+  async getAllCrews(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await crewDatamapper.getAllCrews(user);
     if (error) {
       next(error);
     } else {
@@ -25,15 +27,17 @@ const crewController = {
   },
 
   /**
-   * ! GET ONE
-   * Method to get a crew by his id
+   * ! GET ONE CREW
+   * Method to get one crew
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async getOne(req, res, next) {
-    const { id } = req.params;
-    const { error, result } = await crewDatamapper.getOne(id);
+  async getOneCrew(req, res, next) {
+    console.log(req.params);
+    const userId = req.params.userId;
+    const crewId = req.params.crewId;
+    const { error, result } = await crewDatamapper.getOneCrew(userId, crewId);
     if (error) {
       next(error);
     } else {
@@ -42,22 +46,36 @@ const crewController = {
   },
 
   /**
-   * ! CREATE ONE
-   * Method to create a crew
+   * ! ADD ONE CREW
+   * Method to add one crew
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async createOne(req, res, next) {
-    try {
-      const { error, result } = await crewDatamapper.createOne(req.body);
-      if (error) {
-        next(error);
-      } else {
-        res.json(result);
-      }
-    } catch (error) {
+  async addOneCrew(req, res, next) {
+    const userId = req.params.userId;
+    const crewName = req.body.crew_name;
+    const crewPicture = req.body.crew_picture;
+    const crewMembers = req.body.added_friends;
+
+    console.log(
+      "controllers params :",
+      userId,
+      crewName,
+      crewPicture,
+      crewMembers
+    );
+
+    const { error, result } = await crewDatamapper.addOneCrew(
+      userId,
+      crewName,
+      crewPicture,
+      crewMembers
+    );
+    if (error) {
       next(error);
+    } else {
+      res.json(result);
     }
   },
 
@@ -68,10 +86,12 @@ const crewController = {
    * @param {*} res
    * @param {*} next
    */
-  async modifyOne(req, res, next) {
-    const crew = req.body;
-    if (req.crew.id == req.params.id) {
-      const { error, result } = await crewDatamapper.modifyOne(crew);
+  async modifyOneCrew(req, res, next) {
+    const userId = req.params.userId;
+    const crewInfo = req.body;
+    console.log("controller : ", userId, crewInfo);
+    if (req.body.userId == req.params.userId) {
+      const { error, result } = await crewDatamapper.modifyOneCrew(crewInfo);
       if (error) {
         next(error);
       } else {
@@ -84,23 +104,30 @@ const crewController = {
   },
 
   /**
-   * ! DELETE ONE
-   * Method to delete a crew
+   * ! DELETE ONE CREW
+   * Method to delete one crew
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async deleteOne(req, res, next) {
-    if (req.crew.id == req.params.id) {
-      const { error, result } = await crewDatamapper.deleteOne(req.params.id);
-      if (error) {
-        next(error);
-      } else {
-        res.json(result);
-      }
+  async deleteOneCrew(req, res, next) {
+    const userId = parseInt(req.params.userId);
+    const userOwner = req.body.userId;
+    const crewId = req.body.crew_id_param;
+    console.log(userId, userOwner, crewId);
+    if (userId !== userOwner) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized access. userId must match userOwner." });
+    }
+    const { error, result } = await crewDatamapper.deleteOneCrew(
+      userId,
+      crewId
+    );
+    if (error) {
+      next(error);
     } else {
-      const err = new APIError("Acces denied", 404);
-      next(err);
+      res.json(result);
     }
   },
 };

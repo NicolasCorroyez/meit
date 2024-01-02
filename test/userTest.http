@@ -1,12 +1,15 @@
+### ! Rebuild returning names
+### ! Nbpeople existance ?
+
 ### ! USERS
 ### Get all users
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/1
+GET http://localhost:3000/user/6
 
 ### Post user
-POST http://localhost:3000/user
+POST http://localhost:3000/user 
 content-type: application/json
 
 {
@@ -18,6 +21,7 @@ content-type: application/json
     "role":"member"
 }
 
+### ! Problem picture
 ### Patch one user
 PATCH http://localhost:3000/user/1
 content-type: application/json
@@ -43,6 +47,7 @@ GET http://localhost:3000/user/1/friends
 ### Get one user's friends
 GET http://localhost:3000/user/1/friends/2
 
+### ! Return the friend details ?
 ### Post user friendship
 POST http://localhost:3000/user/1/friends
 content-type: application/json
@@ -51,6 +56,7 @@ content-type: application/json
     "friendId":4
 }
 
+### ! Return Boolean ?
 ### Delete user friendship
 DELETE http://localhost:3000/user/1/friends
 content-type: application/json
@@ -60,13 +66,14 @@ content-type: application/json
 }
 
 ### ! CREWS
-
 ### Get all user's crews
 GET http://localhost:3000/user/1/crews
 
 ### Get one user's crew
-GET http://localhost:3000/user/1/crews/6
+GET http://localhost:3000/user/1/crews/1
 
+### ! Return added friends details
+### ! Remove Unique crew name
 ### Post user crew
 POST http://localhost:3000/user/1/crews/
 content-type: application/json
@@ -77,18 +84,20 @@ content-type: application/json
     "added_friends":[1,2,3,4]
 }
 
+### ! Problem with user_id (owner of the crew)
 ### Update a crew
-PATCH http://localhost:3000/user/1/crews/6
+PATCH http://localhost:3000/user/1/crews/4
 content-type: application/json
 
 {
     "userId": 1,
-    "crewId": 6,
+    "crewId": 4,
     "picture": "ezzz",
     "name":"NewTeddddddddstCrew",
     "membersId":[1,2]
 }
 
+### ! Return Boolean ?
 ### Delete user crew
 DELETE http://localhost:3000/user/1/crews/
 content-type: application/json
@@ -111,7 +120,7 @@ POST http://localhost:3000/user/1/events/
 content-type: application/json
 
 {
-    "theme": "NewTheme",
+    "theme": "NewThemdzdze",
     "date": "2024-01-01",
     "time": "20:30:00",
     "place": "la",
@@ -121,21 +130,22 @@ content-type: application/json
 }
 
 ### Patch one event
-PATCH http://localhost:3000/user/1/events/3
+PATCH http://localhost:3000/user/1/events/5
 content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 3,
-    "theme": "New TheDJIme",
-    "userIds": [1,2]
+    "eventId": 5,
+    "theme": "New TheDJImedz",
+    "userIds": [1,2,3]
 }
 
+### ! Return boolean only ?
 ### Delete user event
 DELETE http://localhost:3000/user/1/events
 content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 3
+    "eventId": 5
 }

@@ -57,24 +57,24 @@ const APIError = require("../service/APIError");
  * @property {string} picture - picture of the user
  */
 
-const crewDatamapper = {
+const friendDatamapper = {
   /**
-   * ! USER :: GET ALL USER'S CREWS
-   * Method to get all user's crews
+   * ! USER :: GET ALL USER'S FRIENDS
+   * Method to get all users
    * @returns {[User]} Array of Users objects
    * @returns {404} if no users found
    * @returns {500} if an error occured
    * @async
    */
-  async getAllCrews(userId) {
-    const sqlQuery = `SELECT * FROM web.get_user_all_crews($1);`;
+  async getAllFriends(userId) {
+    const sqlQuery = `SELECT * FROM web.get_user_all_friends($1);`;
     const values = [userId];
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
       if (response.rows.length == 0) {
-        error = new APIError("No crews found", 404);
+        error = new APIError("No friends found", 404);
       } else {
         result = response.rows;
       }
@@ -85,18 +85,18 @@ const crewDatamapper = {
   },
 
   /**
-   * ! USER :: GET ONE USER'S CREW
+   * ! USER :: GET ONE USER'S FRIEND
    * Method to get all users
    * @returns {User} User object
    * @param {User} userId -  Id of a user
-   * @param {User} crewId - Id of another user
+   * @param {User} friendId - Id of another user
    * @returns {404} if no users found
    * @returns {500} if an error occured
    * @async
    */
-  async getOneCrew(userId, crewId) {
-    const sqlQuery = `SELECT * FROM web.get_user_one_crew($1,$2);`;
-    const values = [userId, crewId];
+  async getOneFriend(userId, friendId) {
+    const sqlQuery = `SELECT * FROM web.get_user_one_friend($1,$2);`;
+    const values = [userId, friendId];
     let result;
     let error;
     try {
@@ -113,25 +113,16 @@ const crewDatamapper = {
   },
 
   /**
-   * ! USER :: ADD ONE CREW
+   * ! USER :: ADD ONE FRIEND
    * Method to create a user
    * @param {User} userId -  Id of a user
-   * @param {Event} eventId - Id of another user
+   * @param {User} friendId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
-  async addOneCrew(userId, crew_name, crew_picture, added_friends) {
-    const userIDs = [added_friends];
-    const placeholders = Array.from(
-      { length: userIDs.length },
-      (_, i) => `$${i + 4}`
-    ).join(", ");
-
-    const sqlQuery = `
-    SELECT * 
-    FROM web.insert_user_crew($1, $2, $3, ${placeholders});
-`;
-    const values = [userId, crew_name, crew_picture, ...userIDs];
+  async addOneFriend(userId, friendId) {
+    const sqlQuery = `SELECT * FROM web.insert_user_friend($1,$2)`;
+    const values = [userId, friendId];
     let result;
     let error;
     try {
@@ -145,40 +136,16 @@ const crewDatamapper = {
   },
 
   /**
-   * ! USER :: MODIFY ONE CREW
-   * Method to modify a crew
-   * @param {InputPatchUser} eventInfo - informations of a crew
-   * @returns {Crew} - Event object with updated informations
-   * @returns {500} - if an error occured
-   * @async
-   */
-  async modifyOneCrew(crewInfo) {
-    const sqlQuery = `SELECT * FROM web.update_user_crew($1);`;
-    const values = [crewInfo];
-    let result;
-    let error;
-    try {
-      const response = await client.query(sqlQuery, values);
-      result = response.rows[0];
-    } catch (err) {
-      console.log(err);
-      debug(err);
-      error = new APIError("Internal error server", 500);
-    }
-    return { error, result };
-  },
-
-  /**
-   * ! USER :: DELETE ONE CREW
+   * ! USER :: DELETE ONE FRIEND
    * Method to create a user
    * @param {User} userId -  Id of a user
-   * @param {User} crewId - Id of another user
+   * @param {User} friendId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
-  async deleteOneCrew(userId, crewId) {
-    const sqlQuery = `SELECT * FROM web.delete_user_crew($1,$2)`;
-    const values = [userId, crewId];
+  async deleteOneFriend(userId, friendId) {
+    const sqlQuery = `SELECT * FROM web.delete_user_friend($1,$2)`;
+    const values = [userId, friendId];
     let result;
     let error;
     try {
@@ -192,4 +159,4 @@ const crewDatamapper = {
   },
 };
 
-module.exports = crewDatamapper;
+module.exports = friendDatamapper;

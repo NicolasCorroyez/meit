@@ -9,15 +9,16 @@ const { eventDatamapper } = require("../model");
 
 const eventController = {
   /**
-   * ! GET ALL events
-   * Method to get all events of a user
+   * ! GET ALL EVENTS
+   * Method to get all events
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async getAll(req, res, next) {
-    const { id } = req.params;
-    const { error, result } = await eventDatamapper.getAll(id);
+  async getAllEvents(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await eventDatamapper.getAllEvents(user);
     if (error) {
       next(error);
     } else {
@@ -26,15 +27,20 @@ const eventController = {
   },
 
   /**
-   * ! GET ONE
-   * Method to get a event by his id
+   * ! GET ONE EVENT
+   * Method to get one crew
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async getOne(req, res, next) {
-    const { id } = req.params;
-    const { error, result } = await eventDatamapper.getOne(id);
+  async getOneEvent(req, res, next) {
+    console.log(req.params);
+    const userId = req.params.userId;
+    const eventId = req.params.eventId;
+    const { error, result } = await eventDatamapper.getOneEvent(
+      userId,
+      eventId
+    );
     if (error) {
       next(error);
     } else {
@@ -43,22 +49,50 @@ const eventController = {
   },
 
   /**
-   * ! CREATE ONE
-   * Method to create a event
+   * ! ADD ONE EVENT
+   * Method to add one crew
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async createOne(req, res, next) {
-    try {
-      const { error, result } = await eventDatamapper.createOne(req.body);
-      if (error) {
-        next(error);
-      } else {
-        res.json(result);
-      }
-    } catch (error) {
+  async addOneEvent(req, res, next) {
+    const userId = req.params.userId;
+    const {
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids,
+    } = req.body;
+
+    console.log(
+      "controllers params :",
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids
+    );
+
+    const { error, result } = await eventDatamapper.addOneEvent(
+      userId,
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids
+    );
+    if (error) {
       next(error);
+    } else {
+      res.json(result);
     }
   },
 
@@ -69,10 +103,12 @@ const eventController = {
    * @param {*} res
    * @param {*} next
    */
-  async modifyOne(req, res, next) {
-    const event = req.body;
-    if (req.event.id == req.params.id) {
-      const { error, result } = await eventDatamapper.modifyOne(event);
+  async modifyOneEvent(req, res, next) {
+    const userId = req.params.userId;
+    const eventInfo = req.body;
+    console.log("controller : ", userId, eventInfo);
+    if (req.body.userId == req.params.userId) {
+      const { error, result } = await eventDatamapper.modifyOneEvent(eventInfo);
       if (error) {
         next(error);
       } else {
@@ -85,23 +121,27 @@ const eventController = {
   },
 
   /**
-   * ! DELETE ONE
-   * Method to delete a event
+   * ! DELETE ONE EVENT
+   * Method to delete one event
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  async deleteOne(req, res, next) {
-    if (req.event.id == req.params.id) {
-      const { error, result } = await eventDatamapper.deleteOne(req.params.id);
-      if (error) {
-        next(error);
-      } else {
-        res.json(result);
-      }
+  async deleteOneEvent(req, res, next) {
+    const userId = parseInt(req.params.userId);
+    const userOwner = req.body.userId;
+    const eventId = req.body.eventId;
+    console.log(userId, userOwner, eventId);
+    if (userId !== userOwner) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized access. userId must match userOwner." });
+    }
+    const { error, result } = await eventDatamapper.deleteOneEvent(eventId);
+    if (error) {
+      next(error);
     } else {
-      const err = new APIError("Acces denied", 404);
-      next(err);
+      res.json(result);
     }
   },
 };

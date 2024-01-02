@@ -8,3 +8,6 @@ psql -f script/sql/fonction/delete_fonction.sql
 
 # I ADD FUNCTIONS
 psql -f script/sql/fonction/user.sql
+psql -f script/sql/fonction/friend.sql
+psql -f script/sql/fonction/crew.sql
+psql -f script/sql/fonction/event.sql
