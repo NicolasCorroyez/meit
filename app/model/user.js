@@ -394,6 +394,31 @@ const userDatamapper = {
   },
 
   /**
+   * ! USER :: MODIFY ONE CREW
+   * Method to modify a crew
+   * @param {InputPatchUser} eventInfo - informations of a crew
+   * @returns {Crew} - Event object with updated informations
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async modifyOneCrew(crewInfo) {
+    console.log("modify crew model : ", crewInfo);
+    const sqlQuery = `SELECT * FROM web.update_crew($1);`;
+    const values = [crewInfo];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      debug(err);
+      error = new APIError("Internal error server", 500);
+    }
+    return { error, result };
+  },
+
+  /**
    * ! USER :: DELETE ONE CREW
    * Method to create a user
    * @param {User} userId -  Id of a user
@@ -401,10 +426,10 @@ const userDatamapper = {
    * @returns {500} - if an error occured
    * @async
    */
-  async deleteOneCrew(crewId) {
-    console.log(crewId);
-    const sqlQuery = `SELECT * FROM web.delete_crew_and_links($1)`;
-    const values = [crewId];
+  async deleteOneCrew(userId, crewId) {
+    console.log("model: ", userId, crewId);
+    const sqlQuery = `SELECT * FROM web.delete_crew_and_links($1,$2)`;
+    const values = [userId, crewId];
     let result;
     let error;
     try {

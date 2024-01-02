@@ -35,7 +35,7 @@ router.get(
 );
 
 /**
- * ! DELETE /crew
+ * ! DELETE /crew ADMIN
  * @summary Delete one crew
  * @tags Crew
  * @param {Number} id.path.required - crew identifier

@@ -51,36 +51,43 @@ CREATE OR REPLACE FUNCTION web.update_user(u json) RETURNS main.user AS $$
 DECLARE
     user_db main.user;
 BEGIN
-    -- Extract user details from the database
+    
     SELECT id, nickname, firstname, lastname, picture
     INTO user_db
-    FROM main.user WHERE id = (u->>'id')::int;
-
-    -- Handle the case where the user record does not exist
-    IF NOT FOUND THEN
+    FROM main.user WHERE id=(u->>'id')::int;
+	
+	IF NOT FOUND THEN
+        -- Handle the case where the user record does not exist
         RAISE EXCEPTION 'User with ID % not found', (u->>'id')::int;
     END IF;
 
-    -- Update user details based on provided JSON
-    user_db.nickname := COALESCE(u->>'nickname', user_db.nickname);
-    user_db.firstname := COALESCE(u->>'firstname', user_db.firstname);
-    user_db.lastname := COALESCE(u->>'lastname', user_db.lastname);
-    user_db.picture := COALESCE(u->>'picture', user_db.picture);
+    IF u->>'nickname' IS NOT NULL
+    THEN 
+    user_db.nickname = u->>'nickname';
+    END IF;
 
-    -- Update user in the main.user table
+    IF u->>'firstname' IS NOT NULL
+    THEN 
+    user_db.firstname = u->>'firstname';
+    END IF;
+
+    IF u->>'lastname' IS NOT NULL
+    THEN 
+    user_db.lastname = u->>'lastname';
+    END IF;
+
+    IF u->>'picture' IS NOT NULL
+    THEN 
+    user_db.picture = u->>'picture';
+    END IF;
+
     UPDATE main.user
-    SET
-        nickname = user_db.nickname,
-        firstname = user_db.firstname,
-        lastname = user_db.lastname,
-        picture = user_db.picture
-    WHERE
-        id = (u->>'id')::int;
+    SET nickname = user_db.nickname, firstname = user_db.firstname, lastname = user_db.lastname, picture = user_db.picture
+    WHERE id = (u->> 'id')::int;
 
     RETURN user_db;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
-
 
 CREATE OR REPLACE FUNCTION web.get_all_friends(param_user_id int)
 RETURNS TABLE (contact_id int, friend_id int, friend_nickname text, friend_firstname text, friend_lastname text, friend_picture text)
@@ -297,105 +304,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- ! ! ! ! UPDATE
--- !
-
-CREATE OR REPLACE FUNCTION web.update_crew(u json)
-RETURNS TABLE (
-    crew_id int,
-    name text,
-    picture text,
-    user_id int,
-    members jsonb[]
-)
-AS $$
-DECLARE
-    param_crew_id int;
-    param_name text;
-    param_picture text;
-    param_members int[];
-BEGIN
-    -- Extract values from JSON parameter
-    param_crew_id := (u->>'crewId')::int;
-    param_name := u->>'name';
-    param_picture := u->>'picture';
-    param_members := ARRAY(SELECT json_array_elements_text(u->'membersId')::int);
-
-    -- Update the crew in the crew table and return the updated values
-    UPDATE web.crew c
-    SET
-        name = COALESCE(param_name, c.name),
-        picture = COALESCE(param_picture, c.picture)
-    WHERE
-        c.id = param_crew_id
-    RETURNING
-        c.id AS crew_id,
-        c.name,
-        c.picture
-    INTO
-        crew_id,
-        name,
-        picture;
-
-    -- Check if there was a matching row in the UPDATE
-    IF NOT FOUND THEN
-        -- If no matching row, return the old values
-        SELECT
-            c.id AS crew_id,
-            c.name,
-            c.picture
-        INTO
-            crew_id,
-            name,
-            picture
-        FROM
-            web.crew c
-        WHERE
-            c.id = param_crew_id;
-    END IF;
-
-    -- Update related entries in the r_user_crew table if relevant parameters are provided
-    IF param_members IS NOT NULL AND array_length(param_members, 1) > 0 THEN
-        -- Delete existing entries for the given crew only if new user IDs are provided
-        DELETE FROM web.r_user_crew WHERE web.r_user_crew.crew_id = param_crew_id;
-
-        -- Insert new entries for the given user IDs
-        INSERT INTO web.r_user_crew (user_id, crew_id)
-        SELECT changed_members, param_crew_id
-        FROM unnest(param_members) AS changed_members; -- Change this alias to the one you used in your actual query
-    END IF;
-
-    -- Return the members only if param_members is provided
-    IF param_members IS NOT NULL THEN
-        members := ARRAY(
-            SELECT
-                jsonb_build_object(
-                    'user_id', u.id,
-                    'nickname', u.nickname,
-                    'firstname', u.firstname,
-                    'lastname', u.lastname,
-                    'picture', u.picture
-                )
-            FROM
-                web.r_user_crew cr
-            JOIN
-                main."user" u ON cr.user_id = u.id
-            WHERE
-                cr.crew_id = param_crew_id
-        );
-    END IF;
-
-    -- Return the updated crew along with members
-    RETURN NEXT;
-END;
-$$ LANGUAGE plpgsql;
-
-
--- !! END
-CREATE OR REPLACE FUNCTION web.delete_crew_and_links(
-    userId int,
-    crew_id_param int
-)
+CREATE OR REPLACE FUNCTION web.delete_crew_and_links(crew_id_param int)
 RETURNS TEXT
 AS $$
 DECLARE
@@ -407,18 +316,17 @@ BEGIN
     -- Check if any rows were deleted
     IF FOUND THEN
         -- Delete the crew
-        DELETE FROM web.crew WHERE web.crew.id = crew_id_param;
-        result_text := 'Crew deleted successfully.';
+        DELETE FROM web.crew WHERE id = crew_id_param;
+        result_text := "Crew and links deleted successfully.";
     ELSE
-        result_text := 'Crew or link not found.';
+        result_text := "Crew not found or no links to delete.";
     END IF;
 
     RETURN result_text;
 END;
 $$ LANGUAGE plpgsql;
 
-
-CREATE OR REPLACE FUNCTION web.get_user_events_with_invitations(param_user_id int)
+CREATE OR REPLACE FUNCTION web.get_user_events_with_invitations(user_id_param int)
 RETURNS TABLE (
     event_id int,
     theme text,
@@ -453,11 +361,11 @@ BEGIN
     FROM
         web.event e
     WHERE
-        e.owner = param_user_id;
+        e.owner = user_id_param;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION web.get_user_event_with_invitations(param_user_id int, event_id_param int)
+CREATE OR REPLACE FUNCTION web.get_user_event_with_invitations(user_id_param int, event_id_param int)
 RETURNS TABLE (
     event_id int,
     theme text,
@@ -493,7 +401,7 @@ BEGIN
         web.event e
     WHERE
         e.id = event_id_param AND
-        e.owner = param_user_id;
+        e.owner = user_id_param;
 END;
 $$ LANGUAGE plpgsql;
 

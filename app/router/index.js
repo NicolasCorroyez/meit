@@ -5,16 +5,12 @@ const express = require("express");
 const errorHandler = require("../service/errorHandler");
 
 // REQUIRE ROUTERS
-const adminRouter = require("./admin");
 const userRouter = require("./user");
 const crewRouter = require("./crew");
 const eventRouter = require("./event");
 
 // DEFINE ROUTER WITH EXPRESS
 const mainRouter = express.Router();
-
-// Routing for routes prefixed by /admin
-mainRouter.use("/admin", adminRouter);
 
 // Routing for routes prefixed by /events
 mainRouter.use("/event", eventRouter);

@@ -19,20 +19,20 @@ content-type: application/json
 }
 
 ### Patch one user
-PATCH http://localhost:3000/user/10
+PATCH http://localhost:3000/user/1
 content-type: application/json
 
 {
-    "id": 10,
+    "id": 1,
     "nickname":"nicolasbribra"
 }
 
 ### Delete one user
-DELETE http://localhost:3000/user/10
+DELETE http://localhost:3000/user/6
 content-type: application/json
 
 {
-    "id": 10
+    "id": 6
 }
 
 ### ! FRIENDS
@@ -62,37 +62,40 @@ content-type: application/json
 ### ! CREWS
 
 ### Get all user's crews
-GET http://localhost:3000/user/2/crews
+GET http://localhost:3000/user/1/crews
 
 ### Get one user's crew
-GET http://localhost:3000/user/2/crews/1
+GET http://localhost:3000/user/1/crews/6
 
 ### Post user crew
 POST http://localhost:3000/user/1/crews/
 content-type: application/json
 
 {
-    "crew_name":"testcrew",
+    "crew_name":"testcrew232Ess",
     "crew_picture":"",
     "added_friends":[1,2,3,4]
 }
 
-### !!!!! !!!!! Patch one crew WIP________________________
-PATCH http://localhost:3000/user/1/crews
+### Update a crew
+PATCH http://localhost:3000/user/1/crews/6
 content-type: application/json
 
 {
-    "crewId": 1,
-    "crew_name":"NewTestCrew"
+    "userId": 1,
+    "crewId": 6,
+    "picture": "ezzz",
+    "name":"NewTeddddddddstCrew",
+    "membersId":[1,2]
 }
 
 ### Delete user crew
-DELETE http://localhost:3000/user/1/crews
+DELETE http://localhost:3000/user/1/crews/
 content-type: application/json
 
 {
     "userId":1,
-    "crewId":8
+    "crew_id_param":4
 }
 
 ### ! EVENTS
@@ -101,7 +104,7 @@ content-type: application/json
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/25
+GET http://localhost:3000/user/1/events/1
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
@@ -118,13 +121,13 @@ content-type: application/json
 }
 
 ### Patch one event
-PATCH http://localhost:3000/user/1/events/25
+PATCH http://localhost:3000/user/1/events/3
 content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 25,
-    "theme": "New Theme",
+    "eventId": 3,
+    "theme": "New TheDJIme",
     "userIds": [1,2]
 }
 
@@ -134,5 +137,5 @@ content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 10
+    "eventId": 3
 }

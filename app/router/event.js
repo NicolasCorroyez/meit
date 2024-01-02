@@ -35,7 +35,7 @@ router.get(
 );
 
 /**
- * ! DELETE /event/:eventId
+ * ! DELETE /event/:eventId ADMIN
  * @summary Delete one event
  * @tags Event
  * @param {Number} id.path.required - event identifier

@@ -195,6 +195,22 @@ router.post(
 );
 
 /**
+ * PATCH /user/:userId/crews/:crewId
+ * @summary Patch one crew
+ * @tags Crew
+ * @param {Number} id.path.required - crew identifier
+ * @param {InputRegisterUser} request.body.required - crew info for patch - application/json
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 500 - Internal server error
+ */
+router.patch(
+  "/:userId(\\d+)/crews/:crewId(\\d+)",
+  /* validationService.isConnected,
+  validationService.isUser("update"), */
+  userController.modifyOneCrew
+);
+
+/**
  * DELETE /user/:userId/crews/:crewId
  * @summary Delete one user's crew
  * @tags Crew

@@ -273,6 +273,30 @@ const userController = {
   },
 
   /**
+   * ! MODIFY ONE
+   * Method to modify a crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async modifyOneCrew(req, res, next) {
+    const userId = req.params.userId;
+    const crewInfo = req.body;
+    console.log("controller : ", userId, crewInfo);
+    if (req.body.userId == req.params.userId) {
+      const { error, result } = await userDatamapper.modifyOneCrew(crewInfo);
+      if (error) {
+        next(error);
+      } else {
+        res.json(result);
+      }
+    } else {
+      const err = new APIError("Acces denied", 404);
+      next(err);
+    }
+  },
+
+  /**
    * ! DELETE ONE CREW
    * Method to delete one crew
    * @param {*} req
@@ -282,14 +306,17 @@ const userController = {
   async deleteOneCrew(req, res, next) {
     const userId = parseInt(req.params.userId);
     const userOwner = req.body.userId;
-    const crewId = req.body.crewId;
+    const crewId = req.body.crew_id_param;
     console.log(userId, userOwner, crewId);
     if (userId !== userOwner) {
       return res
         .status(403)
         .json({ error: "Unauthorized access. userId must match userOwner." });
     }
-    const { error, result } = await userDatamapper.deleteOneCrew(crewId);
+    const { error, result } = await userDatamapper.deleteOneCrew(
+      userId,
+      crewId
+    );
     if (error) {
       next(error);
     } else {
