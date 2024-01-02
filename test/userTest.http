@@ -1,16 +1,17 @@
 ### ! USERS
+
 ### Get all users
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/1
+GET http://localhost:3000/user/7
 
 ### Post user
-POST http://localhost:3000/user
+POST http://localhost:3000/user 
 content-type: application/json
 
 {
-    "nickname":"httpcreateduser8_nickname",
+    "nickname":"httpcreZZatddedusfdder8_nickname",
     "firstname":"httpcreateduser1_firstname",
     "lastname":"httpcreateduser1_lasttname",
     "device":"httpcreateduser1_device",
@@ -19,111 +20,22 @@ content-type: application/json
 }
 
 ### Patch one user
-PATCH http://localhost:3000/user/10
+PATCH http://localhost:3000/user/1
 content-type: application/json
 
 {
-    "id": 10,
-    "nickname":"nicolasbribra"
+    "id": 1,
+    "nickname":"22",
+    "firstname":"222",
+    "lastname":"22",
+    "device": "dzdzdz",
+    "picture": "ooo"
 }
-
+#### ! ca marche pas vraiment, ca met a null, mais ca n'efface pas l'entrée
 ### Delete one user
-DELETE http://localhost:3000/user/10
+DELETE http://localhost:3000/user/7
 content-type: application/json
 
 {
-    "id": 10
-}
-
-### ! FRIENDS
-
-### Get all user's friends
-GET http://localhost:3000/user/1/friends
-
-### Get one user's friends
-GET http://localhost:3000/user/1/friends/2
-
-### Post user friendship
-POST http://localhost:3000/user/1/friends
-content-type: application/json
-
-{
-    "friendId":4
-}
-
-### Delete user friendship
-DELETE http://localhost:3000/user/1/friends
-content-type: application/json
-
-{
-    "friendId":4
-}
-
-### ! CREWS
-
-### Get all user's crews
-GET http://localhost:3000/user/2/crews
-
-### Get one user's crew
-GET http://localhost:3000/user/2/crews/1
-
-### Post user crew
-POST http://localhost:3000/user/1/crews/
-content-type: application/json
-
-{
-    "crew_name":"testcrew",
-    "crew_picture":"",
-    "added_friends":[1,2,3,4]
-}
-
-### Delete user crew
-DELETE http://localhost:3000/user/1/crews
-content-type: application/json
-
-{
-    "userId":1,
-    "crewId":8
-}
-
-### ! EVENTS
-
-### Get all user's events
-GET http://localhost:3000/user/1/events
-
-### Get one user's event
-GET http://localhost:3000/user/1/events/12
-
-### Post user event
-POST http://localhost:3000/user/1/events/
-content-type: application/json
-
-{
-    "theme": "NewTheme",
-    "date": "2024-01-01",
-    "time": "20:30:00",
-    "place": "la",
-    "nb_people": 2,
-    "invited_users_ids": [3,4],
-    "invited_crews_ids": [2]
-}
-
-### Patch one event ###! Still not possible to change users invited
-PUT http://localhost:3000/user/1/events/12
-content-type: application/json
-
-{
-    "userId": 1,
-    "eventId": 12,
-    "theme": "Theme",
-    "userIds": [3,4]
-}
-
-### Delete user event
-DELETE http://localhost:3000/user/1/events
-content-type: application/json
-
-{
-    "userId": 1,
-    "eventId": 13
+    "id": 7
 }

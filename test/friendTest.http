@@ -1,0 +1,24 @@
+### ! FRIENDS
+
+### Get all user's friends
+GET http://localhost:3000/user/1/friends
+
+### Get one user's friends
+GET http://localhost:3000/user/1/friends/2
+
+### ! Return all user's friend ?
+### Post user friendship
+POST http://localhost:3000/user/1/friends
+content-type: application/json
+
+{
+    "friendId":5
+}
+
+### Delete user friendship
+DELETE http://localhost:3000/user/1/friends
+content-type: application/json
+
+{
+    "friendId":5
+}

@@ -8,18 +8,22 @@ const errorHandler = require("../service/errorHandler");
 const userRouter = require("./user");
 const crewRouter = require("./crew");
 const eventRouter = require("./event");
+const friendRouter = require("./friend");
 
 // DEFINE ROUTER WITH EXPRESS
 const mainRouter = express.Router();
 
-// Routing for routes prefixed by /events
-mainRouter.use("/event", eventRouter);
+// Routing for event routes prefixed by /user
+mainRouter.use("/user", eventRouter);
 
-// Routing for routes prefixed by /crews
-mainRouter.use("/crew", crewRouter);
+// Routing for crew routes prefixed by /user
+mainRouter.use("/user", crewRouter);
 
-// Routing for routes prefixed by /users
+// Routing for user routes prefixed by /user
 mainRouter.use("/user", userRouter);
+
+// Routing for friend routes prefixed by /user
+mainRouter.use("/user", friendRouter);
 
 // Middleware to manage error
 mainRouter.use(errorHandler.manage);

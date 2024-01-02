@@ -1,0 +1,41 @@
+### ! EVENTS
+
+### Get all user's events
+GET http://localhost:3000/user/1/events
+
+### Get one user's event
+GET http://localhost:3000/user/1/events/1
+
+### Post user event
+POST http://localhost:3000/user/1/events/
+content-type: application/json
+
+{
+    "theme": "NewThemdzdze",
+    "date": "2024-01-01",
+    "time": "20:30:00",
+    "place": "la",
+    "nb_people": 2,
+    "invited_users_ids": [3,4],
+    "invited_crews_ids": [2]
+}
+
+### Patch one event
+PATCH http://localhost:3000/user/1/events/4
+content-type: application/json
+
+{
+    "userId": 1,
+    "eventId": 4,
+    "theme": "New TheDJImedz",
+    "userIds": [1,2,3]
+}
+
+### Delete user event
+DELETE http://localhost:3000/user/1/events
+content-type: application/json
+
+{
+    "userId": 1,
+    "eventId": 4
+}

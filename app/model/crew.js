@@ -7,44 +7,74 @@ const APIError = require("../service/APIError");
 
 //DEFINE TYPE FOR JSDOC
 /**
+ * @typedef {object} User
+ * @property {number} id - id of user
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
+ * @property {string} role - role of the user
+ */
+
+/**
+ * @typedef {object} Friend
+ * @property {number} id - id of user
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
+ * @property {string} role - role of the user
+ */
+
+/**
  * @typedef {object} Crew
- * @property {number} id - id of crew
- * @property {string} name - name of the crew
- * @property {string} picture - picture of the crew
+ * @property {number} id - id of user
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
+ * @property {string} role - role of the user
  */
 
 /**
- * @typedef {object} InputRegistercrew
- * @property {string} nickname - nickname of crew
- * @property {string} name - name of the crew
- * @property {string} picture - picture of the crew
+ * @typedef {object} InputRegisterUser
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
  */
 
 /**
- * @typedef {object} InputPatchcrew
- * @property {string} name - name of the crew
- * @property {string} picture - picture of the crew
+ * @typedef {object} InputPatchUser
+ * @property {string} nickname - nickname of user
+ * @property {string} firstname - firstname of user
+ * @property {string} lastname - lastname of user
+ * @property {string} device - device of the user
+ * @property {string} picture - picture of the user
  */
 
 const crewDatamapper = {
   /**
-   * ! GET ALL CREWS
-   * Method to get all crews of a user
-   * @param {int} userId - id of a user
-   * @returns {[Crew]} Array of crews objects
-   * @returns {404} if no crews found
+   * ! USER :: GET ALL USER'S CREWS
+   * Method to get all user's crews
+   * @returns {[User]} Array of Users objects
+   * @returns {404} if no users found
    * @returns {500} if an error occured
    * @async
    */
-  async getAll(userId) {
-    const sqlQuery = `SELECT * FROM web.get_all_crews($1);`;
+  async getAllCrews(userId) {
+    const sqlQuery = `SELECT * FROM web.get_user_all_crews($1);`;
     const values = [userId];
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
       if (response.rows.length == 0) {
-        error = new APIError("No crew found", 404);
+        error = new APIError("No crews found", 404);
       } else {
         result = response.rows;
       }
@@ -55,41 +85,53 @@ const crewDatamapper = {
   },
 
   /**
-   * ! GET ONE CREW
-   * Method to get a crew by his id
-   * @param {int} crewId - id of a crew
-   * @returns {Crew} - crew object
-   * @returns {404} - if a crew do not exist
-   * @returns {500} - if an error occured
+   * ! USER :: GET ONE USER'S CREW
+   * Method to get all users
+   * @returns {User} User object
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
    * @async
    */
-  async getOne(crewId) {
-    const sqlQuery = `SELECT * FROM web.get_one_crew($1)`;
-    const values = [crewId];
+  async getOneCrew(userId, crewId) {
+    const sqlQuery = `SELECT * FROM web.get_user_one_crew($1,$2);`;
+    const values = [userId, crewId];
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
-      result = response.rows[0];
+      if (response.rows.length == 0) {
+        error = new APIError("No user found", 404);
+      } else {
+        result = response.rows;
+      }
     } catch (err) {
-      error = new APIError("Internal error server", 500);
-    }
-    if (result.length === 0 || result.id === null) {
-      error = new APIError("crew not found", 404);
+      error = new APIError("Internal server error", 500, err);
     }
     return { error, result };
   },
 
   /**
-   * ! CREATE ONE crew
-   * Method to create a crew
-   * @param {InputRegistercrew} crew - informations of a crew
+   * ! USER :: ADD ONE CREW
+   * Method to create a user
+   * @param {User} userId -  Id of a user
+   * @param {Crew} crewId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
-  async createOne(crew) {
-    const sqlQuery = `SELECT * FROM web.insert_crew($1)`;
-    const values = [crew];
+  async addOneCrew(userId, crew_name, crew_picture, added_friends) {
+    const userIDs = [added_friends];
+    const placeholders = Array.from(
+      { length: userIDs.length },
+      (_, i) => `$${i + 4}`
+    ).join(", ");
+
+    const sqlQuery = `
+    SELECT * 
+    FROM web.insert_user_crew($1, $2, $3, ${placeholders});
+`;
+    const values = [userId, crew_name, crew_picture, ...userIDs];
     let result;
     let error;
     try {
@@ -103,15 +145,15 @@ const crewDatamapper = {
   },
 
   /**
-   * ! MODIFY ONE crew
+   * ! USER :: MODIFY ONE CREW
    * Method to modify a crew
-   * @param {InputPatchcrew} crewInfo - informations of a crew
-   * @returns {crew} - crew object with updated informations
+   * @param {InputPatchUser} crewInfo - informations of a crew
+   * @returns {Crew} - Crew object with updated informations
    * @returns {500} - if an error occured
    * @async
    */
-  async modifyOne(crewInfo) {
-    const sqlQuery = `SELECT * FROM web.update_crew($1)`;
+  async modifyOneCrew(crewInfo) {
+    const sqlQuery = `SELECT * FROM web.update_user_crew($1);`;
     const values = [crewInfo];
     let result;
     let error;
@@ -119,6 +161,7 @@ const crewDatamapper = {
       const response = await client.query(sqlQuery, values);
       result = response.rows[0];
     } catch (err) {
+      console.log(err);
       debug(err);
       error = new APIError("Internal error server", 500);
     }
@@ -126,28 +169,24 @@ const crewDatamapper = {
   },
 
   /**
-   * ! DELETE ONE crew
-   * Method to delete a crew
-   * @param {int} crewId - id of a crew
-   * @returns {boolean} - true if a crew has been deleted
-   * @returns {404} - if a crew do not exist
+   * ! USER :: DELETE ONE CREW
+   * Method to create a user
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
-  async deleteOne(crewId) {
-    const sqlQuery = `SELECT * FROM web.delete_crew($1);`;
-    const values = [crewId];
+  async deleteOneCrew(userId, crewId) {
+    const sqlQuery = `SELECT * FROM web.delete_user_crew($1,$2)`;
+    const values = [userId, crewId];
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
-      if (response.rows == false) {
-        error = new APIError("crew not found", 404);
-      } else {
-        result = true;
-      }
+      result = response.rows[0];
     } catch (err) {
-      error = new APIError("Internal server error", 500, err);
+      console.log(err);
+      error = new APIError("Internal server error", 500);
     }
     return { error, result };
   },

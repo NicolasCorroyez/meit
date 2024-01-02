@@ -10,72 +10,76 @@ const { crewController } = require("../controller");
 
 // ROUTES
 /**
- * ! GET /crew
- * @summary Get all crews
+ * GET
+ * @summary Get all user's crews
  * @tags Crew
- * @param {number} id.path.required - crew identifier
+ * @param {number} userId.path.required - user identifier
  * @return {Crew} 200 - success response - application/json
- * @return {ApiError} 404 - Crew not found
- * @return {ApiError} 500 - Internal server error
- */
-router.get("/", /* validationService.isConnected, */ crewController.getAll);
-
-/**
- * ! GET /crew/:crewId
- * @summary Get one crew by Id
- * @tags Crew
- * @param {number} id.path.required - crew identifier
- * @return {Crew} 200 - success response - application/json
- * @return {ApiError} 404 - Crew not found
+ * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
  */
 router.get(
-  "/:crewId(\\d+)",
-  /* validationService.isConnected, */ crewController.getOne
+  "/:userId/crews",
+  /* validationService.isConnected, */ crewController.getAllCrews
 );
 
 /**
- * ! POST /crew
- * @summary Create one crew
+ * GET
+ * @summary Get one user's crew
+ * @tags Crew
+ * @param {number} userId.path.required - user identifier
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/:userId/crews/:crewId",
+  /* validationService.isConnected, */ crewController.getOneCrew
+);
+
+/**
+ * POST
+ * @summary Add a crew
  * @tags Crew
  * @return {Crew}
- * @param {InputRegisterCrew} request.body.required - Crew info for register - 200 - success response - application/json
+ * @param {Number} userId.path.required - user identifier
+ * @param {InputRegisterUser} request.body.required - user info for register - 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
 router.post(
-  "/",
-  /* validationService.isUser("insert"), */ crewController.createOne
+  "/:userId(\\d+)/crews/",
+  /* validationService.isUser("insert"), */ crewController.addOneCrew
 );
 
 /**
- * ! PATCH /crew
+ * PATCH
  * @summary Patch one crew
  * @tags Crew
- * @param {Number} id.path.required - crew identifier
+ * @param {Number} userId.path.required - crew identifier
  * @param {InputRegisterUser} request.body.required - crew info for patch - application/json
  * @return {Crew} 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
 router.patch(
-  "/:crewId(\\d+)",
+  "/:userId(\\d+)/crews/:crewId(\\d+)",
   /* validationService.isConnected,
   validationService.isUser("update"), */
-  crewController.modifyOne
+  crewController.modifyOneCrew
 );
 
 /**
- * ! DELETE /crew
- * @summary Delete one crew
+ * DELETE
+ * @summary Delete one user's crew
  * @tags Crew
- * @param {Number} id.path.required - crew identifier
+ * @param {Number} userId.path.required - user identifier
  * @return {boolean} 200 - success response - true
- * @return {ApiError} 404 - Crew not found
+ * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
  */
 router.delete(
-  "/:crewId(\\d+)",
+  "/:userId(\\d+)/crews/",
   /* validationService.isConnected, */
-  crewController.deleteOne
+  crewController.deleteOneCrew
 );
 
 module.exports = router;

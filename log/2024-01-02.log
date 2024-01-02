@@ -1,0 +1,542 @@
+10:02:51.450;Acces denied;Error: Acces denied
+    at modifyOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:81:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+10:05:48.940;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:415:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:292:31)
+10:06:01.801;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:415:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:292:31)
+10:06:15.832;No event found;Error: No event found
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:468:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:331:31)
+10:06:35.518;Acces denied;Error: Acces denied
+    at modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:406:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+10:20:46.840;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:22:49.632;Acces denied;Error: Acces denied
+    at modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:294:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+10:23:04.519;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:23:13.323;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:23:53.493;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:25:15.159;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:25:24.540;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+10:25:59.066;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:26:01.100;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:26:04.567;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:26:05.901;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:26:11.026;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:26:11.964;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:28:27.638;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:28:31.035;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+10:28:53.576;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:29:27.992;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:30:23.334;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:33:15.558;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:33:23.535;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+10:33:29.647;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:33:37.434;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:34:55.718;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:39:01.365;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:39:33.181;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+10:39:46.351;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:40:32.659;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:41:32.456;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+10:59:04.285;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:391:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:262:31)
+10:59:19.957;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:417:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+11:01:26.896;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+11:02:48.853;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+11:04:41.196;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+11:10:20.025;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:11:47.418;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:12:20.064;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:13:06.448;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:13:58.465;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:14:29.151;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:15:34.921;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:15:47.869;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:18:02.509;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+11:20:28.170;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+11:22:02.647;Internal server error;Error: Internal server error
+    at Object.deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:440:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:316:31)
+12:47:17.117;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:104:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+12:47:42.175;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:271:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:170:31)
+12:49:24.468;Internal server error;Error: Internal server error
+    at Object.deleteOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:294:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:191:31)
+12:50:38.827;function web.get_user_crews(unknown) does not exist;Error: Internal server error
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:323:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:214:31)
+12:51:44.531;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+12:51:48.034;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+12:51:49.379;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:346:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:233:31)
+12:53:11.530;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:416:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+12:53:47.752;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:416:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:287:33)
+12:55:15.080;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:469:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:339:31)
+12:56:52.019;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:585:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:426:33)
+12:57:43.185;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:585:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:426:33)
+13:28:18.852;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:104:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+13:30:00.199;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:40:31)
+13:30:03.146;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:40:31)
+13:30:22.098;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:24.451;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:25.282;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:32.114;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:32.606;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:32.738;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:35.006;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:40.793;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:30:45.868;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:31:25.237;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:31:43.632;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:31:49.088;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:31:51.868;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:31:59.183;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:196:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:111:33)
+13:32:06.484;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:196:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:111:33)
+13:32:17.462;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:196:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:111:33)
+13:32:42.533;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:33:03.661;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:69:31)
+13:33:29.283;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:82:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:35:08.415;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:35:20.171;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:05:43.436;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:07:03.815;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:14:10.510;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:17:24.714;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:69:31)
+14:20:06.619;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:69:31)
+14:21:36.674;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:24:20.255;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:197:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:111:33)
+14:26:05.739;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:28:44.824;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:39:23.867;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:39:45.411;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:39:53.769;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:40:13.583;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:41:29.105;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:41:45.423;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:43:55.165;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:43:58.540;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:21:10.267;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:38:40.990;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:39:49.580;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:40:10.220;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:42:49.867;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:48:45.023;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:49:30.101;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:49:43.089;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:51:39.624;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:55:45.731;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:57:18.923;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:02.734;Internal error server;Error: Internal error server
+    at Object.modifyOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:153:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:74:33)
+15:58:02.737;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:17.088;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:43.378;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+16:14:48.832;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
