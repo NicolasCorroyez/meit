@@ -116,7 +116,7 @@ const crewDatamapper = {
    * ! USER :: ADD ONE CREW
    * Method to create a user
    * @param {User} userId -  Id of a user
-   * @param {Event} eventId - Id of another user
+   * @param {Crew} crewId - Id of another user
    * @returns {500} - if an error occured
    * @async
    */
@@ -147,8 +147,8 @@ const crewDatamapper = {
   /**
    * ! USER :: MODIFY ONE CREW
    * Method to modify a crew
-   * @param {InputPatchUser} eventInfo - informations of a crew
-   * @returns {Crew} - Event object with updated informations
+   * @param {InputPatchUser} crewInfo - informations of a crew
+   * @returns {Crew} - Crew object with updated informations
    * @returns {500} - if an error occured
    * @async
    */

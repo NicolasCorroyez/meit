@@ -10,10 +10,10 @@ const { crewController } = require("../controller");
 
 // ROUTES
 /**
- * GET /user/:userId/crews
+ * GET
  * @summary Get all user's crews
  * @tags Crew
- * @param {number} id.path.required - user identifier
+ * @param {number} userId.path.required - user identifier
  * @return {Crew} 200 - success response - application/json
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
@@ -24,10 +24,10 @@ router.get(
 );
 
 /**
- * GET /user/:userId/crews/:crewId
+ * GET
  * @summary Get one user's crew
  * @tags Crew
- * @param {number} id.path.required - user identifier
+ * @param {number} userId.path.required - user identifier
  * @return {Crew} 200 - success response - application/json
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
@@ -38,10 +38,11 @@ router.get(
 );
 
 /**
- * POST /user/:userId/crews/
+ * POST
  * @summary Add a crew
  * @tags Crew
  * @return {Crew}
+ * @param {Number} userId.path.required - user identifier
  * @param {InputRegisterUser} request.body.required - user info for register - 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
  */
@@ -51,10 +52,10 @@ router.post(
 );
 
 /**
- * PATCH /user/:userId/crews/:crewId
+ * PATCH
  * @summary Patch one crew
  * @tags Crew
- * @param {Number} id.path.required - crew identifier
+ * @param {Number} userId.path.required - crew identifier
  * @param {InputRegisterUser} request.body.required - crew info for patch - application/json
  * @return {Crew} 200 - success response - application/json
  * @return {ApiError} 500 - Internal server error
@@ -67,10 +68,10 @@ router.patch(
 );
 
 /**
- * DELETE /user/:userId/crews/:crewId
+ * DELETE
  * @summary Delete one user's crew
  * @tags Crew
- * @param {Number} id.path.required - user identifier
+ * @param {Number} userId.path.required - user identifier
  * @return {boolean} 200 - success response - true
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error

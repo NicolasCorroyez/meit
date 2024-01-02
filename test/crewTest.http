@@ -1,0 +1,38 @@
+### ! CREWS
+
+### Get all user's crews
+GET http://localhost:3000/user/1/crews
+
+### Get one user's crew
+GET http://localhost:3000/user/1/crews/1
+
+### Post user crew
+POST http://localhost:3000/user/1/crews/
+content-type: application/json
+
+{
+    "crew_name":"testcrew232Ess",
+    "crew_picture":"",
+    "added_friends":[1,2,3,4]
+}
+
+### Update a crew
+PATCH http://localhost:3000/user/1/crews/13
+content-type: application/json
+
+{
+    "userId": 1,
+    "crewId": 13,
+    "picture": "ezzz",
+    "name":"NewTeddddddddddstCrew",
+    "membersId":[1,2]
+}
+
+### Delete user crew
+DELETE http://localhost:3000/user/1/crews/
+content-type: application/json
+
+{
+    "userId":1,
+    "crew_id_param":13
+}

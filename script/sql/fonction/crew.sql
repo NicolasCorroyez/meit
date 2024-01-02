@@ -61,10 +61,10 @@ BEGIN
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
-                'nickname', u.nickname,
-                'firstname', u.firstname,
-                'lastname', u.lastname,
-                'picture', u.picture
+                'user_nickname', u.nickname,
+                'user_firstname', u.firstname,
+                'user_lastname', u.lastname,
+                'user_picture', u.picture
             )
             FROM web.r_user_crew rc
             JOIN main.user u ON rc.user_id = u.id
@@ -81,7 +81,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------- !
--- fonction qui insere les infos d'un crew à un utilisateur
+-- fonction qui insère les infos d'un équipage à un utilisateur et retourne les détails de l'équipage et des utilisateurs associés
 CREATE OR REPLACE FUNCTION web.insert_user_crew(
     param_user_id int,
     param_crew_name text,
@@ -91,7 +91,8 @@ CREATE OR REPLACE FUNCTION web.insert_user_crew(
 RETURNS TABLE (
     crew_id int,
     crew_name text,
-    crew_picture text
+    crew_picture text,
+    users jsonb[]
 )
 AS $$
 DECLARE
@@ -111,14 +112,28 @@ BEGIN
 
     -- Link users to the new crew
     INSERT INTO web.r_user_crew (user_id, crew_id)
-    SELECT user_id, new_crew_id FROM temp_user_ids;
+    SELECT tui.user_id, new_crew_id
+    FROM temp_user_ids tui;
 
-    -- Return details of the created crew
+    -- Return details of the created crew and associated users as an array
     RETURN QUERY
     SELECT
         new_crew_id,
         param_crew_name,
-        param_crew_picture;
+        param_crew_picture,
+        ARRAY(
+            SELECT
+                jsonb_build_object(
+                    'user_id', u.id,
+                    'user_nickname', u.nickname,
+                    'user_firstname', u.firstname,
+                    'user_lastname', u.lastname,
+                    'user_picture', u.picture
+                )
+            FROM main.user u
+            JOIN web.r_user_crew ruc ON u.id = ruc.user_id
+            WHERE ruc.crew_id = new_crew_id
+        ) AS users;
 
     -- Drop the temporary table
     DROP TABLE temp_user_ids;
@@ -139,6 +154,7 @@ AS $$
 DECLARE
     param_crew_id int;
     param_name text;
+    param_owner int;
     param_picture text;
     param_members int[];
 BEGIN
@@ -146,22 +162,26 @@ BEGIN
     param_crew_id := (u->>'crewId')::int;
     param_name := u->>'name';
     param_picture := u->>'picture';
+    param_owner := u->>'user_id';
     param_members := ARRAY(SELECT json_array_elements_text(u->'membersId')::int);
 
     -- Update the crew in the crew table and return the updated values
     UPDATE web.crew c
     SET
         name = COALESCE(param_name, c.name),
+        user_id = COALESCE(param_owner, c.user_id),
         picture = COALESCE(param_picture, c.picture)
     WHERE
         c.id = param_crew_id
     RETURNING
         c.id AS crew_id,
         c.name,
+        c.user_id,
         c.picture
     INTO
         crew_id,
         name,
+        user_id,
         picture;
 
     -- Check if there was a matching row in the UPDATE
@@ -170,10 +190,12 @@ BEGIN
         SELECT
             c.id AS crew_id,
             c.name,
+            c.user_id,
             c.picture
         INTO
             crew_id,
             name,
+            user_id,
             picture
         FROM
             web.crew c
@@ -198,10 +220,10 @@ BEGIN
             SELECT
                 jsonb_build_object(
                     'user_id', u.id,
-                    'nickname', u.nickname,
-                    'firstname', u.firstname,
-                    'lastname', u.lastname,
-                    'picture', u.picture
+                    'user_nickname', u.nickname,
+                    'user_firstname', u.firstname,
+                    'user_lastname', u.lastname,
+                    'user_picture', u.picture
                 )
             FROM
                 web.r_user_crew cr
@@ -218,28 +240,28 @@ END;
 $$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------- !
--- fonction qui supprime les infos d'un crew d'un utilisateur
+-- fonction qui supprime les infos d'un équipage d'un utilisateur
 CREATE OR REPLACE FUNCTION web.delete_user_crew(
     userId int,
     crew_id_param int
 )
-RETURNS TEXT
+RETURNS BOOLEAN
 AS $$
 DECLARE
-    result_text TEXT;
+    result_boolean BOOLEAN;
 BEGIN
     -- Attempt to delete links from r_user_crew
     DELETE FROM web.r_user_crew WHERE crew_id = crew_id_param;
-    
+
     -- Check if any rows were deleted
     IF FOUND THEN
         -- Delete the crew
         DELETE FROM web.crew WHERE web.crew.id = crew_id_param;
-        result_text := 'Crew deleted successfully.';
+        result_boolean := true;
     ELSE
-        result_text := 'Crew or link not found.';
+        result_boolean := false;
     END IF;
 
-    RETURN result_text;
+    RETURN result_boolean;
 END;
 $$ LANGUAGE plpgsql;

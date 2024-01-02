@@ -34,55 +34,67 @@ CREATE OR REPLACE FUNCTION web.insert_user(u json) RETURNS main.user AS $$
 $$ LANGUAGE sql SECURITY DEFINER;
 
 -------------------------------------------------------------------------------------------------- !
--- fonction qui edite un user
+-- fonction qui édite un utilisateur
 CREATE OR REPLACE FUNCTION web.update_user(u json) RETURNS main.user AS $$
 DECLARE
     user_db main.user;
 BEGIN
-    -- Extract user details from the database
-    SELECT id, nickname, firstname, lastname, picture
+    -- Extraire les détails de l'utilisateur de la base de données
+    SELECT id, nickname, firstname, lastname, device, picture
     INTO user_db
     FROM main.user WHERE id = (u->>'id')::int;
 
-    -- Handle the case where the user record does not exist
+    -- Gérer le cas où l'enregistrement de l'utilisateur n'existe pas
     IF NOT FOUND THEN
-        RAISE EXCEPTION 'User with ID % not found', (u->>'id')::int;
+        RAISE EXCEPTION 'Utilisateur avec l''ID % non trouvé', (u->>'id')::int;
     END IF;
 
-    -- Update user details based on provided JSON
+    -- Mettre à jour les détails de l'utilisateur en fonction du JSON fourni
     user_db.nickname := COALESCE(u->>'nickname', user_db.nickname);
     user_db.firstname := COALESCE(u->>'firstname', user_db.firstname);
     user_db.lastname := COALESCE(u->>'lastname', user_db.lastname);
+    user_db.device := COALESCE(u->>'device', user_db.device);
     user_db.picture := COALESCE(u->>'picture', user_db.picture);
 
-    -- Update user in the main.user table
+    -- Mettre à jour l'utilisateur dans la table main.user et retourner les champs modifiés
     UPDATE main.user
     SET
         nickname = user_db.nickname,
         firstname = user_db.firstname,
         lastname = user_db.lastname,
+        device = user_db.device,
         picture = user_db.picture
     WHERE
-        id = (u->>'id')::int;
+        id = (u->>'id')::int
+    RETURNING * INTO user_db;
 
+    -- Retourner l'utilisateur mis à jour
     RETURN user_db;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
+
 -------------------------------------------------------------------------------------------------- !
--- fonction qui supprime un user
-CREATE OR REPLACE FUNCTION web.delete_user(user_id int) RETURNS boolean AS $$
-	DECLARE id_selected int;
-	BEGIN
-		SELECT id INTO id_selected
-		FROM main.user
-		WHERE id = user_id;
-	IF FOUND THEN
-		DELETE FROM main.user
-		WHERE id = user_id;
-		RETURN true;
-	ELSE
-		RETURN false;
-	END IF;
+-- fonction qui supprime un utilisateur et retourne true ou false
+CREATE OR REPLACE FUNCTION web.delete_user(user_id int)
+RETURNS BOOLEAN
+AS $$
+BEGIN
+    -- Check if the user exists
+    IF EXISTS (
+        SELECT 1
+        FROM main.user
+        WHERE id = user_id
+    ) THEN
+        -- Delete the user
+        DELETE FROM main.user
+        WHERE id = user_id;
+
+        -- Return true indicating successful deletion
+        RETURN true;
+    ELSE
+        -- If user does not exist, return false
+        RETURN false;
+    END IF;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

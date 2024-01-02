@@ -304,7 +304,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------- !
--- fonction qui supprime un event d'un utilisateur
+-- fonction qui supprime un événement d'un utilisateur
 CREATE OR REPLACE FUNCTION web.delete_user_event(event_id_param int)
 RETURNS BOOLEAN
 AS $$
@@ -325,3 +325,4 @@ BEGIN
     RETURN event_deleted;
 END;
 $$ LANGUAGE plpgsql;
+

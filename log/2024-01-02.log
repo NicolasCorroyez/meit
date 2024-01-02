@@ -373,3 +373,170 @@
     at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:05:43.436;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:07:03.815;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:14:10.510;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:17:24.714;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:69:31)
+14:20:06.619;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:69:31)
+14:21:36.674;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:24:20.255;Internal error server;Error: Internal error server
+    at Object.modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:197:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:111:33)
+14:26:05.739;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:28:44.824;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+14:39:23.867;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:39:45.411;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:39:53.769;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+14:40:13.583;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:41:29.105;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:41:45.423;function web.get_user_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+14:43:55.165;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+14:43:58.540;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:21:10.267;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:38:40.990;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:39:49.580;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:40:10.220;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:42:49.867;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:48:45.023;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:49:30.101;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:49:43.089;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:51:39.624;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:55:45.731;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+15:57:18.923;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:02.734;Internal error server;Error: Internal error server
+    at Object.modifyOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:153:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:74:33)
+15:58:02.737;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:17.088;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+15:58:43.378;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+16:14:48.832;Acces denied;Error: Acces denied
+    at deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:103:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)

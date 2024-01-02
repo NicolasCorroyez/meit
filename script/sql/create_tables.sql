@@ -28,7 +28,7 @@ CREATE TABLE main.user (
 -- table qui contient les crew
 CREATE TABLE web.crew (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name text NOT NULL UNIQUE,
+    name text NOT NULL,
     picture text,
     user_id int NOT NULL REFERENCES main.user(id)
 );
