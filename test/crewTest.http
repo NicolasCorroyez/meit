@@ -6,6 +6,8 @@ GET http://localhost:3000/user/1/crews
 ### Get one user's crew
 GET http://localhost:3000/user/1/crews/1
 
+### ! Invited_user / user / users_in_crew / members :: fix wording everywhere
+### ! also fix property names
 ### Post user crew
 POST http://localhost:3000/user/1/crews/
 content-type: application/json
@@ -17,14 +19,14 @@ content-type: application/json
 }
 
 ### Update a crew
-PATCH http://localhost:3000/user/1/crews/13
+PATCH http://localhost:3000/user/1/crews/1
 content-type: application/json
 
 {
     "userId": 1,
-    "crewId": 13,
+    "crewId": 1,
     "picture": "ezzz",
-    "name":"NewTeddddddddddstCrew",
+    "name":"NewTeddddddddddddstCrew",
     "membersId":[1,2]
 }
 

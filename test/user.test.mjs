@@ -56,7 +56,6 @@ describe("USER", () => {
   });
 
   it("modifier un user", async () => {
-    console.log(userId);
     const response = await request(app)
       .patch(`/user/${userId}`)
       .send({
@@ -90,15 +89,10 @@ describe("USER", () => {
     expect(user.device).to.equal("Testing_code_changed_device");
   });
 
-  it("delete un user", async () => {
-    console.log(userId);
+  it("supprimer un user", async () => {
     const response = await request(app).delete(`/user/${userId}`).send({
       id: userId,
     });
     expect(response.status).to.equal(200);
-  });
-
-  it("supprimer un user", async () => {
-    const response = await request.delete(`/user/${userId}`).expect(200);
   });
 });

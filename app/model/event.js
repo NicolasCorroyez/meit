@@ -105,7 +105,7 @@ const eventDatamapper = {
       if (response.rows.length == 0) {
         error = new APIError("No event found", 404);
       } else {
-        result = response.rows;
+        result = response.rows[0];
       }
     } catch (err) {
       error = new APIError("Internal server error", 500, err);

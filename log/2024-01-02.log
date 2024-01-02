@@ -540,3 +540,31 @@
     at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
     at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
     at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:280:10)
+19:21:47.063;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:61:31)
+19:21:47.075;invalid input syntax for type integer: "undefined";Error: Internal server error
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:40:31)
+19:22:18.024;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:40:31)
+19:32:30.031;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+19:32:33.562;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+19:32:36.706;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+19:32:41.541;Internal error server;Error: Internal error server
+    at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
