@@ -4,14 +4,14 @@
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/7
+GET http://localhost:3000/user/8
 
 ### Post user
 POST http://localhost:3000/user 
 content-type: application/json
 
 {
-    "nickname":"httpcreZZatddedusfdder8_nickname",
+    "nickname":"testingthesky",
     "firstname":"httpcreateduser1_firstname",
     "lastname":"httpcreateduser1_lasttname",
     "device":"httpcreateduser1_device",
@@ -33,9 +33,9 @@ content-type: application/json
 }
 #### ! ca marche pas vraiment, ca met a null, mais ca n'efface pas l'entrée
 ### Delete one user
-DELETE http://localhost:3000/user/7
+DELETE http://localhost:3000/user/8
 content-type: application/json
 
 {
-    "id": 7
+    "id": 8
 }

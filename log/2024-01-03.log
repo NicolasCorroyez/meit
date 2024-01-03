@@ -1,0 +1,60 @@
+10:31:22.107;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+10:31:34.569;invalid input syntax for type integer: "owner";Error: Internal server error
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+10:31:47.519;invalid input syntax for type integer: "owner";Error: Internal server error
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+10:32:18.660;invalid input syntax for type integer: "owner";Error: Internal server error
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+10:33:59.102;invalid input syntax for type integer: "owner";Error: Internal server error
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+10:36:05.215;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:03:46.122;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:04:15.625;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:04:58.115;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:07:38.294;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:07:42.318;No user found;Error: No user found
+    at Object.getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:160:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneOwnerCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:74:31)
+11:21:32.052;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+11:21:32.059;invalid input syntax for type integer: "undefined";Error: Internal server error
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+11:21:53.513;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+11:22:00.212;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)

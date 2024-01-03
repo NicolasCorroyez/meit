@@ -28,8 +28,9 @@ content-type: application/json
 {
     "userId": 1,
     "eventId": 3,
+    "date":"2024-01-02",
     "theme": "New TheDJImedz",
-    "userIds": [1,2,3]
+    "userIds": [1,2]
 }
 
 ### Delete user event

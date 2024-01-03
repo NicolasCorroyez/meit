@@ -22,3 +22,6 @@ content-type: application/json
 {
     "friendId":5
 }
+
+### Get all user's pending friendship
+GET http://localhost:3000/user/1/friendship/pending

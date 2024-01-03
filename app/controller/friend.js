@@ -17,7 +17,6 @@ const friendController = {
    */
   async getAllFriends(req, res, next) {
     const user = req.params.userId;
-    console.log(user);
     const { error, result } = await friendDatamapper.getAllFriends(user);
     if (error) {
       next(error);
@@ -34,7 +33,6 @@ const friendController = {
    * @param {*} next
    */
   async getOneFriend(req, res, next) {
-    console.log(req.params);
     const userId = req.params.userId;
     const friendId = req.params.friendId;
     const { error, result } = await friendDatamapper.getOneFriend(
@@ -82,6 +80,26 @@ const friendController = {
     const { error, result } = await friendDatamapper.deleteOneFriend(
       userId,
       friendId
+    );
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! GET ALL PENDING FRIENDSHIP
+   * Method to get all friend
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getAllPendingFriendship(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await friendDatamapper.getAllPendingFriendship(
+      user
     );
     if (error) {
       next(error);

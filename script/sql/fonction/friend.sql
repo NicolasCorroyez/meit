@@ -56,37 +56,28 @@ CREATE OR REPLACE FUNCTION web.insert_user_friend(param_user_id int, param_frien
 RETURNS main.user
 AS $$
 DECLARE
-    friendship_exists BOOLEAN;
     friend_details main.user;
 BEGIN
-    friendship_exists := false;
-
-    BEGIN
-        SELECT EXISTS (
-            SELECT 1
-            FROM web.contact c
-            WHERE c.user_id = param_user_id AND c.friend_id = param_friend_id
-        ) INTO friendship_exists;
-    EXCEPTION
-        WHEN others THEN
-            friendship_exists := false;
-    END;
-
-    IF friendship_exists THEN
+    -- Check if the friendship already exists
+    IF EXISTS (
+        SELECT 1
+        FROM web.contact c
+        WHERE c.user_id = param_user_id AND c.friend_id = param_friend_id
+    ) THEN
         RAISE EXCEPTION 'L''amitié existe déjà';
     END IF;
 
-    -- Insérer l'ami dans la table web.contact
-    INSERT INTO web.contact (user_id, friend_id)
-    VALUES (param_user_id, param_friend_id);
+    -- Insert the friend into the web.contact table with friendship_confirmed set to false
+    INSERT INTO web.contact (user_id, friend_id, friendship_confirmed)
+    VALUES (param_user_id, param_friend_id, false);
 
-    -- Récupérer les détails de l'ami ajouté
+    -- Retrieve the details of the added friend
     SELECT u.*
     INTO friend_details
     FROM main.user u
     WHERE u.id = param_friend_id;
 
-    -- Retourner les détails de l'ami ajouté
+    -- Return the details of the added friend
     RETURN friend_details;
 END;
 $$ LANGUAGE plpgsql;
@@ -113,5 +104,37 @@ BEGIN
         -- If friendship does not exist, return false
         RETURN false;
     END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !
+-- fonction qui récupere les friendship request pending (false)
+-- ! Not getting all friendship requests
+CREATE OR REPLACE FUNCTION web.get_pending_friendship_requests(param_user_id int)
+RETURNS TABLE (
+    friendship_id int,
+    friend_id int,
+    friend_nickname text,
+    friend_firstname text,
+    friend_lastname text,
+    friend_picture text
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id AS friendship_id,
+        c.user_id AS friend_id,
+        u.nickname AS friend_nickname,
+        u.firstname AS friend_firstname,
+        u.lastname AS friend_lastname,
+        u.picture AS friend_picture
+    FROM
+        web.contact c
+    INNER JOIN
+        main.user u ON c.user_id = u.id
+    WHERE
+        c.friend_id = param_user_id
+        AND NOT c.friendship_confirmed;
 END;
 $$ LANGUAGE plpgsql;

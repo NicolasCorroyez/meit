@@ -127,32 +127,33 @@ const eventDatamapper = {
    * @returns {object} - Result of the operation
    * @async
    */
-  async addOneEvent(
-    userId,
-    theme,
-    date,
-    time,
-    place,
-    nb_people,
-    invited_users_ids,
-    invited_crews_ids
-  ) {
+  async addOneEvent(userId, eventData) {
+    const {
+      theme,
+      date,
+      time,
+      place,
+      nb_people,
+      invited_users_ids,
+      invited_crews_ids,
+    } = eventData;
+
     const userIDs = [invited_users_ids];
     const crewIDs = [invited_crews_ids];
     const userPlaceholders = Array.from(
       { length: userIDs.length },
       (_, i) => `$${i + 7}`
     ).join(", ");
-
     const crewPlaceholders = Array.from(
       { length: crewIDs.length },
       (_, i) => `$${userIDs.length + i + 7}`
     ).join(", ");
 
     const sqlQuery = `
-  SELECT * 
-  FROM web.insert_user_event($1, $2, $3, $4, $5, $6, ${userPlaceholders}, ${crewPlaceholders});
-`;
+      SELECT * 
+      FROM web.insert_user_event($1, $2, $3, $4, $5, $6, ${userPlaceholders}, ${crewPlaceholders});
+    `;
+
     const values = [
       userId,
       theme,
@@ -163,8 +164,10 @@ const eventDatamapper = {
       ...userIDs,
       ...crewIDs,
     ];
+
     let result;
     let error;
+
     try {
       const response = await client.query(sqlQuery, values);
       result = response.rows[0];
@@ -172,9 +175,9 @@ const eventDatamapper = {
       console.log(err);
       error = new APIError("Internal server error", 500);
     }
+
     return { error, result };
   },
-
   /**
    * ! USER :: MODIFY ONE EVENT
    * Method to modify a event

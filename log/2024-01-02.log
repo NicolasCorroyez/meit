@@ -568,3 +568,170 @@
     at Object.modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:166:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async modifyOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:94:33)
+21:38:13.675;No event found;Error: No event found
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:106:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:40:31)
+21:55:16.278;Access denied;Error: Access denied
+    at modifyOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:55:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+22:40:41.275;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:180:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:41:18.235;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:41:18.981;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:41:33.301;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:42:13.490;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:43:25.814;column reference "user_id" is ambiguous;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+22:45:25.920;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:38.366;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+22:45:42.235;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+22:45:42.651;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+22:45:43.249;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:44.016;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:44.336;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:44.656;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:45.268;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:45.420;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:45.601;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:46.094;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:47.411;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:47.528;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:47.669;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:45:48.130;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:47:41.290;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:47:45.928;Internal server error;Error: Internal server error
+    at Object.addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:142:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:59:31)
+22:48:29.811;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:48:32.342;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:49:53.935;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+22:49:57.468;No user found;Error: No user found
+    at Object.getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneCrew (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:38:31)
+22:51:28.249;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+22:51:53.049;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:52:08.749;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+22:56:19.661;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:01:59.387;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:02:01.716;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:02:09.179;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:02:09.680;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:02:09.867;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)
+23:03:15.089;No crews found;Error: No crews found
+    at Object.getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/crew.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllCrews (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/crew.js:20:31)

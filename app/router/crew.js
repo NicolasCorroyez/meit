@@ -38,6 +38,34 @@ router.get(
 );
 
 /**
+ * GET
+ * @summary Get all user's crews
+ * @tags Crew
+ * @param {number} userId.path.required - user identifier
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/owner/:userId/crews",
+  /* validationService.isConnected, */ crewController.getAllOwnerCrews
+);
+
+/**
+ * GET
+ * @summary Get all user's crews
+ * @tags Crew
+ * @param {number} userId.path.required - user identifier
+ * @return {Crew} 200 - success response - application/json
+ * @return {ApiError} 404 - User not found
+ * @return {ApiError} 500 - Internal server error
+ */
+router.get(
+  "/owner/:userId/crews/:crewId",
+  /* validationService.isConnected, */ crewController.getOneOwnerCrew
+);
+
+/**
  * POST
  * @summary Add a crew
  * @tags Crew

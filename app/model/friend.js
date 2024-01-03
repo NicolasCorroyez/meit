@@ -157,6 +157,33 @@ const friendDatamapper = {
     }
     return { error, result };
   },
+
+  /**
+   * ! USER :: GET ALL USER'S PENDING FRIENSHIP
+   * Method to get all users
+   * @returns {[User]} Array of Users objects
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getAllPendingFriendship(userId) {
+    const sqlQuery = `SELECT * FROM web.get_pending_friendship_requests($1);`;
+    const values = [userId];
+    console.log(userId);
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No friends found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
 };
 
 module.exports = friendDatamapper;

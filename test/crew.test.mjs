@@ -8,6 +8,7 @@ const app = "http://localhost:3000";
 // TEST FOR FRIEND
 describe("CREW", () => {
   let crewId;
+  let newCrewId;
   const ownerUser = 1;
 
   it("créer un crew", async () => {
@@ -30,7 +31,7 @@ describe("CREW", () => {
     expect(user).to.have.property("crew_id");
     expect(user).to.have.property("crew_name");
     expect(user).to.have.property("crew_picture");
-    expect(user).to.have.property("users");
+    expect(user).to.have.property("members");
   });
 
   it("récupérer un crew d'un user", async () => {
@@ -46,7 +47,7 @@ describe("CREW", () => {
     expect(user).to.have.property("crew_id");
     expect(user).to.have.property("crew_name");
     expect(user).to.have.property("crew_picture");
-    expect(user).to.have.property("invited_users");
+    expect(user).to.have.property("members");
   });
 
   it("modifier un crew", async () => {
@@ -91,7 +92,7 @@ describe("CREW", () => {
     expect(users[0]).to.have.property("crew_id");
     expect(users[0]).to.have.property("crew_name");
     expect(users[0]).to.have.property("crew_picture");
-    expect(users[0]).to.have.property("users_in_crew");
+    expect(users[0]).to.have.property("members");
   });
 
   it("supprimer un crew", async () => {
@@ -102,5 +103,38 @@ describe("CREW", () => {
         crew_id_param: crewId,
       });
     expect(response.status).to.equal(200);
+  });
+
+  it("récupérer tous les crew dont un user est propriétaire", async () => {
+    const response = await request(app)
+      .get(`/user/owner/${ownerUser}/crews/`)
+      .expect(200);
+    const users = response.body;
+    newCrewId = users[0].crew_id;
+
+    // est-ce un objet ?
+    expect(users[0]).to.be.an("object");
+
+    // les clefs
+    expect(users[0]).to.have.property("crew_id");
+    expect(users[0]).to.have.property("crew_name");
+    expect(users[0]).to.have.property("crew_picture");
+    expect(users[0]).to.have.property("members");
+  });
+
+  it("récupérer un crew dont le user est propriétaire", async () => {
+    const response = await request(app)
+      .get(`/user/owner/${ownerUser}/crews/${newCrewId}`)
+      .expect(200);
+    const user = response.body;
+
+    // est-ce un objet ?
+    expect(user).to.be.an("object");
+
+    // les clefs
+    expect(user).to.have.property("crew_id");
+    expect(user).to.have.property("crew_name");
+    expect(user).to.have.property("crew_picture");
+    expect(user).to.have.property("members");
   });
 });

@@ -177,6 +177,7 @@ const userDatamapper = {
         result = true;
       }
     } catch (err) {
+      console.log(err);
       error = new APIError("Internal server error", 500, err);
     }
     return { error, result };
