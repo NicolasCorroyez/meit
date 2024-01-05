@@ -4,16 +4,16 @@
 GET http://localhost:3000/user
 
 ### Get one user
-GET http://localhost:3000/user/7
+GET http://localhost:3000/user/6
 
 ### Post user
-POST http://localhost:3000/user 
+POST http://localhost:3000/user
 content-type: application/json
 
 {
-    "nickname":"httpcreZZatddedusfdder8_nickname",
-    "firstname":"httpcreateduser1_firstname",
-    "lastname":"httpcreateduser1_lasttname",
+    "nickname":"banane",
+    "firstname":"eva",
+    "lastname":"bouchoux",
     "device":"httpcreateduser1_device",
     "picture":"httpcreateduser1_picture",
     "role":"member"
@@ -31,11 +31,11 @@ content-type: application/json
     "device": "dzdzdz",
     "picture": "ooo"
 }
-#### ! ca marche pas vraiment, ca met a null, mais ca n'efface pas l'entrée
+
 ### Delete one user
-DELETE http://localhost:3000/user/7
+DELETE http://localhost:3000/user/8
 content-type: application/json
 
 {
-    "id": 7
+    "id": 8
 }

@@ -1,12 +1,12 @@
 -- ! CREW FUNCTIONS
 -------------------------------------------------------------------------------------------------- !
--- fonction qui recupere les infos de tous les crews d'un utilisateur
+-- fonction qui recupere les infos de tous les crews ou un utilisateur est invité
 CREATE OR REPLACE FUNCTION web.get_user_all_crews(param_user_id int)
 RETURNS TABLE (
     crew_id int,
     crew_name text,
     crew_picture text,
-    users_in_crew jsonb
+    members jsonb
 )
 AS $$
 BEGIN
@@ -32,7 +32,7 @@ BEGIN
                 main.user u ON uc_inner.user_id = u.id
             WHERE
                 uc_inner.crew_id = c.id
-        ) AS users_in_crew
+        ) AS members
     FROM
         web.r_user_crew uc
     INNER JOIN
@@ -43,13 +43,13 @@ END;
 $$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------- !
--- fonction qui recupere les infos d'un crew d'un utilisateur
+-- fonction qui recupere les infos d'un crew d'un utilisateur invité
 CREATE OR REPLACE FUNCTION web.get_user_one_crew(param_user_id int, param_crew_id int)
 RETURNS TABLE (
     crew_id int,
     crew_name text,
     crew_picture text,
-    invited_users jsonb[]
+    members jsonb[]
 )
 AS $$
 BEGIN
@@ -69,7 +69,7 @@ BEGIN
             FROM web.r_user_crew rc
             JOIN main.user u ON rc.user_id = u.id
             WHERE rc.crew_id = c.id
-        ) AS invited_users
+        ) AS members
     FROM
         web.r_user_crew rc
     JOIN
@@ -77,6 +77,88 @@ BEGIN
     WHERE
         rc.user_id = param_user_id
         AND c.id = param_crew_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !
+-- fonction qui récupere tous les crews dont l'utilisateur est createur
+CREATE OR REPLACE FUNCTION web.get_user_owner_all_crews(param_user_id int)
+RETURNS TABLE (
+    crew_id int,
+    crew_name text,
+    crew_picture text,
+    members jsonb
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id AS crew_id,
+        c.name AS crew_name,
+        c.picture AS crew_picture,
+        (
+            SELECT 
+                jsonb_agg(
+                    jsonb_build_object(
+                        'user_id', u.id,
+                        'user_nickname', u.nickname,
+                        'user_firstname', u.firstname,
+                        'user_lastname', u.lastname,
+                        'user_picture', u.picture
+                    )
+                )
+            FROM
+                web.r_user_crew uc_inner
+            INNER JOIN
+                main.user u ON uc_inner.user_id = u.id
+            WHERE
+                uc_inner.crew_id = c.id
+        ) AS members
+    FROM
+        web.crew c
+    WHERE
+        c.user_id = param_user_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !
+-- fonction qui récupere un crew dont l'utilisateur est createur
+CREATE OR REPLACE FUNCTION web.get_user_owner_one_crew(param_user_id int, param_crew_id int)
+RETURNS TABLE (
+    crew_id int,
+    crew_name text,
+    crew_picture text,
+    members jsonb[]
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id AS crew_id,
+        c.name AS crew_name,
+        c.picture AS crew_picture,
+        ARRAY(
+            SELECT jsonb_build_object(
+                'user_id', u.id,
+                'user_nickname', u.nickname,
+                'user_firstname', u.firstname,
+                'user_lastname', u.lastname,
+                'user_picture', u.picture
+            )
+            FROM web.r_user_crew rc
+            JOIN main.user u ON rc.user_id = u.id
+            WHERE rc.crew_id = c.id
+        ) AS members
+    FROM
+        web.crew c
+    WHERE
+        c.id = param_crew_id
+        AND EXISTS (
+            SELECT 1
+            FROM web.r_user_crew rc
+            WHERE rc.user_id = param_user_id
+              AND rc.crew_id = c.id
+        );
 END;
 $$ LANGUAGE plpgsql;
 
@@ -92,7 +174,7 @@ RETURNS TABLE (
     crew_id int,
     crew_name text,
     crew_picture text,
-    users jsonb[]
+    members jsonb[]
 )
 AS $$
 DECLARE
@@ -133,7 +215,7 @@ BEGIN
             FROM main.user u
             JOIN web.r_user_crew ruc ON u.id = ruc.user_id
             WHERE ruc.crew_id = new_crew_id
-        ) AS users;
+        ) AS members;
 
     -- Drop the temporary table
     DROP TABLE temp_user_ids;
@@ -265,3 +347,5 @@ BEGIN
     RETURN result_boolean;
 END;
 $$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !

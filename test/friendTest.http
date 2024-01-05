@@ -1,14 +1,13 @@
 ### ! FRIENDS
 
 ### Get all user's friends
-GET http://localhost:3000/user/1/friends
+GET http://localhost:3000/user/2/friends
 
 ### Get one user's friends
-GET http://localhost:3000/user/1/friends/2
+GET http://localhost:3000/user/2/friends/5
 
-### ! Return all user's friend ?
 ### Post user friendship
-POST http://localhost:3000/user/1/friends
+POST http://localhost:3000/user/2/friends
 content-type: application/json
 
 {
@@ -22,3 +21,9 @@ content-type: application/json
 {
     "friendId":5
 }
+
+### Get all user's pending friendship
+GET http://localhost:3000/user/2/friendship/pending
+
+### Patch one user
+PATCH http://localhost:3000/user/2/friendship/confirm/5

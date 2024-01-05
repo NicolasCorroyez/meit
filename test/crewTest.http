@@ -1,30 +1,34 @@
 ### ! CREWS
 
-### Get all user's crews
+### ! param wording unconsistent
+
+### ! Confirmation ajout friend
+
+### Get all where the user is in crews
 GET http://localhost:3000/user/1/crews
 
-### Get one user's crew
+### Get one crew where the user is in
 GET http://localhost:3000/user/1/crews/1
 
 ### Post user crew
-POST http://localhost:3000/user/1/crews/
+POST http://localhost:3000/user/10/crews/
 content-type: application/json
 
 {
-    "crew_name":"testcrew232Ess",
+    "crew_name":"testingcrewcreation",
     "crew_picture":"",
     "added_friends":[1,2,3,4]
 }
 
 ### Update a crew
-PATCH http://localhost:3000/user/1/crews/13
+PATCH http://localhost:3000/user/1/crews/1
 content-type: application/json
 
 {
     "userId": 1,
-    "crewId": 13,
+    "crewId": 1,
     "picture": "ezzz",
-    "name":"NewTeddddddddddstCrew",
+    "name":"NewTeddddddddddddstCrew",
     "membersId":[1,2]
 }
 
@@ -36,3 +40,9 @@ content-type: application/json
     "userId":1,
     "crew_id_param":13
 }
+
+### Get user owner of crew
+GET http://localhost:3000/user/owner/1/crews/
+
+### Get user owner of one crew
+GET http://localhost:3000/user/owner/1/crews/4

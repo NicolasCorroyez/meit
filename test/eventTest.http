@@ -1,10 +1,11 @@
 ### ! EVENTS
 
+### ! param wording unconsistent
 ### Get all user's events
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/1
+GET http://localhost:3000/user/1/events/3
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
@@ -21,14 +22,15 @@ content-type: application/json
 }
 
 ### Patch one event
-PATCH http://localhost:3000/user/1/events/4
+PATCH http://localhost:3000/user/1/events/3
 content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 4,
+    "eventId": 3,
+    "date":"2024-01-02",
     "theme": "New TheDJImedz",
-    "userIds": [1,2,3]
+    "userIds": [1,2]
 }
 
 ### Delete user event
@@ -37,5 +39,5 @@ content-type: application/json
 
 {
     "userId": 1,
-    "eventId": 4
+    "eventId": 3
 }

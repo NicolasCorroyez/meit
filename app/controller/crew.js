@@ -17,7 +17,6 @@ const crewController = {
    */
   async getAllCrews(req, res, next) {
     const user = req.params.userId;
-    console.log(user);
     const { error, result } = await crewDatamapper.getAllCrews(user);
     if (error) {
       next(error);
@@ -34,10 +33,48 @@ const crewController = {
    * @param {*} next
    */
   async getOneCrew(req, res, next) {
-    console.log(req.params);
     const userId = req.params.userId;
     const crewId = req.params.crewId;
     const { error, result } = await crewDatamapper.getOneCrew(userId, crewId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! GET ALL OWNER CREWS
+   * Method to get all crews
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getAllOwnerCrews(req, res, next) {
+    const user = req.params.userId;
+    console.log(user);
+    const { error, result } = await crewDatamapper.getAllOwnerCrews(user);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
+
+  /**
+   * ! GET ONE OWNER CREW
+   * Method to get one crew
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async getOneOwnerCrew(req, res, next) {
+    const userId = req.params.userId;
+    const crewId = req.params.crewId;
+    const { error, result } = await crewDatamapper.getOneOwnerCrew(
+      userId,
+      crewId
+    );
     if (error) {
       next(error);
     } else {
@@ -57,14 +94,6 @@ const crewController = {
     const crewName = req.body.crew_name;
     const crewPicture = req.body.crew_picture;
     const crewMembers = req.body.added_friends;
-
-    console.log(
-      "controllers params :",
-      userId,
-      crewName,
-      crewPicture,
-      crewMembers
-    );
 
     const { error, result } = await crewDatamapper.addOneCrew(
       userId,
@@ -89,7 +118,6 @@ const crewController = {
   async modifyOneCrew(req, res, next) {
     const userId = req.params.userId;
     const crewInfo = req.body;
-    console.log("controller : ", userId, crewInfo);
     if (req.body.userId == req.params.userId) {
       const { error, result } = await crewDatamapper.modifyOneCrew(crewInfo);
       if (error) {
@@ -114,7 +142,6 @@ const crewController = {
     const userId = parseInt(req.params.userId);
     const userOwner = req.body.userId;
     const crewId = req.body.crew_id_param;
-    console.log(userId, userOwner, crewId);
     if (userId !== userOwner) {
       return res
         .status(403)

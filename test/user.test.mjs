@@ -55,8 +55,24 @@ describe("USER", () => {
     expect(user).to.have.property("role");
   });
 
+  it("récupérer tous les users", async () => {
+    const response = await request(app).get(`/user/`).expect(200);
+    const user = response.body[0];
+
+    // est-ce un objet ?
+    expect(user).to.be.an("object");
+
+    // les clefs
+    expect(user).to.have.property("id");
+    expect(user).to.have.property("nickname");
+    expect(user).to.have.property("firstname");
+    expect(user).to.have.property("lastname");
+    expect(user).to.have.property("device");
+    expect(user).to.have.property("picture");
+    expect(user).to.have.property("role");
+  });
+
   it("modifier un user", async () => {
-    console.log(userId);
     const response = await request(app)
       .patch(`/user/${userId}`)
       .send({
@@ -90,15 +106,10 @@ describe("USER", () => {
     expect(user.device).to.equal("Testing_code_changed_device");
   });
 
-  it("delete un user", async () => {
-    console.log(userId);
+  it("supprimer un user", async () => {
     const response = await request(app).delete(`/user/${userId}`).send({
       id: userId,
     });
     expect(response.status).to.equal(200);
-  });
-
-  it("supprimer un user", async () => {
-    const response = await request.delete(`/user/${userId}`).expect(200);
   });
 });

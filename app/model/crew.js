@@ -104,7 +104,62 @@ const crewDatamapper = {
       if (response.rows.length == 0) {
         error = new APIError("No user found", 404);
       } else {
+        result = response.rows[0];
+      }
+    } catch (err) {
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! USER :: GET ALL USER'S OWNER CREWS popo
+   * Method to get all user's crews
+   * @returns {[User]} Array of Users objects
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getAllOwnerCrews(userId) {
+    const sqlQuery = `SELECT * FROM web.get_user_owner_all_crews($1);`;
+    const values = [userId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No crews found", 404);
+      } else {
         result = response.rows;
+      }
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! USER :: GET ONE USER'S OWNER CREW popo
+   * Method to get all users
+   * @returns {User} User object
+   * @param {User} userId -  Id of a user
+   * @param {User} crewId - Id of another user
+   * @returns {404} if no users found
+   * @returns {500} if an error occured
+   * @async
+   */
+  async getOneOwnerCrew(userId, crewId) {
+    const sqlQuery = `SELECT * FROM web.get_user_owner_one_crew($1,$2);`;
+    const values = [userId, crewId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No user found", 404);
+      } else {
+        result = response.rows[0];
       }
     } catch (err) {
       error = new APIError("Internal server error", 500, err);

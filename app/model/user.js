@@ -104,7 +104,7 @@ const userDatamapper = {
     } catch (err) {
       error = new APIError("Internal error server", 500);
     }
-    if (result.length === 0 /* || result.id === null */) {
+    if (result.length === 0 || result.id === null) {
       error = new APIError("User not found", 404);
     }
     return { error, result };
@@ -166,17 +166,19 @@ const userDatamapper = {
    */
   async deleteOne(userId) {
     const sqlQuery = `SELECT * FROM web.delete_user($1);`;
-    const values = [userId];
+    const values = [parseInt(userId)];
+    console.log(values);
     let result;
     let error;
     try {
       const response = await client.query(sqlQuery, values);
-      if (response.rows == false) {
+      if (response.rows[0] == false) {
         error = new APIError("User not found", 404);
       } else {
-        result = true;
+        result = response.rows[0].delete_user;
       }
     } catch (err) {
+      console.log(err);
       error = new APIError("Internal server error", 500, err);
     }
     return { error, result };

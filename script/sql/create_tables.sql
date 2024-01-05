@@ -30,14 +30,15 @@ CREATE TABLE web.crew (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name text NOT NULL,
     picture text,
-    user_id int NOT NULL REFERENCES main.user(id)
+    user_id int NOT NULL REFERENCES main.user(id) ON DELETE CASCADE
 );
 
 -- table qui contient les liens entre utilisateurs
 CREATE TABLE web.contact (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id int NOT NULL REFERENCES main.user(id),
-    friend_id int NOT NULL REFERENCES main.user(id)
+    user_id int REFERENCES main.user(id) ON DELETE CASCADE,
+    friend_id int REFERENCES main.user(id) ON DELETE CASCADE,
+    friendship_confirmed BOOLEAN DEFAULT false
 );
 
 -- table qui contient les events
@@ -54,17 +55,17 @@ CREATE TABLE web.event (
 -- table d'association entre user et event
 CREATE TABLE web.r_user_event (
     id int GENERATED ALWAYS AS IDENTITY,
-    user_id int REFERENCES main.user(id),
-    crew_id int REFERENCES web.crew(id), -- This is weird but only way i can see to include crew names
-    event_id int REFERENCES web.event(id),
+    user_id int REFERENCES main.user(id) ON DELETE CASCADE,
+    crew_id int REFERENCES web.crew(id), -- This is weird but only way I can see to include crew names
+    event_id int REFERENCES web.event(id) ON DELETE CASCADE,
     userstate BOOLEAN
 );
 
 -- table d'association entre user et crew
 CREATE TABLE web.r_user_crew (
     id int GENERATED ALWAYS AS IDENTITY,
-    user_id int REFERENCES main.user(id),
-    crew_id int REFERENCES web.crew(id)
+    user_id int REFERENCES main.user(id) ON DELETE CASCADE,
+    crew_id int REFERENCES web.crew(id) ON DELETE CASCADE
 );
 
 COMMIT;

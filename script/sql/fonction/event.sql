@@ -325,4 +325,3 @@ BEGIN
     RETURN event_deleted;
 END;
 $$ LANGUAGE plpgsql;
-
