@@ -11,6 +11,7 @@ DROP FUNCTION IF EXISTS web.get_user_one_friend;
 DROP FUNCTION IF EXISTS web.insert_user_friend;
 DROP FUNCTION IF EXISTS web.delete_user_friend;
 DROP FUNCTION IF EXISTS web.get_pending_friendship_requests;
+DROP FUNCTION IF EXISTS web.confirm_friendship;
 -- CREW
 DROP FUNCTION IF EXISTS web.get_user_all_crews;
 DROP FUNCTION IF EXISTS web.get_user_one_crew;

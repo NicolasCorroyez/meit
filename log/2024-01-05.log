@@ -1,0 +1,48 @@
+09:54:32.740;User with ID 7 not found;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+12:27:44.543;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+12:27:59.745;User with ID 7 not found;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+12:35:46.793;function web.delete_user(unknown) does not exist;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+12:36:28.918;column "row_count" does not exist;Error: Internal server error
+    at Object.deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:181:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:96:33)
+13:30:08.860;Internal error server;Error: Internal error server
+    at Object.confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:206:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:121:31)
+13:32:20.376;Internal error server;Error: Internal error server
+    at Object.confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:207:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:121:31)
+13:33:15.442;Internal error server;Error: Internal error server
+    at Object.confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:207:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:121:31)
+13:34:02.696;Internal error server;Error: Internal error server
+    at Object.confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:207:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async confirmOneFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:121:31)
+13:37:35.439;No prending friends found;Error: No prending friends found
+    at Object.getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:178:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:101:31)
+13:37:36.726;No prending friends found;Error: No prending friends found
+    at Object.getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:178:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:101:31)
+13:46:58.084;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)

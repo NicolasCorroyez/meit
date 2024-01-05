@@ -80,24 +80,24 @@ CREATE OR REPLACE FUNCTION web.delete_user(p_user_id int)
 RETURNS BOOLEAN
 AS $$
 BEGIN
-    -- Delete related records in web.r_user_event
-    DELETE FROM web.r_user_event WHERE web.r_user_event.user_id = p_user_id;
-
-    -- Delete related records in web.r_user_crew
-    DELETE FROM web.r_user_crew WHERE web.r_user_crew.user_id = p_user_id;
-
-    -- Delete crews created by the user
-    DELETE FROM web.crew WHERE web.crew.user_id = p_user_id;
-
-    -- Delete links with other users in web.contact
-    DELETE FROM web.contact WHERE web.contact.user_id = p_user_id OR web.contact.friend_id = p_user_id;
-
     -- Check if the user exists
     IF EXISTS (
-        SELECT 1
+        SELECT *
         FROM main.user
         WHERE id = p_user_id
     ) THEN
+        -- Delete related records in web.r_user_event
+        DELETE FROM web.r_user_event WHERE web.r_user_event.user_id = p_user_id;
+
+        -- Delete related records in web.r_user_crew
+        DELETE FROM web.r_user_crew WHERE web.r_user_crew.user_id = p_user_id;
+
+        -- Delete crews created by the user
+        DELETE FROM web.crew WHERE web.crew.user_id = p_user_id;
+
+        -- Delete links with other users in web.contact
+        DELETE FROM web.contact WHERE web.contact.user_id = p_user_id OR web.contact.friend_id = p_user_id;
+        
         -- Delete the user
         DELETE FROM main.user WHERE id = p_user_id;
 

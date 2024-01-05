@@ -22,7 +22,8 @@ BEGIN
     INNER JOIN
         main.user f ON c.friend_id = f.id
     WHERE
-        c.user_id = param_user_id;
+        c.user_id = param_user_id
+    AND c.friendship_confirmed = true;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -46,7 +47,8 @@ BEGIN
         main.user f ON c.friend_id = f.id
     WHERE
         c.user_id = param_user_id
-        AND f.id = param_friend_id;
+        AND f.id = param_friend_id
+        AND c.friendship_confirmed = true;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -108,11 +110,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------- !
+-- ! User should be able to get all friends even if he is not the one that asked first (see get all or get one) (maybe modification in the sql function)
 -- fonction qui récupere les friendship request pending (false)
--- ! Not getting all friendship requests
 CREATE OR REPLACE FUNCTION web.get_pending_friendship_requests(param_user_id int)
 RETURNS TABLE (
     friendship_id int,
+    user_id int,
     friend_id int,
     friend_nickname text,
     friend_firstname text,
@@ -124,7 +127,8 @@ BEGIN
     RETURN QUERY
     SELECT
         c.id AS friendship_id,
-        c.user_id AS friend_id,
+        c.user_id AS user_id,
+        c.friend_id AS friend_id,
         u.nickname AS friend_nickname,
         u.firstname AS friend_firstname,
         u.lastname AS friend_lastname,
@@ -134,7 +138,21 @@ BEGIN
     INNER JOIN
         main.user u ON c.user_id = u.id
     WHERE
-        c.friend_id = param_user_id
+        c.user_id = param_user_id
         AND NOT c.friendship_confirmed;
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !
+-- fonction qui valide une friendship request (true)
+CREATE OR REPLACE FUNCTION web.confirm_friendship(p_user_id INT, p_friend_id INT)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE web.contact
+    SET friendship_confirmed = true
+    WHERE user_id = p_user_id AND friend_id = p_friend_id;
+
+    -- You may add additional logic or checks here if needed
+
 END;
 $$ LANGUAGE plpgsql;

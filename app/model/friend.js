@@ -175,12 +175,36 @@ const friendDatamapper = {
     try {
       const response = await client.query(sqlQuery, values);
       if (response.rows.length == 0) {
-        error = new APIError("No friends found", 404);
+        error = new APIError("No prending friends found", 404);
       } else {
         result = response.rows;
       }
     } catch (err) {
       error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
+
+  /**
+   * ! USER :: MODIFY ONE FRIENDSHIP STATUS
+   * Method to modify a user
+   * @param {InputPatchUser} userInfo - informations of a user
+   * @returns {User} - User object with updated informations
+   * @returns {500} - if an error occured
+   * @async
+   */
+  async confirmOneFriendship(userId, friendId) {
+    const sqlQuery = `SELECT * FROM web.confirm_friendship($1, $2)`;
+    const values = [userId, friendId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      console.log(err);
+      debug(err);
+      error = new APIError("Internal error server", 500);
     }
     return { error, result };
   },

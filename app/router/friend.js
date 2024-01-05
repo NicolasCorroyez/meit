@@ -69,7 +69,7 @@ router.delete(
  * GET
  * @summary Get all one user's friendship request pending
  * @tags Friend
- * @param {number} userId.path.required - user identifier
+ * @param {Number} userId.path.required - user identifier
  * @return {Friend} 200 - success response - application/json
  * @return {ApiError} 404 - User not found
  * @return {ApiError} 500 - Internal server error
@@ -77,6 +77,22 @@ router.delete(
 router.get(
   "/:userId/friendship/pending",
   /* validationService.isConnected, */ friendController.getAllPendingFriendship
+);
+
+/**
+ * PATCH
+ * @summary Patch one friendship request pending
+ * @tags Friend
+ * @param {Number} userId.path.required - user identifier
+ * @param {Number} friendId.path.required - friend identifier
+ * @return {User} 200 - success response - application/json
+ * @return {ApiError} 500 - Internal server error
+ */
+router.patch(
+  "/:userId(\\d+)/friendship/confirm/:friendId(\\d+)",
+  /* validationService.isConnected,
+  validationService.isUser("update"), */
+  friendController.confirmOneFriendship
 );
 
 module.exports = router;

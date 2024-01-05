@@ -107,6 +107,27 @@ const friendController = {
       res.json(result);
     }
   },
+
+  /**
+   * ! MODIFY ONE
+   * Method to modify a user
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async confirmOneFriendship(req, res, next) {
+    const user = req.params.userId;
+    const friend = req.params.friendId;
+    const { error, result } = await friendDatamapper.confirmOneFriendship(
+      user,
+      friend
+    );
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
 };
 
 module.exports = friendController;
