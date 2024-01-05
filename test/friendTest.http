@@ -4,7 +4,7 @@
 GET http://localhost:3000/user/2/friends
 
 ### Get one user's friends
-GET http://localhost:3000/user/2/friends/3
+GET http://localhost:3000/user/2/friends/5
 
 ### Post user friendship
 POST http://localhost:3000/user/2/friends
@@ -26,4 +26,4 @@ content-type: application/json
 GET http://localhost:3000/user/2/friendship/pending
 
 ### Patch one user
-PATCH http://localhost:3000/user/2/friendship/confirm/3
+PATCH http://localhost:3000/user/2/friendship/confirm/5

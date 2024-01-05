@@ -46,3 +46,103 @@
     at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:48:21.873;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+13:48:21.880;invalid input syntax for type integer: "undefined";Error: Internal server error
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:110:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:49:08.710;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+13:49:37.312;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:49:37.316;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:16.750;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:51:20.005;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:51:21.941;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:51:22.871;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:28.963;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:30.735;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:30.916;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:31.129;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:51:39.028;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+13:51:46.787;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:54:03.296;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:54:03.299;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:54:24.084;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:54:24.086;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:54:46.085;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:54:46.088;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:55:14.617;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:55:14.620;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+13:55:41.390;No user found;Error: No user found
+    at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:105:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+13:55:41.393;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)

@@ -146,13 +146,25 @@ $$ LANGUAGE plpgsql;
 -------------------------------------------------------------------------------------------------- !
 -- fonction qui valide une friendship request (true)
 CREATE OR REPLACE FUNCTION web.confirm_friendship(p_user_id INT, p_friend_id INT)
-RETURNS VOID AS $$
+RETURNS BOOLEAN AS $$
 BEGIN
     UPDATE web.contact
     SET friendship_confirmed = true
     WHERE user_id = p_user_id AND friend_id = p_friend_id;
 
-    -- You may add additional logic or checks here if needed
+    -- Check if any rows were affected by the update
+    IF FOUND THEN
+        RETURN true; -- Friendship confirmed successfully
+    ELSE
+        -- Add additional error handling if needed
+        RETURN false; -- Something went wrong (friendship not confirmed)
+    END IF;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Log or handle the exception as needed
+        RETURN false; -- Something went wrong (friendship not confirmed)
 
 END;
 $$ LANGUAGE plpgsql;
+

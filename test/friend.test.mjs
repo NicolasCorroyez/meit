@@ -35,6 +35,20 @@ describe("FRIEND", () => {
     expect(user).to.have.property("role");
   });
 
+  it("modifier un friendship status", async () => {
+    const response = await request(app)
+      .patch(`/user/${ownerUser}/friendship/confirm/${newFriend}`)
+      .expect(200);
+
+    const user = response.body;
+
+    // est-ce un objet ?
+    expect(user).to.be.an("object");
+
+    // vérification des clefs
+    expect(user).to.have.property("confirm_friendship");
+  });
+
   it("récupérer un amis d'un user", async () => {
     const response = await request(app)
       .get(`/user/${ownerUser}/friends/${userId}`)
