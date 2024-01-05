@@ -77,30 +77,21 @@ Once the installation is complete, you can run scripts that are part of the proj
 To initialize the database, run the following command:
 
 ```bash
-bash script/init.sh
+npm run predo
 ```
 
-To initialize the functions within the database, run the following command:
+then
+
 
 ```bash
-bash script/init_function.sh
+npm run wipe
 ```
 
 # Run
 
 Finally, to start the project, run the following command:
 
-In development mode:
-
-```bash
-npm run dev
-```
-
-In production mode:
-
-```bash
-npm start
-```
+server is already running
 
 # Documentation
 
