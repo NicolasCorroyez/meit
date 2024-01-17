@@ -16,6 +16,8 @@ const eventController = {
   async getOneEvent(req, res, next) {
     const userId = req.params.userId;
     const eventId = req.params.eventId;
+    console.log(userId);
+    console.log(eventId);
     const { error, result } = await eventDatamapper.getOneEvent(
       userId,
       eventId

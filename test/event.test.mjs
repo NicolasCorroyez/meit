@@ -18,7 +18,7 @@ describe("EVENT", () => {
         date: "2024-01-01",
         time: "20:30:00",
         place: "Test_place_name",
-        nb_people: 2,
+        picture: 2,
         invited_users_ids: [3, 4],
         invited_crews_ids: [2],
       })
@@ -36,7 +36,7 @@ describe("EVENT", () => {
     expect(user).to.have.property("date");
     expect(user).to.have.property("event_time");
     expect(user).to.have.property("place");
-    expect(user).to.have.property("nb_people");
+    expect(user).to.have.property("picture");
     expect(user).to.have.property("invited_users");
   });
 
@@ -55,7 +55,7 @@ describe("EVENT", () => {
     expect(user).to.have.property("date");
     expect(user).to.have.property("event_time");
     expect(user).to.have.property("place");
-    expect(user).to.have.property("nb_people");
+    expect(user).to.have.property("picture");
     expect(user).to.have.property("invited_users");
   });
 
@@ -81,7 +81,7 @@ describe("EVENT", () => {
     expect(user).to.have.property("date");
     expect(user).to.have.property("event_time");
     expect(user).to.have.property("place");
-    expect(user).to.have.property("nb_people");
+    expect(user).to.have.property("picture");
     expect(user).to.have.property("invited_users");
 
     // vérification des valeurs
@@ -103,7 +103,7 @@ describe("EVENT", () => {
     expect(users).to.have.property("date");
     expect(users).to.have.property("event_time");
     expect(users).to.have.property("place");
-    expect(users).to.have.property("nb_people");
+    expect(users).to.have.property("picture");
     expect(users).to.have.property("invited_users");
   });
 

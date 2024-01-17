@@ -1,0 +1,96 @@
+15:15:57.085;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:15:57.216;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:16:06.308;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:16:06.426;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:16:08.572;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:16:08.656;No events found;Error: No events found
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+15:49:53.602;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+15:50:01.293;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+15:51:06.213;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+15:52:28.580;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+16:12:39.685;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+17:12:22.363;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+17:13:01.335;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+17:20:38.343;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+17:21:42.768;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+17:44:37.885;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+18:01:28.845;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+19:41:04.195;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+20:52:09.138;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+20:52:22.323;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+20:52:24.536;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+20:52:38.801;User not found;Error: User not found
+    at Object.getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:108:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:36:31)
+20:52:48.216;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)
+20:54:19.246;Internal server error;Error: Internal server error
+    at Object.createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/user.js:130:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createOne (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/user.js:53:33)

@@ -5,18 +5,20 @@
 GET http://localhost:3000/user/1/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/3
+GET http://localhost:3000/user/1/events/12
+
+### !! Ajouter icone d'event !
 
 ### Post user event
 POST http://localhost:3000/user/1/events/
 content-type: application/json
 
 {
-    "theme": "NewThemdzdze",
-    "date": "2024-01-01",
-    "time": "20:30:00",
-    "place": "la",
-    "nb_people": 2,
+    "theme": "Cinema",
+    "date": "2024-01-20",
+    "time": "17:00:00",
+    "place": "UGC Ciné Cité",
+    "picture": 2,
     "invited_users_ids": [3,4],
     "invited_crews_ids": [2]
 }

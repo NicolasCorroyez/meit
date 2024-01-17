@@ -8,7 +8,7 @@ RETURNS TABLE (
     date date,
     event_time time, -- Use the actual column name from your table
     place text,
-    nb_people smallint,
+    picture text,
     invited_users jsonb[]
 )
 AS $$
@@ -20,7 +20,7 @@ BEGIN
         e.date,
         e.time AS event_time, -- Use the actual column name from your table
         e.place,
-        e.nb_people,
+        e.picture,
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
@@ -49,7 +49,7 @@ RETURNS TABLE (
     date date,
     event_time time, -- Use the actual column name from your table
     place text,
-    nb_people smallint,
+    picture text,
     invited_users jsonb[]
 )
 AS $$
@@ -61,7 +61,7 @@ BEGIN
         e.date,
         e.time AS event_time, -- Use the actual column name from your table
         e.place,
-        e.nb_people,
+        e.picture,
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
@@ -90,7 +90,7 @@ CREATE OR REPLACE FUNCTION web.insert_user_event(
     param_date date,
     param_time time,
     param_place text,
-    param_nb_people smallint,
+    param_picture text,
     param_invited_user_ids int[],
     param_invited_crew_ids int[]
 )
@@ -100,7 +100,7 @@ RETURNS TABLE (
     date date,
     event_time time,
     place text,
-    nb_people smallint,
+    picture text,
     invited_users jsonb[]
 )
 AS $$
@@ -109,8 +109,8 @@ DECLARE
     invited_user_id int;
 BEGIN
     -- Insert new event
-    INSERT INTO web.event (theme, date, time, place, nb_people, owner)
-    VALUES (param_theme, param_date, param_time, param_place, param_nb_people, param_user_id)
+    INSERT INTO web.event (theme, date, time, place, picture, owner)
+    VALUES (param_theme, param_date, param_time, param_place, param_picture, param_user_id)
     RETURNING id INTO new_event_id;
 
     -- Create temporary table to store user IDs
@@ -159,7 +159,7 @@ BEGIN
         param_date,
         param_time,
         param_place,
-        param_nb_people,
+        param_picture,
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
@@ -197,7 +197,7 @@ RETURNS TABLE (
     date date,
     event_time time,
     place text,
-    nb_people smallint,
+    picture text,
     invited_users jsonb[]
 )
 AS $$
@@ -207,7 +207,7 @@ DECLARE
     param_date date;
     param_time time;
     param_place text;
-    param_nb_people smallint;
+    param_picture text;
     param_user_ids int[];
 BEGIN
     -- Extract values from JSON parameter
@@ -216,7 +216,7 @@ BEGIN
     param_date := (u->>'date')::date;
     param_time := (u->>'time')::time;
     param_place := u->>'place';
-    param_nb_people := (u->>'nb_people')::smallint;
+    param_picture := (u->>'picture');
     param_user_ids := ARRAY(SELECT json_array_elements_text(u->'userIds')::int);
 
     -- Update the event in the event table and return the updated values
@@ -226,7 +226,7 @@ BEGIN
         date = COALESCE(param_date, e.date),
         time = COALESCE(param_time, e.time),
         place = COALESCE(param_place, e.place),
-        nb_people = COALESCE(param_nb_people, e.nb_people)
+        picture = COALESCE(param_picture, e.picture)
     WHERE
         e.id = param_event_id
     RETURNING
@@ -235,14 +235,14 @@ BEGIN
         e.date,
         e.time AS event_time,
         e.place,
-        e.nb_people
+        e.picture
     INTO
         event_id,
         theme,
         date,
         event_time,
         place,
-        nb_people;
+        picture;
 
     -- Check if there was a matching row in the UPDATE
     IF NOT FOUND THEN
@@ -253,14 +253,14 @@ BEGIN
             e.date,
             e.time AS event_time,
             e.place,
-            e.nb_people
+            e.picture
         INTO
             event_id,
             theme,
             date,
             event_time,
             place,
-            nb_people
+            picture
         FROM
             web.event e
         WHERE

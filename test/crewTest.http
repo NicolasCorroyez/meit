@@ -45,4 +45,4 @@ content-type: application/json
 GET http://localhost:3000/user/owner/1/crews/
 
 ### Get user owner of one crew
-GET http://localhost:3000/user/owner/1/crews/4
+GET http://localhost:3000/user/owner/1/crews/1

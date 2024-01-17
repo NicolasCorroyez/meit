@@ -48,7 +48,7 @@ CREATE TABLE web.event (
     date DATE,
     time TIME,
     place text,
-    nb_people smallint CHECK(nb_people > 0),
+    picture text,
     owner int NOT NULL REFERENCES main.user(id)
 );
 
