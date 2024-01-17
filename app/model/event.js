@@ -121,7 +121,7 @@ const eventDatamapper = {
    * @param {string} date - Date of the event
    * @param {string} time - Time of the event
    * @param {string} place - Place of the event
-   * @param {number} nb_people - Number of people for the event
+   * @param {string} picture - picture for the event
    * @param {number[]} invited_users_ids - Array of invited user IDs
    * @param {number[]} invited_crews_ids - Array of invited crew IDs
    * @returns {object} - Result of the operation
@@ -133,7 +133,7 @@ const eventDatamapper = {
       date,
       time,
       place,
-      nb_people,
+      picture,
       invited_users_ids,
       invited_crews_ids,
     } = eventData;
@@ -160,7 +160,7 @@ const eventDatamapper = {
       date,
       time,
       place,
-      nb_people,
+      picture,
       ...userIDs,
       ...crewIDs,
     ];

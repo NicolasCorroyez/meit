@@ -139,14 +139,14 @@ async function importEvent() {
     values.push(element.date);
     values.push(element.time);
     values.push(element.place);
-    values.push(element.nb_people);
+    values.push(element.picture);
     values.push(element.owner);
   }
 
   // I insert my events
   const sqlQuery = `
     INSERT INTO web.event
-    (theme, date, time, place, nb_people, owner)
+    (theme, date, time, place, picture, owner)
     VALUES
     ${parameters.join()}
     RETURNING id, theme;`;

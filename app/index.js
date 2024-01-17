@@ -4,11 +4,21 @@
 
 // IMPORT
 const express = require("express");
+const cors = require("cors");
 const expressJSDocSwagger = require("express-jsdoc-swagger");
 
 // CONFIG
 const app = express();
 app.use(express.json());
+
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 // CONFIG SWAGGER
 const options = {
