@@ -75,6 +75,38 @@ const eventController = {
       res.json(result);
     }
   },
+
+  async confirmParticipation(req, res, next) {
+    const userId = parseInt(req.params.userId);
+    const eventId = parseInt(req.params.eventId);
+    const eventInfo = req.body;
+    if (eventInfo.userId === userId) {
+      console.log(eventInfo.state);
+      const { error, result } = await eventDatamapper.confirmParticipation(
+        userId,
+        eventId,
+        eventInfo.state
+      );
+      if (error) {
+        next(error);
+      } else {
+        res.json(result);
+      }
+    } else {
+      const err = new APIError("Access denied", 403);
+      next(err);
+    }
+  },
+
+  async getAllUnconfirmed(req, res, next) {
+    const userId = req.params.userId;
+    const { error, result } = await eventDatamapper.getAllUnconfirmed(userId);
+    if (error) {
+      next(error);
+    } else {
+      res.json(result);
+    }
+  },
 };
 
 module.exports = eventController;

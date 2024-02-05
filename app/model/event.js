@@ -224,6 +224,41 @@ const eventDatamapper = {
     }
     return { error, result };
   },
+
+  async confirmParticipation(userId, eventId, state) {
+    const sqlQuery = `SELECT * FROM web.confirm_participation($1, $2, $3);`;
+    const values = [userId, eventId, state];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      result = response.rows[0];
+    } catch (err) {
+      debug(err);
+      console.log(err);
+      error = new APIError("Internal error server", 500);
+    }
+    return { error, result };
+  },
+
+  async getAllUnconfirmed(userId) {
+    const sqlQuery = `SELECT * FROM web.get_unconfirmed_events($1);`;
+    const values = [userId];
+    let result;
+    let error;
+    try {
+      const response = await client.query(sqlQuery, values);
+      if (response.rows.length == 0) {
+        error = new APIError("No events found", 404);
+      } else {
+        result = response.rows;
+      }
+    } catch (err) {
+      console.log(err);
+      error = new APIError("Internal server error", 500, err);
+    }
+    return { error, result };
+  },
 };
 
 module.exports = eventDatamapper;

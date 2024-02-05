@@ -2,24 +2,24 @@
 
 ### ! param wording unconsistent
 ### Get all user's events
-GET http://localhost:3000/user/1/events
+GET http://localhost:3000/user/2/events
 
 ### Get one user's event
-GET http://localhost:3000/user/1/events/12
+GET http://localhost:3000/user/2/events/27
 
 ### !! Ajouter icone d'event !
 
 ### Post user event
-POST http://localhost:3000/user/1/events/
+POST http://localhost:3000/user/2/events/
 content-type: application/json
 
 {
     "theme": "Cinema",
-    "date": "2024-01-20",
+    "date": "2024-02-20",
     "time": "17:00:00",
     "place": "UGC Ciné Cité",
-    "picture": 2,
-    "invited_users_ids": [3,4],
+    "picture": "ticket",
+    "invited_users_ids": [],
     "invited_crews_ids": [2]
 }
 
@@ -43,3 +43,16 @@ content-type: application/json
     "userId": 1,
     "eventId": 3
 }
+
+### Update state user event
+PATCH http://localhost:3000/user/2/confirm/1
+content-type: application/json
+
+{
+    "userId": 2,
+    "eventId": 1,
+    "state": true
+}
+
+### Get all user's events UNCONFIRMED
+GET http://localhost:3000/user/2/unconfirmed

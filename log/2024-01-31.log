@@ -1,0 +1,40 @@
+15:24:03.800;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+15:24:41.968;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+15:24:54.260;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+15:25:43.970;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+15:26:15.160;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+15:27:36.575;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+15:27:44.484;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+15:27:54.291;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)
+15:28:14.725;No prending friends found;Error: No prending friends found
+    at Object.getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:178:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllPendingFriendship (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:101:31)
+15:59:25.755;Internal server error;Error: Internal server error
+    at Object.addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:133:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:59:31)

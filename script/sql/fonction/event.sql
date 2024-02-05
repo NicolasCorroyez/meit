@@ -1,15 +1,16 @@
 -- ! EVENT FUNCTIONS
 -------------------------------------------------------------------------------------------------- !
 -- fonction qui recupere les infos de tous les events d'un utilisateur
-CREATE OR REPLACE FUNCTION web.get_user_all_events(param_user_id int)
+CREATE OR REPLACE FUNCTION web.get_user_all_events(param_user_id INT)
 RETURNS TABLE (
-    event_id int,
-    theme text,
-    date date,
-    event_time time, -- Use the actual column name from your table
-    place text,
-    picture text,
-    invited_users jsonb[]
+    event_id INT,
+    theme TEXT,
+    date DATE,
+    event_time TIME,
+    place TEXT,
+    picture TEXT,
+    owner_id INT,
+    invited_users JSONB[]
 )
 AS $$
 BEGIN
@@ -18,25 +19,29 @@ BEGIN
         e.id AS event_id,
         e.theme,
         e.date,
-        e.time AS event_time, -- Use the actual column name from your table
+        e.time AS event_time,
         e.place,
         e.picture,
+        e.owner AS owner_id,
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
                 'nickname', u.nickname,
                 'firstname', u.firstname,
                 'lastname', u.lastname,
-                'picture', u.picture
+                'picture', u.picture,
+                'userstate', re.userstate
             )
             FROM web.r_user_event re
             JOIN main.user u ON re.user_id = u.id
             WHERE re.event_id = e.id
         ) AS invited_users
     FROM
-        web.event e
+        web.r_user_event AS wre
+    JOIN
+        web.event AS e ON wre.event_id = e.id
     WHERE
-        e.owner = param_user_id;
+        wre.user_id = param_user_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -47,9 +52,10 @@ RETURNS TABLE (
     event_id int,
     theme text,
     date date,
-    event_time time, -- Use the actual column name from your table
+    event_time time,
     place text,
     picture text,
+    owner int,
     invited_users jsonb[]
 )
 AS $$
@@ -59,9 +65,10 @@ BEGIN
         e.id AS event_id,
         e.theme,
         e.date,
-        e.time AS event_time, -- Use the actual column name from your table
+        e.time AS event_time,
         e.place,
         e.picture,
+        e.owner,
         ARRAY(
             SELECT jsonb_build_object(
                 'user_id', u.id,
@@ -78,7 +85,12 @@ BEGIN
         web.event e
     WHERE
         e.id = event_id_param AND
-        e.owner = param_user_id;
+        (e.owner = param_user_id OR
+        EXISTS (
+            SELECT 1
+            FROM web.r_user_event re
+            WHERE re.event_id = e.id AND re.user_id = param_user_id
+        ));
 END;
 $$ LANGUAGE plpgsql;
 
@@ -107,6 +119,7 @@ AS $$
 DECLARE
     new_event_id int;
     invited_user_id int;
+    is_owner_in_crew boolean;  -- Flag to indicate if the owner is in any of the crews
 BEGIN
     -- Insert new event
     INSERT INTO web.event (theme, date, time, place, picture, owner)
@@ -120,12 +133,23 @@ BEGIN
     INSERT INTO temp_user_ids (user_id)
     SELECT unnest(param_invited_user_ids);
 
+    -- Check if the owner is in any of the crews
+    SELECT EXISTS (
+        SELECT 1
+        FROM web.r_user_crew uc
+        WHERE uc.user_id = param_user_id AND uc.crew_id = ANY(param_invited_crew_ids)
+    ) INTO is_owner_in_crew;
+
     -- Link users to the new event, checking if they are already invited
     INSERT INTO web.r_user_event (user_id, event_id, userstate)
     SELECT
         t.user_id,
         new_event_id,
-        true
+        CASE
+            WHEN t.user_id = param_user_id AND is_owner_in_crew THEN true  -- Owner is in the crew
+            WHEN t.user_id = param_user_id THEN false  -- Owner is not in the crew
+            ELSE false  -- Others get userstate = false
+        END
     FROM
         temp_user_ids t
     WHERE
@@ -140,7 +164,7 @@ BEGIN
     SELECT
         uc.user_id,
         new_event_id,
-        true
+        false  -- Crew members get userstate = false
     FROM
         web.r_user_crew uc
     WHERE
@@ -150,6 +174,11 @@ BEGIN
             FROM web.r_user_event re
             WHERE re.user_id = uc.user_id AND re.event_id = new_event_id
         );
+
+    -- Update userstate for the owner of the event to true
+    UPDATE web.r_user_event rue
+    SET userstate = true
+    WHERE rue.user_id = param_user_id AND rue.event_id = new_event_id;
 
     -- Return details of the created event
     RETURN QUERY
@@ -166,7 +195,8 @@ BEGIN
                 'nickname', u.nickname,
                 'firstname', u.firstname,
                 'lastname', u.lastname,
-                'picture', u.picture
+                'picture', u.picture,
+                'userstate', CASE WHEN u.id = param_user_id THEN true ELSE false END
             )
             FROM main.user u
             WHERE u.id = ANY(param_invited_user_ids)
@@ -176,7 +206,8 @@ BEGIN
                 'nickname', u.nickname,
                 'firstname', u.firstname,
                 'lastname', u.lastname,
-                'picture', u.picture
+                'picture', u.picture,
+                'userstate', false  -- Crew members get userstate = false
             )
             FROM main.user u
             JOIN web.r_user_crew uc ON u.id = uc.user_id
@@ -187,6 +218,8 @@ BEGIN
     DROP TABLE temp_user_ids;
 END;
 $$ LANGUAGE plpgsql;
+
+
 
 -------------------------------------------------------------------------------------------------- !
 -- fonction qui modifie l'event d'un utilisateur
@@ -323,5 +356,69 @@ BEGIN
     GET DIAGNOSTICS event_deleted = ROW_COUNT;
 
     RETURN event_deleted;
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------------------------------------------------------------- !
+-- fonction pour confirmer la présence
+CREATE OR REPLACE FUNCTION web.confirm_participation(
+    param_user_id int,
+    param_event_id int,
+    param_new_userstate boolean
+)
+RETURNS TABLE (
+    event_id int,
+    user_id int,
+    new_userstate boolean
+)
+AS $$
+BEGIN
+    -- Update userstate for the specified user in the given event
+    UPDATE web.r_user_event rue
+    SET userstate = param_new_userstate
+    WHERE rue.user_id = param_user_id AND rue.event_id = param_event_id;
+
+    -- Return details of the updated event
+    RETURN QUERY
+    SELECT
+        re.event_id,
+        re.user_id,
+        re.userstate
+    FROM
+        web.r_user_event re
+    WHERE
+        re.user_id = param_user_id AND re.event_id = param_event_id;
+END;
+$$ LANGUAGE plpgsql;
+
+--------------------------------------------------------------------------------------------------!
+CREATE OR REPLACE FUNCTION web.get_unconfirmed_events(param_user_id int)
+RETURNS TABLE (
+    event_id int,
+    theme text,
+    date date,
+    event_time time,
+    place text,
+    picture text,
+    owner int
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.id AS event_id,
+        e.theme,
+        e.date,
+        e.time AS event_time,
+        e.place,
+        e.picture,
+        e.owner
+    FROM
+        web.r_user_event re
+    JOIN
+        web.event e ON re.event_id = e.id
+    WHERE
+        re.user_id = param_user_id
+        AND re.userstate = false;
 END;
 $$ LANGUAGE plpgsql;

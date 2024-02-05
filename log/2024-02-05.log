@@ -1,0 +1,74 @@
+11:04:36.418;invalid input syntax for type integer: "confirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+11:04:40.429;invalid input syntax for type integer: "confirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+11:05:31.684;invalid input syntax for type integer: "confirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+11:05:55.163;invalid input syntax for type integer: "confirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+11:05:59.354;invalid input syntax for type integer: "confirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+11:12:17.227;relation "e" does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+11:15:23.019;relation "e" does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+11:23:11.837;function web.get_user_all_events(unknown) does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+11:24:08.110;column "user_id_param" does not exist;Error: Internal server error
+    at Object.getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:83:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEvents (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:8:31)
+12:42:20.236;structure of query does not match function result type;Error: Internal server error
+    at Object.getAllEventsConfirmed (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:243:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllEventsConfirmed (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:82:31)
+13:15:27.112;Internal error server;Error: Internal error server
+    at Object.confirmParticipation (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async confirmParticipation (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:85:33)
+13:17:37.038;Access denied;Error: Access denied
+    at confirmParticipation (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:96:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)
+13:20:08.543;Internal server error;Error: Internal server error
+    at Object.addOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:176:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:35:31)
+13:25:56.967;invalid input syntax for type integer: "unconfirmed";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+13:28:03.316;Access denied;Error: Access denied
+    at confirmParticipation (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:96:19)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:284:15
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:365:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at param (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Users/nicolascorroyez/Documents/ProjetP/meit/node_modules/express/lib/router/index.js:421:3)

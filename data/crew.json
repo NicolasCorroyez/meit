@@ -1,17 +1,17 @@
 [
   {
     "name": "crew1",
-    "picture": "nothing1",
+    "picture": "https://images-stylist.s3-eu-west-1.amazonaws.com/app/uploads/2019/09/12110710/friends-256x256.jpg",
     "user_id": 1
   },
   {
     "name": "crew2",
-    "picture": "nothing2",
+    "picture": "https://images-stylist.s3-eu-west-1.amazonaws.com/app/uploads/2018/10/23080643/friends-2-256x256.jpg",
     "user_id": 1
   },
   {
     "name": "crew3",
-    "picture": "nothing2",
+    "picture": "https://d28ku8nzmkcjr6.cloudfront.net/cache/fa/71/fa71548e941bbe7e193d2203b3dc6c7a.webp",
     "user_id": 2
   }
 ]

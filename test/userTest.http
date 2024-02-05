@@ -15,7 +15,7 @@ content-type: application/json
     "firstname":"eva",
     "lastname":"bouchoux",
     "device":"httpcreateduser1_device",
-    "picture":"httpcreateduser1_picture",
+    "picture":"https://pxbar.com/wp-content/uploads/2023/10/profile-pic-sad.jpg",
     "role":"member"
 }
 

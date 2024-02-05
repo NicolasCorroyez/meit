@@ -1,0 +1,32 @@
+16:14:35.113;invalid input syntax for type integer: "6.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:14:44.578;invalid input syntax for type integer: "1.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:14:47.476;invalid input syntax for type integer: "3.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:14:51.353;invalid input syntax for type integer: "6.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:15:12.460;invalid input syntax for type integer: "6.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:15:49.746;invalid input syntax for type integer: "6.js";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:17:09.713;invalid input syntax for type integer: "undefined";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)
+16:17:35.618;invalid input syntax for type integer: "undefined";Error: Internal server error
+    at Object.getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/event.js:111:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOneEvent (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/event.js:21:31)

@@ -39,7 +39,7 @@ router.get(
 
 /**
  * GET
- * @summary Get all user's crews
+ * @summary Get all user's crews OWNER
  * @tags Crew
  * @param {number} userId.path.required - user identifier
  * @return {Crew} 200 - success response - application/json
@@ -53,7 +53,7 @@ router.get(
 
 /**
  * GET
- * @summary Get all user's crews
+ * @summary Get all user's crews OWNER
  * @tags Crew
  * @param {number} userId.path.required - user identifier
  * @return {Crew} 200 - success response - application/json

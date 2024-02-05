@@ -26,3 +26,4 @@ DROP FUNCTION IF EXISTS web.get_user_one_event;
 DROP FUNCTION IF EXISTS web.insert_user_event;
 DROP FUNCTION IF EXISTS web.update_user_event;
 DROP FUNCTION IF EXISTS web.delete_user_event;
+DROP FUNCTION IF EXISTS web.confirm_participation;

@@ -4,7 +4,7 @@
     "firstname": "FirstnameTest1",
     "lastname": "lastnameTest1",
     "device": "TESTDEVICE1",
-    "picture": "nothing1",
+    "picture": "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
     "role": "member"
   },
   {
@@ -12,7 +12,7 @@
     "firstname": "FirstnameTest2",
     "lastname": "lastnameTest2",
     "device": "TESTDEVICE2",
-    "picture": "nothing2",
+    "picture": "https://pbs.twimg.com/media/FmSgc2-aAAIXH80.jpg",
     "role": "member"
   },
   {
@@ -20,7 +20,7 @@
     "firstname": "FirstnameTest3",
     "lastname": "lastnameTest3",
     "device": "TESTDEVICE3",
-    "picture": "nothing3",
+    "picture": "https://pbs.twimg.com/media/FjXRjHWWIAAq9AF.jpg",
     "role": "member"
   },
   {
@@ -28,7 +28,7 @@
     "firstname": "FirstnameTest4",
     "lastname": "lastnameTest4",
     "device": "TESTDEVICE4",
-    "picture": "nothing4",
+    "picture": "https://pbs.twimg.com/media/FjYAoHEXgAMUIQX.jpg",
     "role": "member"
   },
   {
@@ -36,7 +36,7 @@
     "firstname": "FirstnameTest5",
     "lastname": "lastnameTest5",
     "device": "TESTDEVICE5",
-    "picture": "nothing5",
+    "picture": "https://pbs.twimg.com/media/FmpjmHiaEAg8zDw.jpg",
     "role": "member"
   }
 ]

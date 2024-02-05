@@ -102,3 +102,11 @@
     at Object.getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:110:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async getOneFriend (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:38:31)
+16:14:35.667;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
+16:14:37.837;No friends found;Error: No friends found
+    at Object.getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/model/friend.js:77:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAllFriends (/Users/nicolascorroyez/Documents/ProjetP/meit/app/controller/friend.js:20:31)
